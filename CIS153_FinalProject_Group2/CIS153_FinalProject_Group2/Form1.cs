@@ -23,6 +23,28 @@ namespace CIS153_FinalProject_Group2
         {
 
         }
+
+        //  Load Single Player
+        private void btn_TempLoadForm_Click(object sender, EventArgs e)
+        {
+            //  clicking this button will load a new "SinglePlayerC4Form" form
+            //                                       [Single Player Connect 4 Form]
+            SinglePlayerC4Form SinglePForm = new SinglePlayerC4Form(this);
+            //  this will transition to display the new single player form
+            this.Hide();
+            SinglePForm.Show();
+        }
+
+        //  Load Two Player
+        private void btn_tempLoadTPC4F_Click(object sender, EventArgs e)
+        {
+            //  clicking this button will load a new "TwoPlayerC4Form" form
+            //                                       [Two Player Connect 4 Form]
+            TwoPlayerC4Form TwoPForm = new TwoPlayerC4Form(this);
+            //  this will transition to display the new Two player form
+            this.Hide();
+            TwoPForm.Show();
+        }
     }
 }
 
