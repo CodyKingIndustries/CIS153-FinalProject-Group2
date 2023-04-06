@@ -13,15 +13,17 @@ namespace CIS153_FinalProject_Group2
     public partial class SinglePlayerC4Form : Form
     {
         //  this is a global reference to the Home Screen of Connect 4
-        private Form1 MainScreenForm;
+        private MainMenuForm MainScreenForm;
 
         public SinglePlayerC4Form()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.Manual;
+            this.Location = new Point(100, 100);
         }
 
         //  Initialize This Form
-        public SinglePlayerC4Form(Form1 m)
+        public SinglePlayerC4Form(MainMenuForm m)
         {
             InitializeComponent();
             //  this will allow us to return to the main screen form if we need to
@@ -41,6 +43,11 @@ namespace CIS153_FinalProject_Group2
             //  in order for this to close -> either the game needs to end / or the user must exit
             //  this is just temporary framework
             this.Close();
+        }
+
+        private void btn_Exit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.btn_TPC4F_tempLoadForm = new System.Windows.Forms.Button();
+            this.btn_Exit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_TPC4F_tempLoadForm
@@ -41,11 +42,22 @@
             this.btn_TPC4F_tempLoadForm.UseVisualStyleBackColor = true;
             this.btn_TPC4F_tempLoadForm.Click += new System.EventHandler(this.btn_TPC4F_tempLoadForm_Click);
             // 
+            // btn_Exit
+            // 
+            this.btn_Exit.Location = new System.Drawing.Point(111, 137);
+            this.btn_Exit.Name = "btn_Exit";
+            this.btn_Exit.Size = new System.Drawing.Size(140, 22);
+            this.btn_Exit.TabIndex = 1;
+            this.btn_Exit.Text = "Exit";
+            this.btn_Exit.UseVisualStyleBackColor = true;
+            this.btn_Exit.Click += new System.EventHandler(this.btn_Exit_Click);
+            // 
             // TwoPlayerC4Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(453, 450);
+            this.Controls.Add(this.btn_Exit);
             this.Controls.Add(this.btn_TPC4F_tempLoadForm);
             this.Name = "TwoPlayerC4Form";
             this.Text = "TwoPlayerC4Form";
@@ -57,5 +69,6 @@
         #endregion
 
         private System.Windows.Forms.Button btn_TPC4F_tempLoadForm;
+        private System.Windows.Forms.Button btn_Exit;
     }
 }
