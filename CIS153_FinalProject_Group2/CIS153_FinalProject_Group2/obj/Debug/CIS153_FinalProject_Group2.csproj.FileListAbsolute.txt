@@ -12,3 +12,17 @@ D:\Users\julie\Downloads\CIS153-FinalProject-Group2-main\CIS153-FinalProject-Gro
 D:\Users\julie\Downloads\CIS153-FinalProject-Group2-main\CIS153-FinalProject-Group2-main\CIS153_FinalProject_Group2\CIS153_FinalProject_Group2\obj\Debug\CIS153_FinalProject_Group2.pdb
 D:\Users\julie\Downloads\CIS153-FinalProject-Group2-main\CIS153-FinalProject-Group2-main\CIS153_FinalProject_Group2\CIS153_FinalProject_Group2\obj\Debug\CIS153_FinalProject_Group2.MainMenuForm.resources
 D:\Users\julie\Downloads\CIS153-FinalProject-Group2-main\CIS153-FinalProject-Group2-main\CIS153_FinalProject_Group2\CIS153_FinalProject_Group2\obj\Debug\CIS153_FinalProject_Group2.StatisticsForm.resources
+C:\Users\iampl\Desktop\CIS153-FinalProject-Group2\CIS153_FinalProject_Group2\CIS153_FinalProject_Group2\bin\Debug\CIS153_FinalProject_Group2.exe.config
+C:\Users\iampl\Desktop\CIS153-FinalProject-Group2\CIS153_FinalProject_Group2\CIS153_FinalProject_Group2\bin\Debug\CIS153_FinalProject_Group2.exe
+C:\Users\iampl\Desktop\CIS153-FinalProject-Group2\CIS153_FinalProject_Group2\CIS153_FinalProject_Group2\bin\Debug\CIS153_FinalProject_Group2.pdb
+C:\Users\iampl\Desktop\CIS153-FinalProject-Group2\CIS153_FinalProject_Group2\CIS153_FinalProject_Group2\obj\Debug\CIS153_FinalProject_Group2.csproj.AssemblyReference.cache
+C:\Users\iampl\Desktop\CIS153-FinalProject-Group2\CIS153_FinalProject_Group2\CIS153_FinalProject_Group2\obj\Debug\CIS153_FinalProject_Group2.csproj.SuggestedBindingRedirects.cache
+C:\Users\iampl\Desktop\CIS153-FinalProject-Group2\CIS153_FinalProject_Group2\CIS153_FinalProject_Group2\obj\Debug\CIS153_FinalProject_Group2.MainMenuForm.resources
+C:\Users\iampl\Desktop\CIS153-FinalProject-Group2\CIS153_FinalProject_Group2\CIS153_FinalProject_Group2\obj\Debug\CIS153_FinalProject_Group2.StatisticsForm.resources
+C:\Users\iampl\Desktop\CIS153-FinalProject-Group2\CIS153_FinalProject_Group2\CIS153_FinalProject_Group2\obj\Debug\CIS153_FinalProject_Group2.Properties.Resources.resources
+C:\Users\iampl\Desktop\CIS153-FinalProject-Group2\CIS153_FinalProject_Group2\CIS153_FinalProject_Group2\obj\Debug\CIS153_FinalProject_Group2.SinglePlayerC4Form.resources
+C:\Users\iampl\Desktop\CIS153-FinalProject-Group2\CIS153_FinalProject_Group2\CIS153_FinalProject_Group2\obj\Debug\CIS153_FinalProject_Group2.TwoPlayerC4Form.resources
+C:\Users\iampl\Desktop\CIS153-FinalProject-Group2\CIS153_FinalProject_Group2\CIS153_FinalProject_Group2\obj\Debug\CIS153_FinalProject_Group2.csproj.GenerateResource.cache
+C:\Users\iampl\Desktop\CIS153-FinalProject-Group2\CIS153_FinalProject_Group2\CIS153_FinalProject_Group2\obj\Debug\CIS153_FinalProject_Group2.csproj.CoreCompileInputs.cache
+C:\Users\iampl\Desktop\CIS153-FinalProject-Group2\CIS153_FinalProject_Group2\CIS153_FinalProject_Group2\obj\Debug\CIS153_FinalProject_Group2.exe
+C:\Users\iampl\Desktop\CIS153-FinalProject-Group2\CIS153_FinalProject_Group2\CIS153_FinalProject_Group2\obj\Debug\CIS153_FinalProject_Group2.pdb
