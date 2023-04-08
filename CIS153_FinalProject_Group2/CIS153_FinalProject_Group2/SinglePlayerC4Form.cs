@@ -49,5 +49,229 @@ namespace CIS153_FinalProject_Group2
         {
             Application.Exit();
         }
+
+        private void btn_Row1Slot_Click(object sender, EventArgs e)
+        {
+            if (btn_Row1Space1.BackColor == Color.White)
+            {
+                btn_Row1Space1.BackColor = Color.Green;
+            }
+            else if (btn_Row1Space2.BackColor == Color.White && btn_Row1Space1.BackColor != Color.White)
+            {
+                btn_Row1Space2.BackColor = Color.Green;
+            }
+            else if (btn_Row1Space3.BackColor == Color.White && btn_Row1Space2.BackColor != Color.White)
+            {
+                btn_Row1Space3.BackColor = Color.Green;
+            }
+            else if (btn_Row1Space3.BackColor == Color.White && btn_Row1Space2.BackColor != Color.White)
+            {
+                btn_Row1Space3.BackColor = Color.Green;
+            }
+            else if (btn_Row1Space4.BackColor == Color.White && btn_Row1Space3.BackColor != Color.White)
+            {
+                btn_Row1Space4.BackColor = Color.Green;
+            }
+            else if (btn_Row1Space5.BackColor == Color.White && btn_Row1Space4.BackColor != Color.White)
+            {
+                btn_Row1Space5.BackColor = Color.Green;
+            }
+            else if (btn_Row1Space6.BackColor == Color.White && btn_Row1Space5.BackColor != Color.White)
+            {
+                btn_Row1Space6.BackColor = Color.Green;
+            }
+        }
+
+        private void btn_Row2Slot_Click(object sender, EventArgs e)
+        {
+            if (btn_Row2Space1.BackColor == Color.White)
+            {
+                btn_Row2Space1.BackColor = Color.Green;
+            }
+            else if (btn_Row2Space2.BackColor == Color.White && btn_Row2Space1.BackColor != Color.White)
+            {
+                btn_Row2Space2.BackColor = Color.Green;
+            }
+            else if (btn_Row2Space3.BackColor == Color.White && btn_Row2Space2.BackColor != Color.White)
+            {
+                btn_Row2Space3.BackColor = Color.Green;
+            }
+            else if (btn_Row2Space3.BackColor == Color.White && btn_Row2Space2.BackColor != Color.White)
+            {
+                btn_Row2Space3.BackColor = Color.Green;
+            }
+            else if (btn_Row2Space4.BackColor == Color.White && btn_Row2Space3.BackColor != Color.White)
+            {
+                btn_Row2Space4.BackColor = Color.Green;
+            }
+            else if (btn_Row2Space5.BackColor == Color.White && btn_Row2Space4.BackColor != Color.White)
+            {
+                btn_Row2Space5.BackColor = Color.Green;
+            }
+            else if (btn_Row2Space6.BackColor == Color.White && btn_Row2Space5.BackColor != Color.White)
+            {
+                btn_Row2Space6.BackColor = Color.Green;
+            }
+        }
+
+        private void btn_Row3Slot_Click(object sender, EventArgs e)
+        {
+            if (btn_Row3Space1.BackColor == Color.White)
+            {
+                btn_Row3Space1.BackColor = Color.Green;
+            }
+            else if (btn_Row3Space2.BackColor == Color.White && btn_Row3Space1.BackColor != Color.White)
+            {
+                btn_Row3Space2.BackColor = Color.Green;
+            }
+            else if (btn_Row3Space3.BackColor == Color.White && btn_Row3Space2.BackColor != Color.White)
+            {
+                btn_Row3Space3.BackColor = Color.Green;
+            }
+            else if (btn_Row3Space3.BackColor == Color.White && btn_Row3Space2.BackColor != Color.White)
+            {
+                btn_Row3Space3.BackColor = Color.Green;
+            }
+            else if (btn_Row3Space4.BackColor == Color.White && btn_Row3Space3.BackColor != Color.White)
+            {
+                btn_Row3Space4.BackColor = Color.Green;
+            }
+            else if (btn_Row3Space5.BackColor == Color.White && btn_Row3Space4.BackColor != Color.White)
+            {
+                btn_Row3Space5.BackColor = Color.Green;
+            }
+            else if (btn_Row3Space6.BackColor == Color.White && btn_Row3Space5.BackColor != Color.White)
+            {
+                btn_Row3Space6.BackColor = Color.Green;
+            }
+        }
+
+        private void btn_Row4Slot_Click(object sender, EventArgs e)
+        {
+            if (btn_Row4Space1.BackColor == Color.White)
+            {
+                btn_Row4Space1.BackColor = Color.Green;
+            }
+            else if (btn_Row4Space2.BackColor == Color.White && btn_Row4Space1.BackColor != Color.White)
+            {
+                btn_Row4Space2.BackColor = Color.Green;
+            }
+            else if (btn_Row4Space3.BackColor == Color.White && btn_Row4Space2.BackColor != Color.White)
+            {
+                btn_Row4Space3.BackColor = Color.Green;
+            }
+            else if (btn_Row4Space3.BackColor == Color.White && btn_Row4Space2.BackColor != Color.White)
+            {
+                btn_Row4Space3.BackColor = Color.Green;
+            }
+            else if (btn_Row4Space4.BackColor == Color.White && btn_Row4Space3.BackColor != Color.White)
+            {
+                btn_Row4Space4.BackColor = Color.Green;
+            }
+            else if (btn_Row4Space5.BackColor == Color.White && btn_Row4Space4.BackColor != Color.White)
+            {
+                btn_Row4Space5.BackColor = Color.Green;
+            }
+            else if (btn_Row4Space6.BackColor == Color.White && btn_Row4Space5.BackColor != Color.White)
+            {
+                btn_Row4Space6.BackColor = Color.Green;
+            }
+        }
+
+        private void btn_Row5Slot_Click(object sender, EventArgs e)
+        {
+            if (btn_Row5Space1.BackColor == Color.White)
+            {
+                btn_Row5Space1.BackColor = Color.Green;
+            }
+            else if (btn_Row5Space2.BackColor == Color.White && btn_Row5Space1.BackColor != Color.White)
+            {
+                btn_Row5Space2.BackColor = Color.Green;
+            }
+            else if (btn_Row5Space3.BackColor == Color.White && btn_Row5Space2.BackColor != Color.White)
+            {
+                btn_Row5Space3.BackColor = Color.Green;
+            }
+            else if (btn_Row5Space3.BackColor == Color.White && btn_Row5Space2.BackColor != Color.White)
+            {
+                btn_Row5Space3.BackColor = Color.Green;
+            }
+            else if (btn_Row5Space4.BackColor == Color.White && btn_Row5Space3.BackColor != Color.White)
+            {
+                btn_Row5Space4.BackColor = Color.Green;
+            }
+            else if (btn_Row5Space5.BackColor == Color.White && btn_Row5Space4.BackColor != Color.White)
+            {
+                btn_Row5Space5.BackColor = Color.Green;
+            }
+            else if (btn_Row5Space6.BackColor == Color.White && btn_Row5Space5.BackColor != Color.White)
+            {
+                btn_Row5Space6.BackColor = Color.Green;
+            }
+        }
+
+        private void btn_Row6Slot_Click(object sender, EventArgs e)
+        {
+            if (btn_Row6Space1.BackColor == Color.White)
+            {
+                btn_Row6Space1.BackColor = Color.Green;
+            }
+            else if (btn_Row6Space2.BackColor == Color.White && btn_Row6Space1.BackColor != Color.White)
+            {
+                btn_Row6Space2.BackColor = Color.Green;
+            }
+            else if (btn_Row6Space3.BackColor == Color.White && btn_Row6Space2.BackColor != Color.White)
+            {
+                btn_Row6Space3.BackColor = Color.Green;
+            }
+            else if (btn_Row6Space3.BackColor == Color.White && btn_Row6Space2.BackColor != Color.White)
+            {
+                btn_Row6Space3.BackColor = Color.Green;
+            }
+            else if (btn_Row6Space4.BackColor == Color.White && btn_Row6Space3.BackColor != Color.White)
+            {
+                btn_Row6Space4.BackColor = Color.Green;
+            }
+            else if (btn_Row6Space5.BackColor == Color.White && btn_Row6Space4.BackColor != Color.White)
+            {
+                btn_Row6Space5.BackColor = Color.Green;
+            }
+            else if (btn_Row6Space6.BackColor == Color.White && btn_Row6Space5.BackColor != Color.White)
+            {
+                btn_Row6Space6.BackColor = Color.Green;
+            }
+        }
+
+        private void btn_Row7Slot_Click(object sender, EventArgs e)
+        {
+            if (btn_Row7Space1.BackColor == Color.White)
+            {
+                btn_Row7Space1.BackColor = Color.Green;
+            }
+            else if (btn_Row7Space2.BackColor == Color.White && btn_Row7Space1.BackColor != Color.White)
+            {
+                btn_Row7Space2.BackColor = Color.Green;
+            }
+            else if (btn_Row7Space3.BackColor == Color.White && btn_Row7Space2.BackColor != Color.White)
+            {
+                btn_Row7Space3.BackColor = Color.Green;
+            }
+            else if (btn_Row7Space3.BackColor == Color.White && btn_Row7Space2.BackColor != Color.White)
+            {
+                btn_Row7Space3.BackColor = Color.Green;
+            }
+            else if (btn_Row7Space4.BackColor == Color.White && btn_Row7Space3.BackColor != Color.White)
+            {
+                btn_Row7Space4.BackColor = Color.Green;
+            }
+            else if (btn_Row7Space5.BackColor == Color.White && btn_Row7Space4.BackColor != Color.White)
+            {
+                btn_Row7Space5.BackColor = Color.Green;
+            }
+            else if (btn_Row7Space6.BackColor == Color.White && btn_Row7Space5.BackColor != Color.White)
+            {
+                btn_Row7Space6.BackColor = Color.Green;
+            }
+        }
     }
 }

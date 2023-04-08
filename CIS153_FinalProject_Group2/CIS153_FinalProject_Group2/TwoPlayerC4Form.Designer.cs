@@ -30,9 +30,9 @@
         {
             this.btn_TPC4F_tempLoadForm = new System.Windows.Forms.Button();
             this.btn_Exit = new System.Windows.Forms.Button();
-            this.lbl_TPC4F_TempBoardDisplay = new System.Windows.Forms.Label();
             this.btn_TPC4F_tempPlacePiece = new System.Windows.Forms.Button();
             this.txtbox_TPC4F_ColumSelector = new System.Windows.Forms.TextBox();
+            this.lbl_TPC4F_TempBoardDisplay = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btn_TPC4F_tempLoadForm
@@ -55,15 +55,6 @@
             this.btn_Exit.UseVisualStyleBackColor = true;
             this.btn_Exit.Click += new System.EventHandler(this.btn_Exit_Click);
             // 
-            // lbl_TPC4F_TempBoardDisplay
-            // 
-            this.lbl_TPC4F_TempBoardDisplay.AutoSize = true;
-            this.lbl_TPC4F_TempBoardDisplay.Location = new System.Drawing.Point(109, 68);
-            this.lbl_TPC4F_TempBoardDisplay.Name = "lbl_TPC4F_TempBoardDisplay";
-            this.lbl_TPC4F_TempBoardDisplay.Size = new System.Drawing.Size(102, 13);
-            this.lbl_TPC4F_TempBoardDisplay.TabIndex = 2;
-            this.lbl_TPC4F_TempBoardDisplay.Text = "Temp Board Display";
-            // 
             // btn_TPC4F_tempPlacePiece
             // 
             this.btn_TPC4F_tempPlacePiece.Location = new System.Drawing.Point(113, 302);
@@ -81,11 +72,20 @@
             this.txtbox_TPC4F_ColumSelector.Size = new System.Drawing.Size(100, 20);
             this.txtbox_TPC4F_ColumSelector.TabIndex = 4;
             // 
+            // lbl_TPC4F_TempBoardDisplay
+            // 
+            this.lbl_TPC4F_TempBoardDisplay.AutoSize = true;
+            this.lbl_TPC4F_TempBoardDisplay.Location = new System.Drawing.Point(109, 68);
+            this.lbl_TPC4F_TempBoardDisplay.Name = "lbl_TPC4F_TempBoardDisplay";
+            this.lbl_TPC4F_TempBoardDisplay.Size = new System.Drawing.Size(102, 13);
+            this.lbl_TPC4F_TempBoardDisplay.TabIndex = 2;
+            this.lbl_TPC4F_TempBoardDisplay.Text = "Temp Board Display";
+            // 
             // TwoPlayerC4Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(453, 450);
+            this.ClientSize = new System.Drawing.Size(543, 452);
             this.Controls.Add(this.txtbox_TPC4F_ColumSelector);
             this.Controls.Add(this.btn_TPC4F_tempPlacePiece);
             this.Controls.Add(this.lbl_TPC4F_TempBoardDisplay);
@@ -103,8 +103,8 @@
 
         private System.Windows.Forms.Button btn_TPC4F_tempLoadForm;
         private System.Windows.Forms.Button btn_Exit;
-        private System.Windows.Forms.Label lbl_TPC4F_TempBoardDisplay;
         private System.Windows.Forms.Button btn_TPC4F_tempPlacePiece;
         private System.Windows.Forms.TextBox txtbox_TPC4F_ColumSelector;
+        private System.Windows.Forms.Label lbl_TPC4F_TempBoardDisplay;
     }
 }
