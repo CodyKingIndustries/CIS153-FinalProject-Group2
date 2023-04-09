@@ -14,10 +14,15 @@ namespace CIS153_FinalProject_Group2
     public partial class TwoPlayerC4Form : Form
     {
         private MainMenuForm MainScreenForm;
-        private Board TwoPlayerBoard = new Board();
+        private Board TPBoard = new Board();
         //  bool to track which players turn it is
         private bool playerOnesTurn = true;
 
+
+        private void TwoPlayerC4Form_Load(object sender, EventArgs e)
+        {
+
+        }
         public TwoPlayerC4Form()
         {
             InitializeComponent();
@@ -33,65 +38,683 @@ namespace CIS153_FinalProject_Group2
             this.StartPosition = FormStartPosition.Manual;
             this.Location = new Point(100, 100);
             //  upon entering, load the connect 4 board
-            TwoPlayerBoard = new Board();
-            //  display the board to see it
-            displayTwoPlayerC4Board();
+            TPBoard = new Board();
         }
 
-        private void TwoPlayerC4Form_Load(object sender, EventArgs e)
-        {
 
+        //upon clicking the purple square at the top, it will "drop a disc" down that respective column
+        //starting with column 0. It will drop a disc as far down as possible (as long as the cell below it isn't occupied)
+        //COLUMN 0 SLOT CLICK =================================================================
+        private void btn_Col0Slot_Click(object sender, EventArgs e)
+        {
+            int r = 5;
+            int c = 0;
+
+            while (TPBoard.getBoard()[r, c].isFull() == true && r != 0)
+            {
+                r--;
+            }
+
+            //There's going to be a LOT of lines of code but it's all really simple
+            //There's really no way to shorten it down with a loop since you can't
+            //access a button using it's name and some variables
+            TPBoard.getBoard()[r, c].placeDisc();
+            if (r == 0)
+            {
+                if (playerOnesTurn)
+                {
+                    btn_00.BackColor = Color.Red;
+                    //We can use the cell's color attribute as a way to check for the winner
+                    //We can look for 4 cells in a row of the same color 
+                    //ex: if (TPBoard.getBoard()[r,c].getCellColor() == the same as 3 more in a row), then we have a winner
+                    TPBoard.getBoard()[r, c].setCellColor("Red");
+                }
+                else
+                {
+                    btn_00.BackColor = Color.Yellow;
+                    TPBoard.getBoard()[r, c].setCellColor("Yellow");
+                }
+            }
+            else if (r == 1)
+            {
+                if (playerOnesTurn)
+                {
+                    btn_10.BackColor = Color.Red;
+                    TPBoard.getBoard()[r, c].setCellColor("Red");
+                }
+                else
+                {
+                    btn_10.BackColor = Color.Yellow;
+                    TPBoard.getBoard()[r, c].setCellColor("Yellow");
+                }
+            }
+            else if (r == 2)
+            {
+                if (playerOnesTurn)
+                {
+                    btn_20.BackColor = Color.Red;
+                    TPBoard.getBoard()[r, c].setCellColor("Red");
+                }
+                else
+                {
+                    btn_20.BackColor = Color.Yellow;
+                    TPBoard.getBoard()[r, c].setCellColor("Yellow");
+                }
+            }
+            else if (r == 3)
+            {
+                if (playerOnesTurn)
+                {
+                    btn_30.BackColor = Color.Red;
+                    TPBoard.getBoard()[r, c].setCellColor("Red");
+                }
+                else
+                {
+                    btn_30.BackColor = Color.Yellow;
+                    TPBoard.getBoard()[r, c].setCellColor("Yellow");
+                }
+            }
+            else if (r == 4)
+            {
+                if (playerOnesTurn)
+                {
+                    btn_40.BackColor = Color.Red;
+                    TPBoard.getBoard()[r, c].setCellColor("Red");
+                }
+                else
+                {
+                    btn_40.BackColor = Color.Yellow;
+                    TPBoard.getBoard()[r, c].setCellColor("Yellow");
+                }
+            }
+            else if (r == 5)
+            {
+                if (playerOnesTurn)
+                {
+                    btn_50.BackColor = Color.Red;
+                    TPBoard.getBoard()[r, c].setCellColor("Red");
+                }
+                else
+                {
+                    btn_50.BackColor = Color.Yellow;
+                    TPBoard.getBoard()[r, c].setCellColor("Yellow");
+                }
+            }
         }
 
-        private void btn_TPC4F_tempLoadForm_Click(object sender, EventArgs e)
+        //COLUMN 1 SLOT CLICK =================================================================
+        private void btn_Col1Slot_Click(object sender, EventArgs e)
         {
-            MainScreenForm.Show();
-            //  in order for this to close -> either the game needs to end / or the user must exit
-            //  this is just temporary framework
+            int r = 5;
+            int c = 1;
+
+            while (TPBoard.getBoard()[r, c].isFull() == true && r != 0)
+            {
+                r--;
+            }
+
+            TPBoard.getBoard()[r, c].placeDisc();
+            if (r == 0)
+            {
+                if (playerOnesTurn)
+                {
+                    btn_01.BackColor = Color.Red;
+                    TPBoard.getBoard()[r, c].setCellColor("Red");
+                }
+                else
+                {
+                    btn_01.BackColor = Color.Yellow;
+                    TPBoard.getBoard()[r, c].setCellColor("Yellow");
+                }
+            }
+            else if (r == 1)
+            {
+                if (playerOnesTurn)
+                {
+                    btn_11.BackColor = Color.Red;
+                    TPBoard.getBoard()[r, c].setCellColor("Red");
+                }
+                else
+                {
+                    btn_11.BackColor = Color.Yellow;
+                    TPBoard.getBoard()[r, c].setCellColor("Yellow");
+                }
+            }
+            else if (r == 2)
+            {
+                if (playerOnesTurn)
+                {
+                    btn_21.BackColor = Color.Red;
+                    TPBoard.getBoard()[r, c].setCellColor("Red");
+                }
+                else
+                {
+                    btn_21.BackColor = Color.Yellow;
+                    TPBoard.getBoard()[r, c].setCellColor("Yellow");
+                }
+            }
+            else if (r == 3)
+            {
+                if (playerOnesTurn)
+                {
+                    btn_31.BackColor = Color.Red;
+                    TPBoard.getBoard()[r, c].setCellColor("Red");
+                }
+                else
+                {
+                    btn_31.BackColor = Color.Yellow;
+                    TPBoard.getBoard()[r, c].setCellColor("Yellow");
+                }
+            }
+            else if (r == 4)
+            {
+                if (playerOnesTurn)
+                {
+                    btn_41.BackColor = Color.Red;
+                    TPBoard.getBoard()[r, c].setCellColor("Red");
+                }
+                else
+                {
+                    btn_41.BackColor = Color.Yellow;
+                    TPBoard.getBoard()[r, c].setCellColor("Yellow");
+                }
+            }
+            else if (r == 5)
+            {
+                if (playerOnesTurn)
+                {
+                    btn_51.BackColor = Color.Red;
+                    TPBoard.getBoard()[r, c].setCellColor("Red");
+                }
+                else
+                {
+                    btn_51.BackColor = Color.Yellow;
+                    TPBoard.getBoard()[r, c].setCellColor("Yellow");
+                }
+            }
+        }
+
+        //COLUMN 2 SLOT CLICK =================================================================
+        private void btn_Col2Slot_Click(object sender, EventArgs e)
+        {
+            int r = 5;
+            int c = 2;
+
+            while (TPBoard.getBoard()[r, c].isFull() == true && r != 0)
+            {
+                r--;
+            }
+
+            TPBoard.getBoard()[r, c].placeDisc(); 
+            if (r == 0)
+            {
+                if (playerOnesTurn)
+                {
+                    btn_02.BackColor = Color.Red;
+                    TPBoard.getBoard()[r, c].setCellColor("Red");
+                }
+                else
+                {
+                    btn_02.BackColor = Color.Yellow;
+                    TPBoard.getBoard()[r, c].setCellColor("Yellow");
+                }
+            }
+            else if (r == 1)
+            {
+                if (playerOnesTurn)
+                {
+                    btn_12.BackColor = Color.Red;
+                    TPBoard.getBoard()[r, c].setCellColor("Red");
+                }
+                else
+                {
+                    btn_12.BackColor = Color.Yellow;
+                    TPBoard.getBoard()[r, c].setCellColor("Yellow");
+                }
+            }
+            else if (r == 2)
+            {
+                if (playerOnesTurn)
+                {
+                    btn_22.BackColor = Color.Red;
+                    TPBoard.getBoard()[r, c].setCellColor("Red");
+                }
+                else
+                {
+                    btn_22.BackColor = Color.Yellow;
+                    TPBoard.getBoard()[r, c].setCellColor("Yellow");
+                }
+            }
+            else if (r == 3)
+            {
+                if (playerOnesTurn)
+                {
+                    btn_32.BackColor = Color.Red;
+                    TPBoard.getBoard()[r, c].setCellColor("Red");
+                }
+                else
+                {
+                    btn_32.BackColor = Color.Yellow;
+                    TPBoard.getBoard()[r, c].setCellColor("Yellow");
+                }
+            }
+            else if (r == 4)
+            {
+                if (playerOnesTurn)
+                {
+                    btn_42.BackColor = Color.Red;
+                    TPBoard.getBoard()[r, c].setCellColor("Red");
+                }
+                else
+                {
+                    btn_42.BackColor = Color.Yellow;
+                    TPBoard.getBoard()[r, c].setCellColor("Yellow");
+                }
+            }
+            else if (r == 5)
+            {
+                if (playerOnesTurn)
+                {
+                    btn_52.BackColor = Color.Red;
+                    TPBoard.getBoard()[r, c].setCellColor("Red");
+                }
+                else
+                {
+                    btn_52.BackColor = Color.Yellow;
+                    TPBoard.getBoard()[r, c].setCellColor("Yellow");
+                }
+            }
+        }
+
+        //COLUMN 3 SLOT CLICK =================================================================
+        private void btn_Col3Slot_Click(object sender, EventArgs e)
+        {
+            int r = 5;
+            int c = 3;
+
+            while (TPBoard.getBoard()[r, c].isFull() == true && r != 0)
+            {
+                r--;
+            }
+
+            TPBoard.getBoard()[r, c].placeDisc(); 
+            if (r == 0)
+            {
+                if (playerOnesTurn)
+                {
+                    btn_03.BackColor = Color.Red;
+                    TPBoard.getBoard()[r, c].setCellColor("Red");
+                }
+                else
+                {
+                    btn_03.BackColor = Color.Yellow;
+                    TPBoard.getBoard()[r, c].setCellColor("Yellow");
+                }
+            }
+            else if (r == 1)
+            {
+                if (playerOnesTurn)
+                {
+                    btn_13.BackColor = Color.Red;
+                    TPBoard.getBoard()[r, c].setCellColor("Red");
+                }
+                else
+                {
+                    btn_13.BackColor = Color.Yellow;
+                    TPBoard.getBoard()[r, c].setCellColor("Yellow");
+                }
+            }
+            else if (r == 2)
+            {
+                if (playerOnesTurn)
+                {
+                    btn_23.BackColor = Color.Red;
+                    TPBoard.getBoard()[r, c].setCellColor("Red");
+                }
+                else
+                {
+                    btn_23.BackColor = Color.Yellow;
+                    TPBoard.getBoard()[r, c].setCellColor("Yellow");
+                }
+            }
+            else if (r == 3)
+            {
+                if (playerOnesTurn)
+                {
+                    btn_33.BackColor = Color.Red;
+                    TPBoard.getBoard()[r, c].setCellColor("Red");
+                }
+                else
+                {
+                    btn_33.BackColor = Color.Yellow;
+                    TPBoard.getBoard()[r, c].setCellColor("Yellow");
+                }
+            }
+            else if (r == 4)
+            {
+                if (playerOnesTurn)
+                {
+                    btn_43.BackColor = Color.Red;
+                    TPBoard.getBoard()[r, c].setCellColor("Red");
+                }
+                else
+                {
+                    btn_43.BackColor = Color.Yellow;
+                    TPBoard.getBoard()[r, c].setCellColor("Yellow");
+                }
+            }
+            else if (r == 5)
+            {
+                if (playerOnesTurn)
+                {
+                    btn_53.BackColor = Color.Red;
+                    TPBoard.getBoard()[r, c].setCellColor("Red");
+                }
+                else
+                {
+                    btn_53.BackColor = Color.Yellow;
+                    TPBoard.getBoard()[r, c].setCellColor("Yellow");
+                }
+            }
+        }
+
+        //COLUMN 4 SLOT CLICK =================================================================
+        private void btn_Col4Slot_Click(object sender, EventArgs e)
+        {
+            int r = 5;
+            int c = 4;
+
+            while (TPBoard.getBoard()[r, c].isFull() == true && r != 0)
+            {
+                r--;
+            }
+
+            TPBoard.getBoard()[r, c].placeDisc(); 
+            if (r == 0)
+            {
+                if (playerOnesTurn)
+                {
+                    btn_04.BackColor = Color.Red;
+                    TPBoard.getBoard()[r, c].setCellColor("Red");
+                }
+                else
+                {
+                    btn_04.BackColor = Color.Yellow;
+                    TPBoard.getBoard()[r, c].setCellColor("Yellow");
+                }
+            }
+            else if (r == 1)
+            {
+                if (playerOnesTurn)
+                {
+                    btn_14.BackColor = Color.Red;
+                    TPBoard.getBoard()[r, c].setCellColor("Red");
+                }
+                else
+                {
+                    btn_14.BackColor = Color.Yellow;
+                    TPBoard.getBoard()[r, c].setCellColor("Yellow");
+                }
+            }
+            else if (r == 2)
+            {
+                if (playerOnesTurn)
+                {
+                    btn_24.BackColor = Color.Red;
+                    TPBoard.getBoard()[r, c].setCellColor("Red");
+                }
+                else
+                {
+                    btn_24.BackColor = Color.Yellow;
+                    TPBoard.getBoard()[r, c].setCellColor("Yellow");
+                }
+            }
+            else if (r == 3)
+            {
+                if (playerOnesTurn)
+                {
+                    btn_34.BackColor = Color.Red;
+                    TPBoard.getBoard()[r, c].setCellColor("Red");
+                }
+                else
+                {
+                    btn_34.BackColor = Color.Yellow;
+                    TPBoard.getBoard()[r, c].setCellColor("Yellow");
+                }
+            }
+            else if (r == 4)
+            {
+                if (playerOnesTurn)
+                {
+                    btn_44.BackColor = Color.Red;
+                    TPBoard.getBoard()[r, c].setCellColor("Red");
+                }
+                else
+                {
+                    btn_44.BackColor = Color.Yellow;
+                    TPBoard.getBoard()[r, c].setCellColor("Yellow");
+                }
+            }
+            else if (r == 5)
+            {
+                if (playerOnesTurn)
+                {
+                    btn_54.BackColor = Color.Red;
+                    TPBoard.getBoard()[r, c].setCellColor("Red");
+                }
+                else
+                {
+                    btn_54.BackColor = Color.Yellow;
+                    TPBoard.getBoard()[r, c].setCellColor("Yellow");
+                }
+            }
+        }
+
+        //COLUMN 5 SLOT CLICK =================================================================
+        private void btn_Col5Slot_Click(object sender, EventArgs e)
+        {
+            int r = 5;
+            int c = 5;
+
+            while (TPBoard.getBoard()[r, c].isFull() == true && r != 0)
+            {
+                r--;
+            }
+
+            TPBoard.getBoard()[r, c].placeDisc(); 
+            if (r == 0)
+            {
+                if (playerOnesTurn)
+                {
+                    btn_05.BackColor = Color.Red;
+                    TPBoard.getBoard()[r, c].setCellColor("Red");
+                }
+                else
+                {
+                    btn_05.BackColor = Color.Yellow;
+                    TPBoard.getBoard()[r, c].setCellColor("Yellow");
+                }
+            }
+            else if (r == 1)
+            {
+                if (playerOnesTurn)
+                {
+                    btn_15.BackColor = Color.Red;
+                    TPBoard.getBoard()[r, c].setCellColor("Red");
+                }
+                else
+                {
+                    btn_15.BackColor = Color.Yellow;
+                    TPBoard.getBoard()[r, c].setCellColor("Yellow");
+                }
+            }
+            else if (r == 2)
+            {
+                if (playerOnesTurn)
+                {
+                    btn_25.BackColor = Color.Red;
+                    TPBoard.getBoard()[r, c].setCellColor("Red");
+                }
+                else
+                {
+                    btn_25.BackColor = Color.Yellow;
+                    TPBoard.getBoard()[r, c].setCellColor("Yellow");
+                }
+            }
+            else if (r == 3)
+            {
+                if (playerOnesTurn)
+                {
+                    btn_35.BackColor = Color.Red;
+                    TPBoard.getBoard()[r, c].setCellColor("Red");
+                }
+                else
+                {
+                    btn_35.BackColor = Color.Yellow;
+                    TPBoard.getBoard()[r, c].setCellColor("Yellow");
+                }
+            }
+            else if (r == 4)
+            {
+                if (playerOnesTurn)
+                {
+                    btn_45.BackColor = Color.Red;
+                    TPBoard.getBoard()[r, c].setCellColor("Red");
+                }
+                else
+                {
+                    btn_45.BackColor = Color.Yellow;
+                    TPBoard.getBoard()[r, c].setCellColor("Yellow");
+                }
+            }
+            else if (r == 5)
+            {
+                if (playerOnesTurn)
+                {
+                    btn_55.BackColor = Color.Red;
+                    TPBoard.getBoard()[r, c].setCellColor("Red");
+                }
+                else
+                {
+                    btn_55.BackColor = Color.Yellow;
+                    TPBoard.getBoard()[r, c].setCellColor("Yellow");
+                }
+            }
+        }
+
+        //COLUMN 6 SLOT CLICK =================================================================
+        private void btn_Col6Slot_Click(object sender, EventArgs e)
+        {
+            int r = 5;
+            int c = 6;
+
+            while (TPBoard.getBoard()[r,c].isFull() == true && r != 0)
+            {
+                r--;
+            }
+
+            TPBoard.getBoard()[r, c].placeDisc(); 
+            if (r == 0)
+            {
+                if (playerOnesTurn)
+                {
+                    btn_06.BackColor = Color.Red;
+                    TPBoard.getBoard()[r, c].setCellColor("Red");
+                }
+                else
+                {
+                    btn_06.BackColor = Color.Yellow;
+                    TPBoard.getBoard()[r, c].setCellColor("Yellow");
+                }
+            }
+            else if (r == 1)
+            {
+                if (playerOnesTurn)
+                {
+                    btn_16.BackColor = Color.Red;
+                    TPBoard.getBoard()[r, c].setCellColor("Red");
+                }
+                else
+                {
+                    btn_16.BackColor = Color.Yellow;
+                    TPBoard.getBoard()[r, c].setCellColor("Yellow");
+                }
+            }
+            else if (r == 2)
+            {
+                if (playerOnesTurn)
+                {
+                    btn_26.BackColor = Color.Red;
+                    TPBoard.getBoard()[r, c].setCellColor("Red");
+                }
+                else
+                {
+                    btn_26.BackColor = Color.Yellow;
+                    TPBoard.getBoard()[r, c].setCellColor("Yellow");
+                }
+            }
+            else if (r == 3)
+            {
+                if (playerOnesTurn)
+                {
+                    btn_36.BackColor = Color.Red;
+                    TPBoard.getBoard()[r, c].setCellColor("Red");
+                }
+                else
+                {
+                    btn_36.BackColor = Color.Yellow;
+                    TPBoard.getBoard()[r, c].setCellColor("Yellow");
+                }
+            }
+            else if (r == 4)
+            {
+                if (playerOnesTurn)
+                {
+                    btn_46.BackColor = Color.Red;
+                    TPBoard.getBoard()[r, c].setCellColor("Red");
+                }
+                else
+                {
+                    btn_46.BackColor = Color.Yellow;
+                    TPBoard.getBoard()[r, c].setCellColor("Yellow");
+                }
+            }
+            else if (r == 5)
+            {
+                if (playerOnesTurn)
+                {
+                    btn_56.BackColor = Color.Red;
+                    TPBoard.getBoard()[r, c].setCellColor("Red");
+                }
+                else
+                {
+                    btn_56.BackColor = Color.Yellow;
+                    TPBoard.getBoard()[r, c].setCellColor("Yellow");
+                }
+            }
+        }
+
+        private void btn_loadMainScreen_Click(object sender, EventArgs e)
+        {
             this.Close();
+            MainScreenForm.Show();
         }
 
         private void btn_Exit_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
-
-        //  Temporary button to insert a piece at the colum in the provided text box
-        private void btn_TPC4F_tempPlacePiece_Click(object sender, EventArgs e)
-        {
-            
-           
-
-            if (playerOnesTurn == true)
-            {
-                TwoPlayerBoard.PlaceDisc(Int32.Parse(txtbox_TPC4F_ColumSelector.Text), "Red");
-                playerOnesTurn = false;
-            }
-            else if (playerOnesTurn == false)
-            {
-                TwoPlayerBoard.PlaceDisc(Int32.Parse(txtbox_TPC4F_ColumSelector.Text), "Yellow");
-                playerOnesTurn = true;
-            }
-
-            
-            displayTwoPlayerC4Board();
-        }
-
-        //  This funciton simply re-displays the active board state in "color (#,#)"
-        private void displayTwoPlayerC4Board()
-        {
-            //  This temporarily displays the Board state in "color (Col,Row)" format
-            lbl_TPC4F_TempBoardDisplay.Text = "";
-            for (int rows = 0; rows < 6; rows++)
-            {
-                for (int cols = 0; cols < 7; cols++)
-                {
-                    lbl_TPC4F_TempBoardDisplay.Text = lbl_TPC4F_TempBoardDisplay.Text + TwoPlayerBoard.getBoard()[rows, cols].getCellColor().ToString() + "(" + rows + "," + cols + ") ";
-                }
-                lbl_TPC4F_TempBoardDisplay.Text = lbl_TPC4F_TempBoardDisplay.Text + "\n";
-            }
-
-        }
-
+        //============================================================
+        //Might still need this, but probably not - Gabriel Ball
+        //int r = 0;
+        //while (TPBoard.getCell(r + 1, c).isFull() == false && r < 4)
+        //{
+        //    r++;
+        //}
+        //if (r == 4)
+        //{
+        //    r = 5;
+        //}
+        //=============================================================
     }
 }

@@ -17,10 +17,12 @@ namespace CIS153_FinalProject_Group2
         //  But am temporarily leaving the code here in comments just for temp backup
         // ========================================================================
 
-        //private int cordX;
-        //private int cordY;
+
         //  This color will be moved into Disc when ready
         private string color;
+        int row;
+        int col;
+        private bool occupied;
         private Disc disc;
 
         //initialize cell with empty disc
@@ -39,22 +41,51 @@ namespace CIS153_FinalProject_Group2
             //cordY = y;
             disc = c;
         }
+        public Cell(int r, int c, string co)
+        {
+            row = r;
+            col = c;
+            color = co;
+        }
+        //===
+        //Please don't remove
+        public bool isFull()
+        {
+            if (occupied == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public void placeDisc()
+        {
+            occupied = true;
+        }
+        //====
+        public int getRow()
+        {
+            return row;
+        }
+        public int getCol()
+        {
+            return col;
+        }
 
-
-
-        // Function to check if the cell is empty
-
-
-        // Sets the disc in this cell to the specified disc
         public void SetDisc(Disc d)
         {
             disc = d;
         }
+
+        // Sets the disc in this cell to the specified disc
         //public void SetDisc(string d)
         //{
         //    disc.SetColor(d);
         //}
 
+        // Function to check if the cell is empty
         public bool IsEmpty()
         {
             return disc == null;

@@ -13,6 +13,7 @@ namespace CIS153_FinalProject_Group2
         private const int numRows = 6; // number of rows in the game board
         private const int numCols = 7; // number of columns in the game board
         private Cell[,] board = new Cell[numRows, numCols]; // 2D array of Cells representing the game board
+        private bool occupied;
 
         //  Currently UNUSED
         // Constructor to initialize the board with empty cells
@@ -35,7 +36,7 @@ namespace CIS153_FinalProject_Group2
         //  This overloaded constructor established the whole board with value "Grey" instead of null
         public Board()
         {
-            Cell CreateCell = new Cell();
+            //Cell CreateCell = new Cell();
             
             for (int row = 0; row < numRows; row++)
             {
@@ -44,11 +45,26 @@ namespace CIS153_FinalProject_Group2
                     //  all cells are assigned the color of "Grey" becuase when calling a funciton to get the value
                     //  without a given color already established, it breaks.
                     //  thus all non used cells can be intpreted as "grey" == "null" == "un-used"
-                    CreateCell = new Cell("Grey");
-                    board[row, col] = CreateCell;
+                    Cell newCell = new Cell(row, col, "Grey");
+                    board[row, col] = newCell;
                 }
             }
 
+        }
+
+
+        public Cell getCell(int r, int c)
+        {
+            return board[r, c];
+        }
+        //===========
+        public int getNumRows()
+        {
+            return numRows;
+        }
+        public int getNumCols()
+        {
+            return numCols;
         }
 
 
