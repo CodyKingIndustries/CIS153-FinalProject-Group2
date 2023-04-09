@@ -17,6 +17,16 @@ namespace CIS153_FinalProject_Group2
         private Board TPBoard = new Board();
         //  bool to track which players turn it is
         private bool playerOnesTurn = true;
+        //To get hover feature (Could also use it for actually placing discs, but I went for a more dynamic approach)
+        private int col0Clicks = 0;
+        private int col1Clicks = 0;
+        private int col2Clicks = 0;
+        private int col3Clicks = 0;
+        private int col4Clicks = 0;
+        private int col5Clicks = 0;
+        private int col6Clicks = 0;
+        //Will use modulus to track who's turn it is (even vs odd)
+        private int totalClicks = 0;
 
 
         private void TwoPlayerC4Form_Load(object sender, EventArgs e)
@@ -47,8 +57,18 @@ namespace CIS153_FinalProject_Group2
         //COLUMN 0 SLOT CLICK =================================================================
         private void btn_Col0Slot_Click(object sender, EventArgs e)
         {
+            col0Clicks++;
             int r = 5;
             int c = 0;
+
+            if (totalClicks % 2 == 0)
+            {
+                playerOnesTurn = true;
+            }
+            else
+            {
+                playerOnesTurn = false;
+            }
 
             while (TPBoard.getBoard()[r, c].isFull() == true && r != 0)
             {
@@ -140,13 +160,24 @@ namespace CIS153_FinalProject_Group2
                     TPBoard.getBoard()[r, c].setCellColor("Yellow");
                 }
             }
+            totalClicks++;
         }
 
         //COLUMN 1 SLOT CLICK =================================================================
         private void btn_Col1Slot_Click(object sender, EventArgs e)
         {
+            col1Clicks++;
             int r = 5;
             int c = 1;
+
+            if (totalClicks % 2 == 0)
+            {
+                playerOnesTurn = true;
+            }
+            else
+            {
+                playerOnesTurn = false;
+            }
 
             while (TPBoard.getBoard()[r, c].isFull() == true && r != 0)
             {
@@ -232,13 +263,24 @@ namespace CIS153_FinalProject_Group2
                     TPBoard.getBoard()[r, c].setCellColor("Yellow");
                 }
             }
+            totalClicks++;
         }
 
         //COLUMN 2 SLOT CLICK =================================================================
         private void btn_Col2Slot_Click(object sender, EventArgs e)
         {
+            col2Clicks++;
             int r = 5;
             int c = 2;
+
+            if (totalClicks % 2 == 0)
+            {
+                playerOnesTurn = true;
+            }
+            else
+            {
+                playerOnesTurn = false;
+            }
 
             while (TPBoard.getBoard()[r, c].isFull() == true && r != 0)
             {
@@ -324,13 +366,24 @@ namespace CIS153_FinalProject_Group2
                     TPBoard.getBoard()[r, c].setCellColor("Yellow");
                 }
             }
+            totalClicks++;
         }
 
         //COLUMN 3 SLOT CLICK =================================================================
         private void btn_Col3Slot_Click(object sender, EventArgs e)
         {
+            col3Clicks++;
             int r = 5;
             int c = 3;
+
+            if (totalClicks % 2 == 0)
+            {
+                playerOnesTurn = true;
+            }
+            else
+            {
+                playerOnesTurn = false;
+            }
 
             while (TPBoard.getBoard()[r, c].isFull() == true && r != 0)
             {
@@ -416,13 +469,24 @@ namespace CIS153_FinalProject_Group2
                     TPBoard.getBoard()[r, c].setCellColor("Yellow");
                 }
             }
+            totalClicks++;
         }
 
         //COLUMN 4 SLOT CLICK =================================================================
         private void btn_Col4Slot_Click(object sender, EventArgs e)
         {
+            col4Clicks++;
             int r = 5;
             int c = 4;
+
+            if (totalClicks % 2 == 0)
+            {
+                playerOnesTurn = true;
+            }
+            else
+            {
+                playerOnesTurn = false;
+            }
 
             while (TPBoard.getBoard()[r, c].isFull() == true && r != 0)
             {
@@ -508,13 +572,24 @@ namespace CIS153_FinalProject_Group2
                     TPBoard.getBoard()[r, c].setCellColor("Yellow");
                 }
             }
+            totalClicks++;
         }
 
         //COLUMN 5 SLOT CLICK =================================================================
         private void btn_Col5Slot_Click(object sender, EventArgs e)
         {
+            col5Clicks++;
             int r = 5;
             int c = 5;
+
+            if (totalClicks % 2 == 0)
+            {
+                playerOnesTurn = true;
+            }
+            else
+            {
+                playerOnesTurn = false;
+            }
 
             while (TPBoard.getBoard()[r, c].isFull() == true && r != 0)
             {
@@ -600,13 +675,24 @@ namespace CIS153_FinalProject_Group2
                     TPBoard.getBoard()[r, c].setCellColor("Yellow");
                 }
             }
+            totalClicks++;
         }
 
         //COLUMN 6 SLOT CLICK =================================================================
         private void btn_Col6Slot_Click(object sender, EventArgs e)
         {
+            col6Clicks++;
             int r = 5;
             int c = 6;
+
+            if (totalClicks % 2 == 0)
+            {
+                playerOnesTurn = true;
+            }
+            else
+            {
+                playerOnesTurn = false;
+            }
 
             while (TPBoard.getBoard()[r,c].isFull() == true && r != 0)
             {
@@ -692,8 +778,408 @@ namespace CIS153_FinalProject_Group2
                     TPBoard.getBoard()[r, c].setCellColor("Yellow");
                 }
             }
+            totalClicks++;
         }
 
+
+        //MOUSE HOVERS
+        private void btn_Col0Slot_MouseHover(object sender, EventArgs e)
+        {
+            if(col0Clicks == 0)
+            {
+                btn_50.BackColor = Color.Pink;
+            }
+            else if (col0Clicks == 1)
+            {
+                btn_40.BackColor = Color.Pink;
+            }
+            else if (col0Clicks == 2)
+            {
+                btn_30.BackColor = Color.Pink;
+            }
+            else if (col0Clicks == 3)
+            {
+                btn_20.BackColor = Color.Pink;
+            }
+            else if (col0Clicks == 4)
+            {
+                btn_10.BackColor = Color.Pink;
+            }
+            else if (col0Clicks == 5)
+            {
+                btn_00.BackColor = Color.Pink;
+            }
+        }
+
+
+        private void btn_Col1Slot_MouseHover(object sender, EventArgs e)
+        {
+            if (col1Clicks == 0)
+            {
+                btn_51.BackColor = Color.Pink;
+            }
+            else if (col1Clicks == 1)
+            {
+                btn_41.BackColor = Color.Pink;
+            }
+            else if (col1Clicks == 2)
+            {
+                btn_31.BackColor = Color.Pink;
+            }
+            else if (col1Clicks == 3)
+            {
+                btn_21.BackColor = Color.Pink;
+            }
+            else if (col1Clicks == 4)
+            {
+                btn_11.BackColor = Color.Pink;
+            }
+            else if (col1Clicks == 5)
+            {
+                btn_01.BackColor = Color.Pink;
+            }
+        }
+
+        private void btn_Col2Slot_MouseHover(object sender, EventArgs e)
+        {
+            if (col2Clicks == 0)
+            {
+                btn_52.BackColor = Color.Pink;
+            }
+            else if (col2Clicks == 1)
+            {
+                btn_42.BackColor = Color.Pink;
+            }
+            else if (col2Clicks == 2)
+            {
+                btn_32.BackColor = Color.Pink;
+            }
+            else if (col2Clicks == 3)
+            {
+                btn_22.BackColor = Color.Pink;
+            }
+            else if (col2Clicks == 4)
+            {
+                btn_12.BackColor = Color.Pink;
+            }
+            else if (col2Clicks == 5)
+            {
+                btn_02.BackColor = Color.Pink;
+            }
+        }
+
+        private void btn_Col3Slot_MouseHover(object sender, EventArgs e)
+        {
+            if (col3Clicks == 0)
+            {
+                btn_53.BackColor = Color.Pink;
+            }
+            else if (col3Clicks == 1)
+            {
+                btn_43.BackColor = Color.Pink;
+            }
+            else if (col3Clicks == 2)
+            {
+                btn_33.BackColor = Color.Pink;
+            }
+            else if (col3Clicks == 3)
+            {
+                btn_23.BackColor = Color.Pink;
+            }
+            else if (col3Clicks == 4)
+            {
+                btn_13.BackColor = Color.Pink;
+            }
+            else if (col3Clicks == 5)
+            {
+                btn_03.BackColor = Color.Pink;
+            }
+        }
+
+        private void btn_Col4Slot_MouseHover(object sender, EventArgs e)
+        {
+            if (col4Clicks == 0)
+            {
+                btn_54.BackColor = Color.Pink;
+            }
+            else if (col4Clicks == 1)
+            {
+                btn_44.BackColor = Color.Pink;
+            }
+            else if (col4Clicks == 2)
+            {
+                btn_34.BackColor = Color.Pink;
+            }
+            else if (col4Clicks == 3)
+            {
+                btn_24.BackColor = Color.Pink;
+            }
+            else if (col4Clicks == 4)
+            {
+                btn_14.BackColor = Color.Pink;
+            }
+            else if (col4Clicks == 5)
+            {
+                btn_04.BackColor = Color.Pink;
+            }
+        }
+
+        private void btn_Col5Slot_MouseHover(object sender, EventArgs e)
+        {
+            if (col5Clicks == 0)
+            {
+                btn_55.BackColor = Color.Pink;
+            }
+            else if (col5Clicks == 1)
+            {
+                btn_45.BackColor = Color.Pink;
+            }
+            else if (col5Clicks == 2)
+            {
+                btn_35.BackColor = Color.Pink;
+            }
+            else if (col5Clicks == 3)
+            {
+                btn_25.BackColor = Color.Pink;
+            }
+            else if (col5Clicks == 4)
+            {
+                btn_15.BackColor = Color.Pink;
+            }
+            else if (col5Clicks == 5)
+            {
+                btn_05.BackColor = Color.Pink;
+            }
+        }
+
+        private void btn_Col6Slot_MouseHover(object sender, EventArgs e)
+        {
+            if (col6Clicks == 0)
+            {
+                btn_56.BackColor = Color.Pink;
+            }
+            else if (col6Clicks == 1)
+            {
+                btn_46.BackColor = Color.Pink;
+            }
+            else if (col6Clicks == 2)
+            {
+                btn_36.BackColor = Color.Pink;
+            }
+            else if (col6Clicks == 3)
+            {
+                btn_26.BackColor = Color.Pink;
+            }
+            else if (col6Clicks == 4)
+            {
+                btn_16.BackColor = Color.Pink;
+            }
+            else if (col6Clicks == 5)
+            {
+                btn_06.BackColor = Color.Pink;
+            }
+        }
+
+
+        //MOUSE LEAVE
+        private void btn_Col0Slot_MouseLeave(object sender, EventArgs e)
+        {
+            if (col0Clicks == 0)
+            {
+                btn_50.BackColor = Color.White;
+            }
+            else if (col0Clicks == 1)
+            {
+                btn_40.BackColor = Color.White;
+            }
+            else if (col0Clicks == 2)
+            {
+                btn_30.BackColor = Color.White;
+            }
+            else if (col0Clicks == 3)
+            {
+                btn_20.BackColor = Color.White;
+            }
+            else if (col0Clicks == 4)
+            {
+                btn_10.BackColor = Color.White;
+            }
+            else if (col0Clicks == 5)
+            {
+                btn_00.BackColor = Color.White;
+            }
+        }
+
+        private void btn_Col1Slot_MouseLeave(object sender, EventArgs e)
+        {
+            if (col1Clicks == 0)
+            {
+                btn_51.BackColor = Color.White;
+            }
+            else if (col1Clicks == 1)
+            {
+                btn_41.BackColor = Color.White;
+            }
+            else if (col1Clicks == 2)
+            {
+                btn_31.BackColor = Color.White;
+            }
+            else if (col1Clicks == 3)
+            {
+                btn_21.BackColor = Color.White;
+            }
+            else if (col1Clicks == 4)
+            {
+                btn_11.BackColor = Color.White;
+            }
+            else if (col1Clicks == 5)
+            {
+                btn_01.BackColor = Color.White;
+            }
+        }
+
+        private void btn_Col2Slot_MouseLeave(object sender, EventArgs e)
+        {
+            if (col2Clicks == 0)
+            {
+                btn_52.BackColor = Color.White;
+            }
+            else if (col2Clicks == 1)
+            {
+                btn_42.BackColor = Color.White;
+            }
+            else if (col2Clicks == 2)
+            {
+                btn_32.BackColor = Color.White;
+            }
+            else if (col2Clicks == 3)
+            {
+                btn_22.BackColor = Color.White;
+            }
+            else if (col2Clicks == 4)
+            {
+                btn_12.BackColor = Color.White;
+            }
+            else if (col2Clicks == 5)
+            {
+                btn_02.BackColor = Color.White;
+            }
+        }
+
+        private void btn_Col3Slot_MouseLeave(object sender, EventArgs e)
+        {
+            if (col3Clicks == 0)
+            {
+                btn_53.BackColor = Color.White;
+            }
+            else if (col3Clicks == 1)
+            {
+                btn_43.BackColor = Color.White;
+            }
+            else if (col3Clicks == 2)
+            {
+                btn_33.BackColor = Color.White;
+            }
+            else if (col3Clicks == 3)
+            {
+                btn_23.BackColor = Color.White;
+            }
+            else if (col3Clicks == 4)
+            {
+                btn_13.BackColor = Color.White;
+            }
+            else if (col3Clicks == 5)
+            {
+                btn_03.BackColor = Color.White;
+            }
+        }
+
+        private void btn_Col4Slot_MouseLeave(object sender, EventArgs e)
+        {
+            if (col4Clicks == 0)
+            {
+                btn_54.BackColor = Color.White;
+            }
+            else if (col4Clicks == 1)
+            {
+                btn_44.BackColor = Color.White;
+            }
+            else if (col4Clicks == 2)
+            {
+                btn_34.BackColor = Color.White;
+            }
+            else if (col4Clicks == 3)
+            {
+                btn_24.BackColor = Color.White;
+            }
+            else if (col4Clicks == 4)
+            {
+                btn_14.BackColor = Color.White;
+            }
+            else if (col4Clicks == 5)
+            {
+                btn_04.BackColor = Color.White;
+            }
+        }
+
+        private void btn_Col5Slot_MouseLeave(object sender, EventArgs e)
+        {
+            if (col5Clicks == 0)
+            {
+                btn_55.BackColor = Color.White;
+            }
+            else if (col5Clicks == 1)
+            {
+                btn_45.BackColor = Color.White;
+            }
+            else if (col5Clicks == 2)
+            {
+                btn_35.BackColor = Color.White;
+            }
+            else if (col5Clicks == 3)
+            {
+                btn_25.BackColor = Color.White;
+            }
+            else if (col5Clicks == 4)
+            {
+                btn_15.BackColor = Color.White;
+            }
+            else if (col5Clicks == 5)
+            {
+                btn_05.BackColor = Color.White;
+            }
+        }
+
+        private void btn_Col6Slot_MouseLeave(object sender, EventArgs e)
+        {
+            if (col6Clicks == 0)
+            {
+                btn_56.BackColor = Color.White;
+            }
+            else if (col6Clicks == 1)
+            {
+                btn_46.BackColor = Color.White;
+            }
+            else if (col6Clicks == 2)
+            {
+                btn_36.BackColor = Color.White;
+            }
+            else if (col6Clicks == 3)
+            {
+                btn_26.BackColor = Color.White;
+            }
+            else if (col6Clicks == 4)
+            {
+                btn_16.BackColor = Color.White;
+            }
+            else if (col6Clicks == 5)
+            {
+                btn_06.BackColor = Color.White;
+            }
+        }
+
+
+        //BOTTOM BUTTONS
         private void btn_loadMainScreen_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -704,19 +1190,5 @@ namespace CIS153_FinalProject_Group2
         {
             Application.Exit();
         }
-
-        //============================================================
-        //Might still need this, but probably not - Gabriel Ball
-        //int r = 0;
-        //while (TPBoard.getCell(r + 1, c).isFull() == false && r < 4)
-        //{
-        //    r++;
-        //}
-        //if (r == 4)
-        //{
-        //    r = 5;
-        //}
-        //=============================================================
-
     }
 }

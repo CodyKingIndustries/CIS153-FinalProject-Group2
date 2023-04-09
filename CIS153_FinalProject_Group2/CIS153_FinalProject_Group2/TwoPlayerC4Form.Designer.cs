@@ -90,6 +90,8 @@
             this.btn_Col6Slot.TabIndex = 152;
             this.btn_Col6Slot.UseVisualStyleBackColor = false;
             this.btn_Col6Slot.Click += new System.EventHandler(this.btn_Col6Slot_Click);
+            this.btn_Col6Slot.MouseLeave += new System.EventHandler(this.btn_Col6Slot_MouseLeave);
+            this.btn_Col6Slot.MouseHover += new System.EventHandler(this.btn_Col6Slot_MouseHover);
             // 
             // btn_Col5Slot
             // 
@@ -100,6 +102,8 @@
             this.btn_Col5Slot.TabIndex = 151;
             this.btn_Col5Slot.UseVisualStyleBackColor = false;
             this.btn_Col5Slot.Click += new System.EventHandler(this.btn_Col5Slot_Click);
+            this.btn_Col5Slot.MouseLeave += new System.EventHandler(this.btn_Col5Slot_MouseLeave);
+            this.btn_Col5Slot.MouseHover += new System.EventHandler(this.btn_Col5Slot_MouseHover);
             // 
             // btn_Col4Slot
             // 
@@ -110,6 +114,8 @@
             this.btn_Col4Slot.TabIndex = 150;
             this.btn_Col4Slot.UseVisualStyleBackColor = false;
             this.btn_Col4Slot.Click += new System.EventHandler(this.btn_Col4Slot_Click);
+            this.btn_Col4Slot.MouseLeave += new System.EventHandler(this.btn_Col4Slot_MouseLeave);
+            this.btn_Col4Slot.MouseHover += new System.EventHandler(this.btn_Col4Slot_MouseHover);
             // 
             // btn_Col3Slot
             // 
@@ -120,6 +126,8 @@
             this.btn_Col3Slot.TabIndex = 149;
             this.btn_Col3Slot.UseVisualStyleBackColor = false;
             this.btn_Col3Slot.Click += new System.EventHandler(this.btn_Col3Slot_Click);
+            this.btn_Col3Slot.MouseLeave += new System.EventHandler(this.btn_Col3Slot_MouseLeave);
+            this.btn_Col3Slot.MouseHover += new System.EventHandler(this.btn_Col3Slot_MouseHover);
             // 
             // btn_Col2Slot
             // 
@@ -130,6 +138,8 @@
             this.btn_Col2Slot.TabIndex = 148;
             this.btn_Col2Slot.UseVisualStyleBackColor = false;
             this.btn_Col2Slot.Click += new System.EventHandler(this.btn_Col2Slot_Click);
+            this.btn_Col2Slot.MouseLeave += new System.EventHandler(this.btn_Col2Slot_MouseLeave);
+            this.btn_Col2Slot.MouseHover += new System.EventHandler(this.btn_Col2Slot_MouseHover);
             // 
             // btn_Col1Slot
             // 
@@ -140,6 +150,8 @@
             this.btn_Col1Slot.TabIndex = 147;
             this.btn_Col1Slot.UseVisualStyleBackColor = false;
             this.btn_Col1Slot.Click += new System.EventHandler(this.btn_Col1Slot_Click);
+            this.btn_Col1Slot.MouseLeave += new System.EventHandler(this.btn_Col1Slot_MouseLeave);
+            this.btn_Col1Slot.MouseHover += new System.EventHandler(this.btn_Col1Slot_MouseHover);
             // 
             // btn_Col0Slot
             // 
@@ -150,6 +162,8 @@
             this.btn_Col0Slot.TabIndex = 146;
             this.btn_Col0Slot.UseVisualStyleBackColor = false;
             this.btn_Col0Slot.Click += new System.EventHandler(this.btn_Col0Slot_Click);
+            this.btn_Col0Slot.MouseLeave += new System.EventHandler(this.btn_Col0Slot_MouseLeave);
+            this.btn_Col0Slot.MouseHover += new System.EventHandler(this.btn_Col0Slot_MouseHover);
             // 
             // btn_56
             // 
