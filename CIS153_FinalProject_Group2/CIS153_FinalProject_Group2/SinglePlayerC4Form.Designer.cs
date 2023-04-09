@@ -494,6 +494,8 @@
             this.btn_Row1Slot.TabIndex = 44;
             this.btn_Row1Slot.UseVisualStyleBackColor = false;
             this.btn_Row1Slot.Click += new System.EventHandler(this.btn_Row1Slot_Click);
+            this.btn_Row1Slot.MouseLeave += new System.EventHandler(this.btn_Row1Slot_MouseLeave);
+            this.btn_Row1Slot.MouseHover += new System.EventHandler(this.btn_Row1Slot_MouseHover);
             // 
             // btn_Row2Slot
             // 
@@ -504,6 +506,8 @@
             this.btn_Row2Slot.TabIndex = 45;
             this.btn_Row2Slot.UseVisualStyleBackColor = false;
             this.btn_Row2Slot.Click += new System.EventHandler(this.btn_Row2Slot_Click);
+            this.btn_Row2Slot.MouseLeave += new System.EventHandler(this.btn_Row2Slot_MouseLeave);
+            this.btn_Row2Slot.MouseHover += new System.EventHandler(this.btn_Row2Slot_MouseHover);
             // 
             // btn_Row3Slot
             // 
@@ -514,6 +518,8 @@
             this.btn_Row3Slot.TabIndex = 46;
             this.btn_Row3Slot.UseVisualStyleBackColor = false;
             this.btn_Row3Slot.Click += new System.EventHandler(this.btn_Row3Slot_Click);
+            this.btn_Row3Slot.MouseLeave += new System.EventHandler(this.btn_Row3Slot_MouseLeave);
+            this.btn_Row3Slot.MouseHover += new System.EventHandler(this.btn_Row3Slot_MouseHover);
             // 
             // btn_Row4Slot
             // 
@@ -524,6 +530,8 @@
             this.btn_Row4Slot.TabIndex = 47;
             this.btn_Row4Slot.UseVisualStyleBackColor = false;
             this.btn_Row4Slot.Click += new System.EventHandler(this.btn_Row4Slot_Click);
+            this.btn_Row4Slot.MouseLeave += new System.EventHandler(this.btn_Row4Slot_MouseLeave);
+            this.btn_Row4Slot.MouseHover += new System.EventHandler(this.btn_Row4Slot_MouseHover);
             // 
             // btn_Row5Slot
             // 
@@ -534,6 +542,8 @@
             this.btn_Row5Slot.TabIndex = 48;
             this.btn_Row5Slot.UseVisualStyleBackColor = false;
             this.btn_Row5Slot.Click += new System.EventHandler(this.btn_Row5Slot_Click);
+            this.btn_Row5Slot.MouseLeave += new System.EventHandler(this.btn_Row5Slot_MouseLeave);
+            this.btn_Row5Slot.MouseHover += new System.EventHandler(this.btn_Row5Slot_MouseHover);
             // 
             // btn_Row6Slot
             // 
@@ -544,6 +554,8 @@
             this.btn_Row6Slot.TabIndex = 49;
             this.btn_Row6Slot.UseVisualStyleBackColor = false;
             this.btn_Row6Slot.Click += new System.EventHandler(this.btn_Row6Slot_Click);
+            this.btn_Row6Slot.MouseLeave += new System.EventHandler(this.btn_Row6Slot_MouseLeave);
+            this.btn_Row6Slot.MouseHover += new System.EventHandler(this.btn_Row6Slot_MouseHover);
             // 
             // btn_Row7Slot
             // 
@@ -554,6 +566,8 @@
             this.btn_Row7Slot.TabIndex = 50;
             this.btn_Row7Slot.UseVisualStyleBackColor = false;
             this.btn_Row7Slot.Click += new System.EventHandler(this.btn_Row7Slot_Click);
+            this.btn_Row7Slot.MouseLeave += new System.EventHandler(this.btn_Row7Slot_MouseLeave);
+            this.btn_Row7Slot.MouseHover += new System.EventHandler(this.btn_Row7Slot_MouseHover);
             // 
             // SinglePlayerC4Form
             // 
