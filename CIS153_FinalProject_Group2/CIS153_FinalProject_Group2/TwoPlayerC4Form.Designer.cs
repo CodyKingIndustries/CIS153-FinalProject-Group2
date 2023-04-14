@@ -79,6 +79,7 @@
             this.btn_00 = new System.Windows.Forms.Button();
             this.btn_Exit = new System.Windows.Forms.Button();
             this.btn_loadMainScreen = new System.Windows.Forms.Button();
+            this.txt_playerTurn = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btn_Col6Slot
@@ -590,9 +591,9 @@
             this.btn_Exit.BackColor = System.Drawing.Color.Red;
             this.btn_Exit.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Exit.ForeColor = System.Drawing.Color.White;
-            this.btn_Exit.Location = new System.Drawing.Point(299, 485);
+            this.btn_Exit.Location = new System.Drawing.Point(375, 485);
             this.btn_Exit.Name = "btn_Exit";
-            this.btn_Exit.Size = new System.Drawing.Size(135, 37);
+            this.btn_Exit.Size = new System.Drawing.Size(124, 37);
             this.btn_Exit.TabIndex = 103;
             this.btn_Exit.Text = "Exit";
             this.btn_Exit.UseVisualStyleBackColor = false;
@@ -603,13 +604,26 @@
             this.btn_loadMainScreen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.btn_loadMainScreen.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_loadMainScreen.ForeColor = System.Drawing.Color.White;
-            this.btn_loadMainScreen.Location = new System.Drawing.Point(115, 485);
+            this.btn_loadMainScreen.Location = new System.Drawing.Point(50, 485);
             this.btn_loadMainScreen.Name = "btn_loadMainScreen";
-            this.btn_loadMainScreen.Size = new System.Drawing.Size(135, 37);
+            this.btn_loadMainScreen.Size = new System.Drawing.Size(124, 37);
             this.btn_loadMainScreen.TabIndex = 102;
             this.btn_loadMainScreen.Text = "Main Screen";
             this.btn_loadMainScreen.UseVisualStyleBackColor = false;
             this.btn_loadMainScreen.Click += new System.EventHandler(this.btn_loadMainScreen_Click);
+            // 
+            // txt_playerTurn
+            // 
+            this.txt_playerTurn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.txt_playerTurn.Font = new System.Drawing.Font("Arial Narrow", 19F, System.Drawing.FontStyle.Bold);
+            this.txt_playerTurn.ForeColor = System.Drawing.Color.White;
+            this.txt_playerTurn.Location = new System.Drawing.Point(180, 485);
+            this.txt_playerTurn.Name = "txt_playerTurn";
+            this.txt_playerTurn.ReadOnly = true;
+            this.txt_playerTurn.Size = new System.Drawing.Size(189, 37);
+            this.txt_playerTurn.TabIndex = 153;
+            this.txt_playerTurn.Text = "Turn: Player 1";
+            this.txt_playerTurn.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // TwoPlayerC4Form
             // 
@@ -617,6 +631,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Blue;
             this.ClientSize = new System.Drawing.Size(543, 551);
+            this.Controls.Add(this.txt_playerTurn);
             this.Controls.Add(this.btn_Col6Slot);
             this.Controls.Add(this.btn_Col5Slot);
             this.Controls.Add(this.btn_Col4Slot);
@@ -672,6 +687,7 @@
             this.Text = "TwoPlayerC4Form";
             this.Load += new System.EventHandler(this.TwoPlayerC4Form_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -728,5 +744,6 @@
         private System.Windows.Forms.Button btn_00;
         private System.Windows.Forms.Button btn_Exit;
         private System.Windows.Forms.Button btn_loadMainScreen;
+        private System.Windows.Forms.TextBox txt_playerTurn;
     }
 }

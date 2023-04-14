@@ -14,6 +14,7 @@ namespace CIS153_FinalProject_Group2
         private const int numCols = 7; // number of columns in the game board
         private Cell[,] board = new Cell[numRows, numCols]; // 2D array of Cells representing the game board
         private bool occupied;
+        private bool winner;
 
         //  Currently UNUSED
         // Constructor to initialize the board with empty cells
@@ -65,6 +66,167 @@ namespace CIS153_FinalProject_Group2
         public int getNumCols()
         {
             return numCols;
+        }
+        //OFFICIAL CHECK FOR WINNER (at least for two player form) PLEASE DO NOT REMOVE (can probably use the same code for single player form)
+        public bool checkWinner(int x, int y)
+        {
+            //Hardest part is to not go out of bounds of the array
+            winner = false;
+            int i = 0;
+            int j = 0;
+
+            //Check right from most recently placed disc
+            for (int c = y; j < 4; c++, j++)
+            {
+                if (c < numCols)
+                {
+                    if (board[x, c].getCellColor() == board[x, y].getCellColor())
+                    {
+                        i++;
+                    }
+                }
+            }
+            if (i == 4)
+            {
+                winner = true;
+                return winner;
+            }
+
+            //Check left from most recently placed disc
+            i = 0;
+            j = 0;
+            for (int c = y; j < 4; c--, j++)
+            {
+                if (c >= 0)
+                {
+                    if (board[x, c].getCellColor() == board[x, y].getCellColor())
+                    {
+                        i++;
+                    }
+                }
+            }
+            if (i == 4)
+            {
+                winner = true;
+                return winner;
+            }
+
+            //Check up from most recently placed disc
+            i = 0;
+            j = 0;
+            for (int r = x; j < 4; r--, j++)
+            {
+                if (r >= 0)
+                {
+                    if (board[r, y].getCellColor() == board[x, y].getCellColor())
+                    {
+                        i++;
+                    }
+                }
+            }
+            if (i == 4)
+            {
+                winner = true;
+                return winner;
+            }
+
+            //Check down from most recently placed disc
+            i = 0;
+            j = 0;
+            for (int r = x; j < 4; r++, j++)
+            {
+                if (r < numRows)
+                {
+                    if (board[r, y].getCellColor() == board[x, y].getCellColor())
+                    {
+                        i++;
+                    }
+                }
+            }
+            if (i == 4)
+            {
+                winner = true;
+                return winner;
+            }
+
+            //DIAGONALS
+            //Check up-right from most recently placed disc
+            i = 0;
+            j = 0;
+            for (int r = x, c = y; j < 4; r--, c++, j++)
+            {
+                if (r >= 0 && c < numCols)
+                {
+                    if (board[r, c].getCellColor() == board[x, y].getCellColor())
+                    {
+                        i++;
+                    }
+                }
+            }
+            if (i == 4)
+            {
+                winner = true;
+                return winner;
+            }
+
+            //Check up-left from most recently placed disc
+            i = 0;
+            j = 0;
+            for (int r = x, c = y; j < 4; r--, c--, j++)
+            {
+                if (r >= 0 && c >= 0)
+                {
+                    if (board[r, c].getCellColor() == board[x, y].getCellColor())
+                    {
+                        i++;
+                    }
+                }
+            }
+            if (i == 4)
+            {
+                winner = true;
+                return winner;
+            }
+
+            //Check down-right from most recently placed disc
+            i = 0;
+            j = 0;
+            for (int r = x, c = y; j < 4; r++, c++, j++)
+            {
+                if (r < numRows && c < numCols)
+                {
+                    if (board[r, c].getCellColor() == board[x, y].getCellColor())
+                    {
+                        i++;
+                    }
+                }
+            }
+            if (i == 4)
+            {
+                winner = true;
+                return winner;
+            }
+            //Check down-left from most recently placed disc
+            i = 0;
+            j = 0;
+            for (int r = x, c = y; j < 4; r++, c--, j++)
+            {
+                if (r < numRows && c >= 0)
+                {
+                    if (board[r, c].getCellColor() == board[x, y].getCellColor())
+                    {
+                        i++;
+                    }
+                }
+            }
+            if (i == 4)
+            {
+                winner = true;
+                return winner;
+            }
+
+
+            return winner;
         }
 
 

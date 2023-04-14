@@ -27,6 +27,7 @@ namespace CIS153_FinalProject_Group2
         private int col6Clicks = 0;
         //Will use modulus to track who's turn it is (even vs odd)
         private int totalClicks = 0;
+        private bool hasWinner = false;
 
 
         private void TwoPlayerC4Form_Load(object sender, EventArgs e)
@@ -53,7 +54,7 @@ namespace CIS153_FinalProject_Group2
 
 
         //upon clicking the purple square at the top, it will "drop a disc" down that respective column
-        //starting with column 0. It will drop a disc as far down as possible (as long as the cell below it isn't occupied)
+        //starting with column 0 (to 6). It will drop a disc as far down as possible (as long as the cell below it isn't occupied)
         //COLUMN 0 SLOT CLICK =================================================================
         private void btn_Col0Slot_Click(object sender, EventArgs e)
         {
@@ -64,10 +65,12 @@ namespace CIS153_FinalProject_Group2
             if (totalClicks % 2 == 0)
             {
                 playerOnesTurn = true;
+                txt_playerTurn.Text = "Turn: Player 2";
             }
             else
             {
                 playerOnesTurn = false;
+                txt_playerTurn.Text = "Turn: Player 1";
             }
 
             while (TPBoard.getBoard()[r, c].isFull() == true && r != 0)
@@ -77,7 +80,10 @@ namespace CIS153_FinalProject_Group2
 
             //There's going to be a LOT of lines of code but it's all really simple
             //There's really no way to shorten it down with a loop since you can't
-            //access a button using it's name and some variables
+            //access a button using it's name and some variables such as accessing
+            //btn_02 using a variable with 0 and another with 2. It just doesn't work
+            //I also wanted to make this as dynamic as possible which can also be helpful
+            //when passing the position of the last placed disc to the function to check for a winner
             TPBoard.getBoard()[r, c].placeDisc();
             if (r == 0)
             {
@@ -160,6 +166,9 @@ namespace CIS153_FinalProject_Group2
                     TPBoard.getBoard()[r, c].setCellColor("Yellow");
                 }
             }
+            hasWinner = TPBoard.checkWinner(r, c);
+            ifWinner();
+
             totalClicks++;
         }
 
@@ -173,10 +182,12 @@ namespace CIS153_FinalProject_Group2
             if (totalClicks % 2 == 0)
             {
                 playerOnesTurn = true;
+                txt_playerTurn.Text = "Turn: Player 2";
             }
             else
             {
                 playerOnesTurn = false;
+                txt_playerTurn.Text = "Turn: Player 1";
             }
 
             while (TPBoard.getBoard()[r, c].isFull() == true && r != 0)
@@ -263,6 +274,8 @@ namespace CIS153_FinalProject_Group2
                     TPBoard.getBoard()[r, c].setCellColor("Yellow");
                 }
             }
+            hasWinner = TPBoard.checkWinner(r, c);
+            ifWinner();
             totalClicks++;
         }
 
@@ -276,10 +289,12 @@ namespace CIS153_FinalProject_Group2
             if (totalClicks % 2 == 0)
             {
                 playerOnesTurn = true;
+                txt_playerTurn.Text = "Turn: Player 2";
             }
             else
             {
                 playerOnesTurn = false;
+                txt_playerTurn.Text = "Turn: Player 1";
             }
 
             while (TPBoard.getBoard()[r, c].isFull() == true && r != 0)
@@ -366,6 +381,8 @@ namespace CIS153_FinalProject_Group2
                     TPBoard.getBoard()[r, c].setCellColor("Yellow");
                 }
             }
+            hasWinner = TPBoard.checkWinner(r, c);
+            ifWinner();
             totalClicks++;
         }
 
@@ -379,10 +396,12 @@ namespace CIS153_FinalProject_Group2
             if (totalClicks % 2 == 0)
             {
                 playerOnesTurn = true;
+                txt_playerTurn.Text = "Turn: Player 2";
             }
             else
             {
                 playerOnesTurn = false;
+                txt_playerTurn.Text = "Turn: Player 1";
             }
 
             while (TPBoard.getBoard()[r, c].isFull() == true && r != 0)
@@ -469,6 +488,8 @@ namespace CIS153_FinalProject_Group2
                     TPBoard.getBoard()[r, c].setCellColor("Yellow");
                 }
             }
+            hasWinner = TPBoard.checkWinner(r, c);
+            ifWinner();
             totalClicks++;
         }
 
@@ -482,10 +503,12 @@ namespace CIS153_FinalProject_Group2
             if (totalClicks % 2 == 0)
             {
                 playerOnesTurn = true;
+                txt_playerTurn.Text = "Turn: Player 2";
             }
             else
             {
                 playerOnesTurn = false;
+                txt_playerTurn.Text = "Turn: Player 1";
             }
 
             while (TPBoard.getBoard()[r, c].isFull() == true && r != 0)
@@ -572,6 +595,8 @@ namespace CIS153_FinalProject_Group2
                     TPBoard.getBoard()[r, c].setCellColor("Yellow");
                 }
             }
+            hasWinner = TPBoard.checkWinner(r, c);
+            ifWinner();
             totalClicks++;
         }
 
@@ -585,10 +610,12 @@ namespace CIS153_FinalProject_Group2
             if (totalClicks % 2 == 0)
             {
                 playerOnesTurn = true;
+                txt_playerTurn.Text = "Turn: Player 2";
             }
             else
             {
                 playerOnesTurn = false;
+                txt_playerTurn.Text = "Turn: Player 1";
             }
 
             while (TPBoard.getBoard()[r, c].isFull() == true && r != 0)
@@ -675,6 +702,8 @@ namespace CIS153_FinalProject_Group2
                     TPBoard.getBoard()[r, c].setCellColor("Yellow");
                 }
             }
+            hasWinner = TPBoard.checkWinner(r, c);
+            ifWinner();
             totalClicks++;
         }
 
@@ -688,10 +717,12 @@ namespace CIS153_FinalProject_Group2
             if (totalClicks % 2 == 0)
             {
                 playerOnesTurn = true;
+                txt_playerTurn.Text = "Turn: Player 2";
             }
             else
             {
                 playerOnesTurn = false;
+                txt_playerTurn.Text = "Turn: Player 1";
             }
 
             while (TPBoard.getBoard()[r,c].isFull() == true && r != 0)
@@ -778,6 +809,8 @@ namespace CIS153_FinalProject_Group2
                     TPBoard.getBoard()[r, c].setCellColor("Yellow");
                 }
             }
+            hasWinner = TPBoard.checkWinner(r, c);
+            ifWinner();
             totalClicks++;
         }
 
@@ -1178,6 +1211,28 @@ namespace CIS153_FinalProject_Group2
             }
         }
 
+        //IF WINNER
+        private void ifWinner()
+        {
+            if (hasWinner)
+            {
+                if (playerOnesTurn)
+                {
+                    txt_playerTurn.Text = "Player 1 Wins!";
+                }
+                else
+                {
+                    txt_playerTurn.Text = "Player 2 Wins!";
+                }
+                btn_Col0Slot.Enabled = false;
+                btn_Col1Slot.Enabled = false;
+                btn_Col2Slot.Enabled = false;
+                btn_Col3Slot.Enabled = false;
+                btn_Col4Slot.Enabled = false;
+                btn_Col5Slot.Enabled = false;
+                btn_Col6Slot.Enabled = false;
+            }
+        }
 
         //BOTTOM BUTTONS
         private void btn_loadMainScreen_Click(object sender, EventArgs e)
