@@ -84,7 +84,7 @@
             // btn_Exit
             // 
             this.btn_Exit.BackColor = System.Drawing.Color.Red;
-            this.btn_Exit.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Exit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Exit.ForeColor = System.Drawing.Color.White;
             this.btn_Exit.Location = new System.Drawing.Point(299, 485);
             this.btn_Exit.Name = "btn_Exit";
@@ -97,7 +97,7 @@
             // btn_SPC4_tempLoadForm
             // 
             this.btn_SPC4_tempLoadForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.btn_SPC4_tempLoadForm.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_SPC4_tempLoadForm.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_SPC4_tempLoadForm.ForeColor = System.Drawing.Color.White;
             this.btn_SPC4_tempLoadForm.Location = new System.Drawing.Point(115, 485);
             this.btn_SPC4_tempLoadForm.Name = "btn_SPC4_tempLoadForm";

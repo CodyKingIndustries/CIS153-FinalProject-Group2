@@ -58,15 +58,22 @@ namespace CIS153_FinalProject_Group2
         {
             return board[r, c];
         }
+        public void setCell(int r, int c, Cell C)
+        {
+            board[r, c] = C;
+        }
         //===========
+
         public int getNumRows()
         {
             return numRows;
         }
+       
         public int getNumCols()
         {
             return numCols;
         }
+        
         //OFFICIAL CHECK FOR WINNER (at least for two player form) PLEASE DO NOT REMOVE (can probably use the same code for single player form)
         public bool checkWinner(int x, int y)
         {
@@ -230,21 +237,6 @@ namespace CIS153_FinalProject_Group2
         }
 
 
-        //  IN HERE IS REPURPOSED CODE - due to a change I made, this section was slightly repurposed
-        //  ====================================================================================
-
-        // Function to place a disc in the specified column and return the row it was placed in
-        //public int PlaceDisc(int col, Disc disc)
-        //{
-        //    int row = GetNextEmptyRow(col);
-        //    if (row != -1)
-        //    {
-        //        board[row, col].SetDisc(disc);
-        //        return row;
-        //    }
-        //    return -1;
-        //}
-
         //  Will place a disk at given colum, with color representing players turn
         public void PlaceDisc(int col, string c)
         {
@@ -268,7 +260,6 @@ namespace CIS153_FinalProject_Group2
             }
             return -1;
         }
-
 
         // Function to check if a column is full
         public bool IsColumnFull(int col)

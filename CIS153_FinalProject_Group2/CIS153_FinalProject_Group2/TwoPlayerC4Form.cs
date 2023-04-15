@@ -9,6 +9,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+//  placing a disc at the top, will overide the other players disc -> this needs to be fixed
+
+
+
 namespace CIS153_FinalProject_Group2
 {
     public partial class TwoPlayerC4Form : Form
@@ -56,8 +60,12 @@ namespace CIS153_FinalProject_Group2
         //upon clicking the purple square at the top, it will "drop a disc" down that respective column
         //starting with column 0 (to 6). It will drop a disc as far down as possible (as long as the cell below it isn't occupied)
         //COLUMN 0 SLOT CLICK =================================================================
+
+
         private void btn_Col0Slot_Click(object sender, EventArgs e)
         {
+
+
             col0Clicks++;
             int r = 5;
             int c = 0;
@@ -73,6 +81,7 @@ namespace CIS153_FinalProject_Group2
                 txt_playerTurn.Text = "Turn: Player 1";
             }
 
+            
             while (TPBoard.getBoard()[r, c].isFull() == true && r != 0)
             {
                 r--;
@@ -175,6 +184,8 @@ namespace CIS153_FinalProject_Group2
         //COLUMN 1 SLOT CLICK =================================================================
         private void btn_Col1Slot_Click(object sender, EventArgs e)
         {
+
+
             col1Clicks++;
             int r = 5;
             int c = 1;
@@ -277,11 +288,15 @@ namespace CIS153_FinalProject_Group2
             hasWinner = TPBoard.checkWinner(r, c);
             ifWinner();
             totalClicks++;
+
+
+
         }
 
         //COLUMN 2 SLOT CLICK =================================================================
         private void btn_Col2Slot_Click(object sender, EventArgs e)
         {
+
             col2Clicks++;
             int r = 5;
             int c = 2;
@@ -302,7 +317,7 @@ namespace CIS153_FinalProject_Group2
                 r--;
             }
 
-            TPBoard.getBoard()[r, c].placeDisc(); 
+            TPBoard.getBoard()[r, c].placeDisc();
             if (r == 0)
             {
                 if (playerOnesTurn)
@@ -384,6 +399,8 @@ namespace CIS153_FinalProject_Group2
             hasWinner = TPBoard.checkWinner(r, c);
             ifWinner();
             totalClicks++;
+
+
         }
 
         //COLUMN 3 SLOT CLICK =================================================================

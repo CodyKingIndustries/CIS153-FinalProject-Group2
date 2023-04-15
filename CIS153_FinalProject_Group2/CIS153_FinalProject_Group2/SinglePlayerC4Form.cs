@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,6 +16,7 @@ namespace CIS153_FinalProject_Group2
     {
         //  this is a global reference to the Home Screen of Connect 4
         private MainMenuForm MainScreenForm;
+        private Board SPBoard = new Board();
         //  This is to keep track if the purple button was clicked for the hover requirement
         private int RowOneClick = 0;
         private int RowTwoClick = 0;
@@ -58,272 +61,1072 @@ namespace CIS153_FinalProject_Group2
             Application.Exit();
         }
 
+        //  ====================================================
+        //  BUTTON CLICK FUNCITONS
         private void btn_Row1Slot_Click(object sender, EventArgs e)
         {
-            if (RowOneClick < 1)
+            RowOneClick++;
+            int r = 5;
+            int c = 0;
+
+            //  find highest empty position
+            while (SPBoard.getBoard()[r, c].isFull() == true && r != 0)
             {
-                btn_Row1Space1.BackColor = Color.Green;
-                RowOneClick = 1;
+                r--;
             }
-            else if (RowOneClick < 2)
+
+            //  Display change
+            if (RowOneClick == 1)
             {
-                btn_Row1Space2.BackColor = Color.Green;
-                RowOneClick = 2;
+                btn_Row1Space1.BackColor = Color.Red;
             }
-            else if (RowOneClick < 3)
+            else if (RowOneClick == 2)
             {
-                btn_Row1Space3.BackColor = Color.Green;
-                RowOneClick = 3;
+                btn_Row1Space2.BackColor = Color.Red;
             }
-            else if (RowOneClick < 4)
+            else if (RowOneClick == 3)
             {
-                btn_Row1Space4.BackColor = Color.Green;
-                RowOneClick = 4;
+                btn_Row1Space3.BackColor = Color.Red;
             }
-            else if (RowOneClick < 5)
+            else if (RowOneClick == 4)
             {
-                btn_Row1Space5.BackColor = Color.Green;
-                RowOneClick = 5;
+                btn_Row1Space4.BackColor = Color.Red;
             }
-            else if (RowOneClick < 6)
+            else if (RowOneClick == 5)
             {
-                btn_Row1Space6.BackColor = Color.Green;
-                RowOneClick = 6;
+                btn_Row1Space5.BackColor = Color.Red;
             }
+            else if (RowOneClick == 6)
+            {
+                btn_Row1Space6.BackColor = Color.Red;
+            }
+            //  Place the piece on the board
+            SPBoard.getBoard()[r, c].placeDisc("Red");
+
+            
+
         }
 
         private void btn_Row2Slot_Click(object sender, EventArgs e)
         {
-            if (RowTwoClick < 1)
+
+            RowTwoClick++;
+            int r = 5;
+            int c = 1;
+
+            //  find highest empty position
+            while (SPBoard.getBoard()[r, c].isFull() == true && r != 0)
             {
-                btn_Row2Space1.BackColor = Color.Green;
-                RowTwoClick = 1;
+                r--;
             }
-            else if (RowTwoClick < 2)
+
+            if (RowTwoClick == 1)
             {
-                btn_Row2Space2.BackColor = Color.Green;
-                RowTwoClick = 2;
+                btn_Row2Space1.BackColor = Color.Red;
             }
-            else if (RowTwoClick < 3)
+            else if (RowTwoClick == 2)
             {
-                btn_Row2Space3.BackColor = Color.Green;
-                RowTwoClick = 3;
+                btn_Row2Space2.BackColor = Color.Red;
             }
-            else if (RowTwoClick < 4)
+            else if (RowTwoClick == 3)
             {
-                btn_Row2Space4.BackColor = Color.Green;
-                RowTwoClick = 4;
+                btn_Row2Space3.BackColor = Color.Red;
             }
-            else if (RowTwoClick < 5)
+            else if (RowTwoClick == 4)
             {
-                btn_Row2Space5.BackColor = Color.Green;
-                RowTwoClick = 5;
+                btn_Row2Space4.BackColor = Color.Red;
             }
-            else if (RowTwoClick < 6)
+            else if (RowTwoClick == 5)
             {
-                btn_Row2Space6.BackColor = Color.Green;
-                RowTwoClick = 6;
+                btn_Row2Space5.BackColor = Color.Red;
             }
+            else if (RowTwoClick == 6)
+            {
+                btn_Row2Space6.BackColor = Color.Red;
+            }
+
+            SPBoard.getBoard()[r, c].placeDisc("Red");
+            AiDecision();
         }
 
         private void btn_Row3Slot_Click(object sender, EventArgs e)
         {
-            if (RowThreeClick < 1)
+            RowThreeClick++;
+            int r = 5;
+            int c = 2;
+
+            //  find highest empty position
+            while (SPBoard.getBoard()[r, c].isFull() == true && r != 0)
             {
-                btn_Row3Space1.BackColor = Color.Green;
-                RowThreeClick = 1;
+                r--;
             }
-            else if (RowThreeClick < 2)
+
+            if (RowThreeClick == 1)
             {
-                btn_Row3Space2.BackColor = Color.Green;
-                RowThreeClick = 2;
+                btn_Row3Space1.BackColor = Color.Red;
             }
-            else if (RowThreeClick < 3)
+            else if (RowThreeClick == 2)
             {
-                btn_Row3Space3.BackColor = Color.Green;
-                RowThreeClick = 3;
+                btn_Row3Space2.BackColor = Color.Red;
             }
-            else if (RowThreeClick < 4)
+            else if (RowThreeClick == 3)
             {
-                btn_Row3Space4.BackColor = Color.Green;
-                RowThreeClick = 4;
+                btn_Row3Space3.BackColor = Color.Red;
             }
-            else if (RowThreeClick < 5)
+            else if (RowThreeClick == 4)
             {
-                btn_Row3Space5.BackColor = Color.Green;
-                RowThreeClick = 5;
+                btn_Row3Space4.BackColor = Color.Red;
             }
-            else if (RowThreeClick < 6)
+            else if (RowThreeClick == 5)
             {
-                btn_Row3Space6.BackColor = Color.Green;
-                RowThreeClick = 6;
+                btn_Row3Space5.BackColor = Color.Red;
             }
+            else if (RowThreeClick == 6)
+            {
+                btn_Row3Space6.BackColor = Color.Red;
+            }
+            SPBoard.getBoard()[r, c].placeDisc("Red");
+            AiDecision();
         }
 
         private void btn_Row4Slot_Click(object sender, EventArgs e)
         {
-            if (RowFourClick < 1)
+            RowFourClick++;
+            int r = 5;
+            int c = 3;
+
+            //  find highest empty position
+            while (SPBoard.getBoard()[r, c].isFull() == true && r != 0)
             {
-                btn_Row4Space1.BackColor = Color.Green;
-                RowFourClick = 1;
+                r--;
             }
-            else if (RowFourClick < 2)
+
+            if (RowFourClick == 1)
             {
-                btn_Row4Space2.BackColor = Color.Green;
-                RowFourClick = 2;
+                btn_Row4Space1.BackColor = Color.Red;
             }
-            else if (RowFourClick < 3)
+            else if (RowFourClick == 2)
             {
-                btn_Row4Space3.BackColor = Color.Green;
-                RowFourClick = 3;
+                btn_Row4Space2.BackColor = Color.Red;
             }
-            else if (RowFourClick < 4)
+            else if (RowFourClick == 3)
             {
-                btn_Row4Space4.BackColor = Color.Green;
-                RowFourClick = 4;
+                btn_Row4Space3.BackColor = Color.Red;
             }
-            else if (RowFourClick < 5)
+            else if (RowFourClick == 4)
             {
-                btn_Row4Space5.BackColor = Color.Green;
-                RowFourClick = 5;
+                btn_Row4Space4.BackColor = Color.Red;
             }
-            else if (RowFourClick < 6)
+            else if (RowFourClick == 5)
             {
-                btn_Row4Space6.BackColor = Color.Green;
-                RowFourClick = 6;
+                btn_Row4Space5.BackColor = Color.Red;
             }
+            else if (RowFourClick == 6)
+            {
+                btn_Row4Space6.BackColor = Color.Red;
+            }
+            SPBoard.getBoard()[r, c].placeDisc("Red");
+            AiDecision();
         }
 
         private void btn_Row5Slot_Click(object sender, EventArgs e)
         {
-            if (RowFiveClick < 1)
+
+            RowFiveClick++;
+            int r = 5;
+            int c = 4;
+
+            //  find highest empty position
+            while (SPBoard.getBoard()[r, c].isFull() == true && r != 0)
             {
-                btn_Row5Space1.BackColor = Color.Green;
-                RowFiveClick = 1;
+                r--;
             }
-            else if (RowFiveClick < 2)
+
+            if (RowFiveClick == 1)
             {
-                btn_Row5Space2.BackColor = Color.Green;
-                RowFiveClick = 2;
+                btn_Row5Space1.BackColor = Color.Red;
             }
-            else if (RowFiveClick < 3)
+            else if (RowFiveClick == 2)
             {
-                btn_Row5Space3.BackColor = Color.Green;
-                RowFiveClick = 3;
+                btn_Row5Space2.BackColor = Color.Red;
             }
-            else if (RowFiveClick < 4)
+            else if (RowFiveClick == 3)
             {
-                btn_Row5Space4.BackColor = Color.Green;
-                RowFiveClick = 4;
+                btn_Row5Space3.BackColor = Color.Red;
             }
-            else if (RowFiveClick < 5)
+            else if (RowFiveClick == 4)
             {
-                btn_Row5Space5.BackColor = Color.Green;
-                RowFiveClick = 5;
+                btn_Row5Space4.BackColor = Color.Red;
             }
-            else if (RowFiveClick < 6)
+            else if (RowFiveClick == 5)
             {
-                btn_Row5Space6.BackColor = Color.Green;
-                RowFiveClick = 6;
+                btn_Row5Space5.BackColor = Color.Red;
             }
+            else if (RowFiveClick == 6)
+            {
+                btn_Row5Space6.BackColor = Color.Red;
+            }
+            SPBoard.getBoard()[r, c].placeDisc("Red");
+            AiDecision();
         }
 
         private void btn_Row6Slot_Click(object sender, EventArgs e)
         {
-            if (RowSixClick < 1)
+
+            RowSixClick++;
+            int r = 5;
+            int c = 5;
+
+            //  find highest empty position
+            while (SPBoard.getBoard()[r, c].isFull() == true && r != 0)
             {
-                btn_Row6Space1.BackColor = Color.Green;
-                RowSixClick = 1;
+                r--;
             }
-            else if (RowSixClick < 2)
+
+            if (RowSixClick == 1)
             {
-                btn_Row6Space2.BackColor = Color.Green;
-                RowSixClick = 2;
+                btn_Row6Space1.BackColor = Color.Red;
             }
-            else if (RowSixClick < 3)
+            else if (RowSixClick == 2)
             {
-                btn_Row6Space3.BackColor = Color.Green;
-                RowSixClick = 3;
+                btn_Row6Space2.BackColor = Color.Red;
             }
-            else if (RowSixClick < 4)
+            else if (RowSixClick == 3)
             {
-                btn_Row6Space4.BackColor = Color.Green;
-                RowSixClick = 4;
+                btn_Row6Space3.BackColor = Color.Red;
             }
-            else if (RowSixClick < 5)
+            else if (RowSixClick == 4)
             {
-                btn_Row6Space5.BackColor = Color.Green;
-                RowSixClick = 5;
+                btn_Row6Space4.BackColor = Color.Red;
             }
-            else if (RowSixClick < 6)
+            else if (RowSixClick == 5)
             {
-                btn_Row6Space6.BackColor = Color.Green;
-                RowSixClick = 6;
+                btn_Row6Space5.BackColor = Color.Red;
             }
+            else if (RowSixClick == 6)
+            {
+                btn_Row6Space6.BackColor = Color.Red;
+            }
+
+            SPBoard.getBoard()[r, c].placeDisc("Red");
+            AiDecision();
         }
 
         private void btn_Row7Slot_Click(object sender, EventArgs e)
         {
-            if (RowSevenClick < 1)
+
+            RowSevenClick++;
+            int r = 5;
+            int c = 6;
+
+            //  find highest empty position
+            while (SPBoard.getBoard()[r, c].isFull() == true && r != 0)
             {
-                btn_Row7Space1.BackColor = Color.Green;
-                RowSevenClick = 1;
+                r--;
             }
-            else if (RowSevenClick < 2)
+
+            if (RowSevenClick == 1)
             {
-                btn_Row7Space2.BackColor = Color.Green;
-                RowSevenClick = 2;
+                btn_Row7Space1.BackColor = Color.Red;
             }
-            else if (RowSevenClick < 3)
+            else if (RowSevenClick == 2)
             {
-                btn_Row7Space3.BackColor = Color.Green;
-                RowSevenClick = 3;
+                btn_Row7Space2.BackColor = Color.Red;
             }
-            else if (RowSevenClick < 4)
+            else if (RowSevenClick == 3)
             {
-                btn_Row7Space4.BackColor = Color.Green;
-                RowSevenClick = 4;
+                btn_Row7Space3.BackColor = Color.Red;
             }
-            else if (RowSevenClick < 5)
+            else if (RowSevenClick == 4)
             {
-                btn_Row7Space5.BackColor = Color.Green;
-                RowSevenClick = 5;
+                btn_Row7Space4.BackColor = Color.Red;
             }
-            else if (RowSevenClick < 6)
+            else if (RowSevenClick == 5)
             {
-                btn_Row7Space6.BackColor = Color.Green;
-                RowSevenClick = 6;
+                btn_Row7Space5.BackColor = Color.Red;
             }
+            else if (RowSevenClick == 6)
+            {
+                btn_Row7Space6.BackColor = Color.Red;
+            }
+            SPBoard.getBoard()[r, c].placeDisc("Red");
+
+            //  Now call the Ai to take its turn
+            AiDecision();
+
         }
 
+        //  ==================================================================
+        //  SINGLE PLAYER AI MAIN FUNCTION
+
+        private void AiDecision()
+        {
+
+            //Board board = new Board();
+            Cell[,] board = new Cell[6, 7];
+            int[,] PriorityArray = new int[6, 7];
+            //  -2 because there are cases that placing a piece, would literaly give the player the win,
+            //  thus 0 will be a nuetral spot, while -1 will be a "banned" spot of sorts
+            int decision = -2;
+            int columnPlacement = 0;
+
+
+
+            for (int r = 0; r < 6; r++)
+            {
+                for (int c = 0; c < 7; c++)
+                {
+                    //  copy inportant numbers over into the algorithms
+                    board[r, c] = SPBoard.getCell(r, c);
+                    //  Set Up
+                    PriorityArray[r, c] = 0;
+
+                }
+            }
+            PriorityArray = CheckForPlayerWin(board, PriorityArray);
+            for (int r = 0; r < 6; r++)
+            {
+                for (int c = 0; c < 7; c++)
+                {
+                    if (PriorityArray[r,c] >= 3)
+                    {
+                        if (PriorityArray[r, c] > decision)
+                        {
+                            decision = PriorityArray[r, c];
+                            columnPlacement = c;
+                            
+                        }
+                        
+                        
+                    }
+                    
+                }
+            }
+
+            //  needs to check for column being filled before this function calls
+            //  and if column == filled -> change placement number to next highest priority
+            AiPlacesPiece(columnPlacement);
+
+        }
+
+        //  This searches the current board state, and returns "danger" which is an int[]
+        //  with values from -2 -> ~4
+        //  higher number = more pieces in a row
+        private int[,] CheckForPlayerWin(Cell[,] board, int[,] danger)
+        {
+            //  Progress:
+            //  
+            //  It can now fully fill out the array with high priority spots
+            //  Though these spots are currently occupied spots,
+            //  work will need to be done to take the priority spots and give a fresh spot each its own score
+            //  also no differntiation between the two colors, will be modified soon
+
+
+
+
+            //  winner isnt needed
+            bool winner = false;
+            //  x is columns
+            //  y is Rows
+            //  This is all copied and modified code from "checkWinner" in Board.cs
+            //  so that I can use the same algorith to instead find 2 & 3 in a row, Not 4
+            for (int x = 0; x < 6; x++)
+            {
+                for (int y = 0; y < 7; y++)
+                {
+                    //Hardest part is to not go out of bounds of the array
+                    
+                    int i = 0;
+                    int j = 0;
+
+
+                    //Check right from most recently placed disc
+                    for (int c = y; j < 4; c++, j++)
+                    {
+                        if (c < 7)
+                        {
+                            if (board[x, y].getCellColor() != "Grey")
+                            {
+                                if (board[x, c].getCellColor() == board[x, y].getCellColor())
+                                {
+                                    i++;
+                                }
+                            }
+                        }
+                    }
+                    //  Allows for checking of highest priority only
+                    if (i > danger[x,y])
+                    {
+                        danger[x, y] = i;
+                    }
+                    if (i == 3)
+                    {
+                        winner = true;
+                    }
+
+                    //Check left from most recently placed disc
+                    i = 0;
+                    j = 0;
+                    for (int c = y; j < 4; c--, j++)
+                    {
+                        if (c >= 0)
+                        {
+                            if (board[x, y].getCellColor() != "Grey")
+                            {
+                                if (board[x, c].getCellColor() == board[x, y].getCellColor())
+                                {
+                                    i++;
+                                }
+                            }
+                        }
+                    }
+                    if (i > danger[x, y])
+                    {
+                        danger[x, y] = i;
+                    }
+                    if (i == 3)
+                    {
+                        winner = true;
+                        //return winner;
+                    }
+
+                    //Check up from most recently placed disc
+                    i = 0;
+                    j = 0;
+                    for (int r = x; j < 4; r--, j++)
+                    {
+                        if (r >= 0)
+                        {
+                            if (board[x, y].getCellColor() != "Grey")
+                            {
+                                if (board[r, y].getCellColor() == board[x, y].getCellColor())
+                                {
+                                    i++;
+                                }
+                            }
+                        }
+                    }
+                    if (i > danger[x, y])
+                    {
+                        danger[x, y] = i;
+                    }
+                    if (i == 3)
+                    {
+                        winner = true;
+                        //return winner;
+                    }
+
+                    //Check down from most recently placed disc
+                    i = 0;
+                    j = 0;
+                    for (int r = x; j < 4; r++, j++)
+                    {
+                        if (r < 6)
+                        {
+                            if (board[x, y].getCellColor() != "Grey")
+                            {
+                                if (board[r, y].getCellColor() == board[x, y].getCellColor())
+                                {
+                                    i++;
+                                }
+                            }
+                        }
+                    }
+                    if (i > danger[x, y])
+                    {
+                        danger[x, y] = i;
+                    }
+                    if (i == 3)
+                    {
+                        winner = true;
+                        //return winner;
+                    }
+
+                    //DIAGONALS
+                    //Check up-right from most recently placed disc
+                    i = 0;
+                    j = 0;
+                    for (int r = x, c = y; j < 4; r--, c++, j++)
+                    {
+                        if (r >= 0 && c < 7)
+                        {
+                            if (board[x, y].getCellColor() != "Grey")
+                            {
+                                if (board[x, c].getCellColor() == board[x, y].getCellColor())
+                                {
+                                    i++;
+                                }
+                            }
+                        }
+                    }
+                    if (i > danger[x, y])
+                    {
+                        danger[x, y] = i;
+                    }
+                    if (i == 3)
+                    {
+                        winner = true;
+                        //return winner;
+                    }
+
+                    //Check up-left from most recently placed disc
+                    i = 0;
+                    j = 0;
+                    for (int r = x, c = y; j < 4; r--, c--, j++)
+                    {
+                        if (r >= 0 && c >= 0)
+                        {
+                            if (board[x, y].getCellColor() != "Grey")
+                            {
+                                if (board[x, c].getCellColor() == board[x, y].getCellColor())
+                                {
+                                    i++;
+                                }
+                            }
+                        }
+                    }
+                    if (i > danger[x, y])
+                    {
+                        danger[x, y] = i;
+                    }
+                    if (i == 3)
+                    {
+                        winner = true;
+                        //return winner;
+                    }
+
+                    //Check down-right from most recently placed disc
+                    i = 0;
+                    j = 0;
+                    for (int r = x, c = y; j < 4; r++, c++, j++)
+                    {
+                        if (r < 6 && c < 7)
+                        {
+                            if (board[x, y].getCellColor() != "Grey")
+                            {
+                                if (board[x, c].getCellColor() == board[x, y].getCellColor())
+                                {
+                                    i++;
+                                }
+                            }
+                        }
+                    }
+                    if (i > danger[x, y])
+                    {
+                        danger[x, y] = i;
+                    }
+                    if (i == 3)
+                    {
+                        winner = true;
+                        //return winner;
+                    }
+                    //Check down-left from most recently placed disc
+                    i = 0;
+                    j = 0;
+                    for (int r = x, c = y; j < 4; r++, c--, j++)
+                    {
+                        if (r < 6 && c >= 0)
+                        {
+                            if (board[x, y].getCellColor() != "Grey")
+                            {
+                                if (board[x, c].getCellColor() == board[x, y].getCellColor())
+                                {
+                                    i++;
+                                }
+                            }
+                        }
+                    }
+                    if (i > danger[x, y])
+                    {
+                        danger[x, y] = i;
+                    }
+                    if (i == 3)
+                    {
+                        winner = true;
+                        //return winner;
+                    }
+
+
+                    //return winner;
+                }
+            }
+
+
+            return danger;
+
+        }
+
+        private void AiPlacesPiece(int c)
+        {
+
+           //  these are just all the cases as in btn_row#Slot_Click
+           //  but for the Ai to place
+
+            if (c == 0)
+            {
+                RowOneClick++;
+                int r = 5;
+
+                //  find highest empty position
+                while (SPBoard.getBoard()[r, c].isFull() == true && r != 0)
+                {
+                    r--;
+                }
+
+                //  Display change
+                if (RowOneClick == 1)
+                {
+                    btn_Row1Space1.BackColor = Color.Yellow;
+                }
+                else if (RowOneClick == 2)
+                {
+                    btn_Row1Space2.BackColor = Color.Yellow;
+                }
+                else if (RowOneClick == 3)
+                {
+                    btn_Row1Space3.BackColor = Color.Yellow;
+                }
+                else if (RowOneClick == 4)
+                {
+                    btn_Row1Space4.BackColor = Color.Yellow;
+                }
+                else if (RowOneClick == 5)
+                {
+                    btn_Row1Space5.BackColor = Color.Yellow;
+                }
+                else if (RowOneClick == 6)
+                {
+                    btn_Row1Space6.BackColor = Color.Yellow;
+                }
+                SPBoard.getBoard()[r, c].placeDisc("Yellow");
+            }
+            else if (c == 1)
+            {
+                RowTwoClick++;
+                int r = 5;
+                
+
+                //  find highest empty position
+                while (SPBoard.getBoard()[r, c].isFull() == true && r != 0)
+                {
+                    r--;
+                }
+
+                if (RowTwoClick == 1)
+                {
+                    btn_Row2Space1.BackColor = Color.Yellow;
+                }
+                else if (RowTwoClick == 2)
+                {
+                    btn_Row2Space2.BackColor = Color.Yellow;
+                }
+                else if (RowTwoClick == 3)
+                {
+                    btn_Row2Space3.BackColor = Color.Yellow;
+                }
+                else if (RowTwoClick == 4)
+                {
+                    btn_Row2Space4.BackColor = Color.Yellow;
+                }
+                else if (RowTwoClick == 5)
+                {
+                    btn_Row2Space5.BackColor = Color.Yellow;
+                }
+                else if (RowTwoClick == 6)
+                {
+                    btn_Row2Space6.BackColor = Color.Yellow;
+                }
+                SPBoard.getBoard()[r, c].placeDisc("Yellow");
+            }
+            else if (c == 2)
+            {
+                RowThreeClick++;
+                int r = 5;
+
+                //  find highest empty position
+                while (SPBoard.getBoard()[r, c].isFull() == true && r != 0)
+                {
+                    r--;
+                }
+
+                if (RowThreeClick == 1)
+                {
+                    btn_Row3Space1.BackColor = Color.Yellow;
+                }
+                else if (RowThreeClick == 2)
+                {
+                    btn_Row3Space2.BackColor = Color.Yellow;
+                }
+                else if (RowThreeClick == 3)
+                {
+                    btn_Row3Space3.BackColor = Color.Yellow;
+                }
+                else if (RowThreeClick == 4)
+                {
+                    btn_Row3Space4.BackColor = Color.Yellow;
+                }
+                else if (RowThreeClick == 5)
+                {
+                    btn_Row3Space5.BackColor = Color.Yellow;
+                }
+                else if (RowThreeClick == 6)
+                {
+                    btn_Row3Space6.BackColor = Color.Yellow;
+                }
+                SPBoard.getBoard()[r, c].placeDisc("Yellow");
+            }
+            else if (c == 3)
+            {
+                RowFourClick++;
+                int r = 5;
+
+                //  find highest empty position
+                while (SPBoard.getBoard()[r, c].isFull() == true && r != 0)
+                {
+                    r--;
+                }
+
+                if (RowFourClick == 1)
+                {
+                    btn_Row4Space1.BackColor = Color.Yellow;
+                }
+                else if (RowFourClick == 2)
+                {
+                    btn_Row4Space2.BackColor = Color.Yellow;
+                }
+                else if (RowFourClick == 3)
+                {
+                    btn_Row4Space3.BackColor = Color.Yellow;
+                }
+                else if (RowFourClick == 4)
+                {
+                    btn_Row4Space4.BackColor = Color.Yellow;
+                }
+                else if (RowFourClick == 5)
+                {
+                    btn_Row4Space5.BackColor = Color.Yellow;
+                }
+                else if (RowFourClick == 6)
+                {
+                    btn_Row4Space6.BackColor = Color.Yellow;
+                }
+                SPBoard.getBoard()[r, c].placeDisc("Yellow");
+            }
+            else if (c == 4)
+            {
+                RowFiveClick++;
+                int r = 5;
+
+                //  find highest empty position
+                while (SPBoard.getBoard()[r, c].isFull() == true && r != 0)
+                {
+                    r--;
+                }
+
+                if (RowFiveClick == 1)
+                {
+                    btn_Row5Space1.BackColor = Color.Yellow;
+                }
+                else if (RowFiveClick == 2)
+                {
+                    btn_Row5Space2.BackColor = Color.Yellow;
+                }
+                else if (RowFiveClick == 3)
+                {
+                    btn_Row5Space3.BackColor = Color.Yellow;
+                }
+                else if (RowFiveClick == 4)
+                {
+                    btn_Row5Space4.BackColor = Color.Yellow;
+                }
+                else if (RowFiveClick == 5)
+                {
+                    btn_Row5Space5.BackColor = Color.Yellow;
+                }
+                else if (RowFiveClick == 6)
+                {
+                    btn_Row5Space6.BackColor = Color.Yellow;
+                }
+                SPBoard.getBoard()[r, c].placeDisc("Yellow");
+            }
+            else if (c == 5)
+            {
+                RowSixClick++;
+                int r = 5;
+
+                //  find highest empty position
+                while (SPBoard.getBoard()[r, c].isFull() == true && r != 0)
+                {
+                    r--;
+                }
+
+                if (RowSixClick == 1)
+                {
+                    btn_Row6Space1.BackColor = Color.Yellow;
+                }
+                else if (RowSixClick == 2)
+                {
+                    btn_Row6Space2.BackColor = Color.Yellow;
+                }
+                else if (RowSixClick == 3)
+                {
+                    btn_Row6Space3.BackColor = Color.Yellow;
+                }
+                else if (RowSixClick == 4)
+                {
+                    btn_Row6Space4.BackColor = Color.Yellow;
+                }
+                else if (RowSixClick == 5)
+                {
+                    btn_Row6Space5.BackColor = Color.Yellow;
+                }
+                else if (RowSixClick == 6)
+                {
+                    btn_Row6Space6.BackColor = Color.Yellow;
+                }
+                SPBoard.getBoard()[r, c].placeDisc("Yellow");
+            }
+            else if (c == 6)
+            {
+                RowSevenClick++;
+                int r = 5;
+
+                //  find highest empty position
+                while (SPBoard.getBoard()[r, c].isFull() == true && r != 0)
+                {
+                    r--;
+                }
+
+                if (RowSevenClick == 1)
+                {
+                    btn_Row7Space1.BackColor = Color.Yellow;
+                }
+                else if (RowSevenClick == 2)
+                {
+                    btn_Row7Space2.BackColor = Color.Yellow;
+                }
+                else if (RowSevenClick == 3)
+                {
+                    btn_Row7Space3.BackColor = Color.Yellow;
+                }
+                else if (RowSevenClick == 4)
+                {
+                    btn_Row7Space4.BackColor = Color.Yellow;
+                }
+                else if (RowSevenClick == 5)
+                {
+                    btn_Row7Space5.BackColor = Color.Yellow;
+                }
+                else if (RowSevenClick == 6)
+                {
+                    btn_Row7Space6.BackColor = Color.Yellow;
+                }
+                SPBoard.getBoard()[r, c].placeDisc("Yellow");
+            }
+
+
+        }
+
+        //==================================================================
+        //VISUAL HOVER FUNCTIONS
         private void btn_Row1Slot_MouseHover(object sender, EventArgs e)
         {
             if (RowOneClick == 0)
             {
-                btn_Row1Space1.BackColor = Color.Yellow;
+                btn_Row1Space1.BackColor = Color.Pink;
             }
             else if (RowOneClick == 1)
             {
-                btn_Row1Space2.BackColor = Color.Yellow;
+                btn_Row1Space2.BackColor = Color.Pink;
             }
             else if (RowOneClick == 2)
             {
-                btn_Row1Space3.BackColor = Color.Yellow;
+                btn_Row1Space3.BackColor = Color.Pink;
             }
             else if (RowOneClick == 3)
             {
-                btn_Row1Space4.BackColor = Color.Yellow;
+                btn_Row1Space4.BackColor = Color.Pink;
             }
             else if (RowOneClick == 4)
             {
-                btn_Row1Space5.BackColor = Color.Yellow;
+                btn_Row1Space5.BackColor = Color.Pink;
             }
             else if (RowOneClick == 5)
             {
-                btn_Row1Space6.BackColor = Color.Yellow;
+                btn_Row1Space6.BackColor = Color.Pink;
             }
         }
 
+        private void btn_Row2Slot_MouseHover(object sender, EventArgs e)
+        {
+            if (RowTwoClick == 0)
+            {
+                btn_Row2Space1.BackColor = Color.Pink;
+            }
+            else if (RowTwoClick == 1)
+            {
+                btn_Row2Space2.BackColor = Color.Pink;
+            }
+            else if (RowTwoClick == 2)
+            {
+                btn_Row2Space3.BackColor = Color.Pink;
+            }
+            else if (RowTwoClick == 3)
+            {
+                btn_Row2Space4.BackColor = Color.Pink;
+            }
+            else if (RowTwoClick == 4)
+            {
+                btn_Row2Space5.BackColor = Color.Pink;
+            }
+            else if (RowTwoClick == 5)
+            {
+                btn_Row2Space6.BackColor = Color.Pink;
+            }
+        }
+
+        private void btn_Row3Slot_MouseHover(object sender, EventArgs e)
+        {
+            if (RowThreeClick == 0)
+            {
+                btn_Row3Space1.BackColor = Color.Pink;
+            }
+            else if (RowThreeClick == 1)
+            {
+                btn_Row3Space2.BackColor = Color.Pink;
+            }
+            else if (RowThreeClick == 2)
+            {
+                btn_Row3Space3.BackColor = Color.Pink;
+            }
+            else if (RowThreeClick == 3)
+            {
+                btn_Row3Space4.BackColor = Color.Pink;
+            }
+            else if (RowThreeClick == 4)
+            {
+                btn_Row3Space5.BackColor = Color.Pink;
+            }
+            else if (RowThreeClick == 5)
+            {
+                btn_Row3Space6.BackColor = Color.Pink;
+            }
+        }
+
+        private void btn_Row4Slot_MouseHover(object sender, EventArgs e)
+        {
+            if (RowFourClick == 0)
+            {
+                btn_Row4Space1.BackColor = Color.Pink;
+            }
+            else if (RowFourClick == 1)
+            {
+                btn_Row4Space2.BackColor = Color.Pink;
+            }
+            else if (RowFourClick == 2)
+            {
+                btn_Row4Space3.BackColor = Color.Pink;
+            }
+            else if (RowFourClick == 3)
+            {
+                btn_Row4Space4.BackColor = Color.Pink;
+            }
+            else if (RowFourClick == 4)
+            {
+                btn_Row4Space5.BackColor = Color.Pink;
+            }
+            else if (RowFourClick == 5)
+            {
+                btn_Row4Space6.BackColor = Color.Pink;
+            }
+        }
+
+        private void btn_Row5Slot_MouseHover(object sender, EventArgs e)
+        {
+            if (RowFiveClick == 0)
+            {
+                btn_Row5Space1.BackColor = Color.Pink;
+            }
+            else if (RowFiveClick == 1)
+            {
+                btn_Row5Space2.BackColor = Color.Pink;
+            }
+            else if (RowFiveClick == 2)
+            {
+                btn_Row5Space3.BackColor = Color.Pink;
+            }
+            else if (RowFiveClick == 3)
+            {
+                btn_Row5Space4.BackColor = Color.Pink;
+            }
+            else if (RowFiveClick == 4)
+            {
+                btn_Row5Space5.BackColor = Color.Pink;
+            }
+            else if (RowFiveClick == 5)
+            {
+                btn_Row5Space6.BackColor = Color.Pink;
+            }
+        }
+
+        private void btn_Row6Slot_MouseHover(object sender, EventArgs e)
+        {
+            if (RowSixClick == 0)
+            {
+                btn_Row6Space1.BackColor = Color.Pink;
+            }
+            else if (RowSixClick == 1)
+            {
+                btn_Row6Space2.BackColor = Color.Pink;
+            }
+            else if (RowSixClick == 2)
+            {
+                btn_Row6Space3.BackColor = Color.Pink;
+            }
+            else if (RowSixClick == 3)
+            {
+                btn_Row6Space4.BackColor = Color.Pink;
+            }
+            else if (RowSixClick == 4)
+            {
+                btn_Row6Space5.BackColor = Color.Pink;
+            }
+            else if (RowSixClick == 5)
+            {
+                btn_Row6Space6.BackColor = Color.Pink;
+            }
+        }
+
+        private void btn_Row7Slot_MouseHover(object sender, EventArgs e)
+        {
+            if (RowSevenClick == 0)
+            {
+                btn_Row7Space1.BackColor = Color.Pink;
+            }
+            else if (RowSevenClick == 1)
+            {
+                btn_Row7Space2.BackColor = Color.Pink;
+            }
+            else if (RowSevenClick == 2)
+            {
+                btn_Row7Space3.BackColor = Color.Pink;
+            }
+            else if (RowSevenClick == 3)
+            {
+                btn_Row7Space4.BackColor = Color.Pink;
+            }
+            else if (RowSevenClick == 4)
+            {
+                btn_Row7Space5.BackColor = Color.Pink;
+            }
+            else if (RowSevenClick == 5)
+            {
+                btn_Row7Space6.BackColor = Color.Pink;
+            }
+        }
+
+        //  ========================================================
+        //  VISUAL UN-HOVER FUNCTIONS
         private void btn_Row1Slot_MouseLeave(object sender, EventArgs e)
         {
             if (RowOneClick == 0)
@@ -351,175 +1154,7 @@ namespace CIS153_FinalProject_Group2
                 btn_Row1Space6.BackColor = Color.White;
             }
         }
-
-        private void btn_Row2Slot_MouseHover(object sender, EventArgs e)
-        {
-            if (RowTwoClick == 0)
-            {
-                btn_Row2Space1.BackColor = Color.Yellow;
-            }
-            else if (RowTwoClick == 1)
-            {
-                btn_Row2Space2.BackColor = Color.Yellow;
-            }
-            else if (RowTwoClick == 2)
-            {
-                btn_Row2Space3.BackColor = Color.Yellow;
-            }
-            else if (RowTwoClick == 3)
-            {
-                btn_Row2Space4.BackColor = Color.Yellow;
-            }
-            else if (RowTwoClick == 4)
-            {
-                btn_Row2Space5.BackColor = Color.Yellow;
-            }
-            else if (RowTwoClick == 5)
-            {
-                btn_Row2Space6.BackColor = Color.Yellow;
-            }
-        }
-
-        private void btn_Row3Slot_MouseHover(object sender, EventArgs e)
-        {
-            if (RowThreeClick == 0)
-            {
-                btn_Row3Space1.BackColor = Color.Yellow;
-            }
-            else if (RowThreeClick == 1)
-            {
-                btn_Row3Space2.BackColor = Color.Yellow;
-            }
-            else if (RowThreeClick == 2)
-            {
-                btn_Row3Space3.BackColor = Color.Yellow;
-            }
-            else if (RowThreeClick == 3)
-            {
-                btn_Row3Space4.BackColor = Color.Yellow;
-            }
-            else if (RowThreeClick == 4)
-            {
-                btn_Row3Space5.BackColor = Color.Yellow;
-            }
-            else if (RowThreeClick == 5)
-            {
-                btn_Row3Space6.BackColor = Color.Yellow;
-            }
-        }
-
-        private void btn_Row4Slot_MouseHover(object sender, EventArgs e)
-        {
-            if (RowFourClick == 0)
-            {
-                btn_Row4Space1.BackColor = Color.Yellow;
-            }
-            else if (RowFourClick == 1)
-            {
-                btn_Row4Space2.BackColor = Color.Yellow;
-            }
-            else if (RowFourClick == 2)
-            {
-                btn_Row4Space3.BackColor = Color.Yellow;
-            }
-            else if (RowFourClick == 3)
-            {
-                btn_Row4Space4.BackColor = Color.Yellow;
-            }
-            else if (RowFourClick == 4)
-            {
-                btn_Row4Space5.BackColor = Color.Yellow;
-            }
-            else if (RowFourClick == 5)
-            {
-                btn_Row4Space6.BackColor = Color.Yellow;
-            }
-        }
-
-        private void btn_Row5Slot_MouseHover(object sender, EventArgs e)
-        {
-            if (RowFiveClick == 0)
-            {
-                btn_Row5Space1.BackColor = Color.Yellow;
-            }
-            else if (RowFiveClick == 1)
-            {
-                btn_Row5Space2.BackColor = Color.Yellow;
-            }
-            else if (RowFiveClick == 2)
-            {
-                btn_Row5Space3.BackColor = Color.Yellow;
-            }
-            else if (RowFiveClick == 3)
-            {
-                btn_Row5Space4.BackColor = Color.Yellow;
-            }
-            else if (RowFiveClick == 4)
-            {
-                btn_Row5Space5.BackColor = Color.Yellow;
-            }
-            else if (RowFiveClick == 5)
-            {
-                btn_Row5Space6.BackColor = Color.Yellow;
-            }
-        }
-
-        private void btn_Row6Slot_MouseHover(object sender, EventArgs e)
-        {
-            if (RowSixClick == 0)
-            {
-                btn_Row6Space1.BackColor = Color.Yellow;
-            }
-            else if (RowSixClick == 1)
-            {
-                btn_Row6Space2.BackColor = Color.Yellow;
-            }
-            else if (RowSixClick == 2)
-            {
-                btn_Row6Space3.BackColor = Color.Yellow;
-            }
-            else if (RowSixClick == 3)
-            {
-                btn_Row6Space4.BackColor = Color.Yellow;
-            }
-            else if (RowSixClick == 4)
-            {
-                btn_Row6Space5.BackColor = Color.Yellow;
-            }
-            else if (RowSixClick == 5)
-            {
-                btn_Row6Space6.BackColor = Color.Yellow;
-            }
-        }
-
-        private void btn_Row7Slot_MouseHover(object sender, EventArgs e)
-        {
-            if (RowSevenClick == 0)
-            {
-                btn_Row7Space1.BackColor = Color.Yellow;
-            }
-            else if (RowSevenClick == 1)
-            {
-                btn_Row7Space2.BackColor = Color.Yellow;
-            }
-            else if (RowSevenClick == 2)
-            {
-                btn_Row7Space3.BackColor = Color.Yellow;
-            }
-            else if (RowSevenClick == 3)
-            {
-                btn_Row7Space4.BackColor = Color.Yellow;
-            }
-            else if (RowSevenClick == 4)
-            {
-                btn_Row7Space5.BackColor = Color.Yellow;
-            }
-            else if (RowSevenClick == 5)
-            {
-                btn_Row7Space6.BackColor = Color.Yellow;
-            }
-        }
-
+       
         private void btn_Row2Slot_MouseLeave(object sender, EventArgs e)
         {
             if (RowTwoClick == 0)

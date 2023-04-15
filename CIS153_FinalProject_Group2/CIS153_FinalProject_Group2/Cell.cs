@@ -60,15 +60,23 @@ namespace CIS153_FinalProject_Group2
                 return false;
             }
         }
+        
         public void placeDisc()
         {
             occupied = true;
+        }
+        //  option to place disc and setColor
+        public void placeDisc(string c)
+        {
+            occupied = true;
+            color = c;
         }
         //====
         public int getRow()
         {
             return row;
         }
+        
         public int getCol()
         {
             return col;
@@ -79,34 +87,23 @@ namespace CIS153_FinalProject_Group2
             disc = d;
         }
 
-        // Sets the disc in this cell to the specified disc
-        //public void SetDisc(string d)
-        //{
-        //    disc.SetColor(d);
-        //}
-
         // Function to check if the cell is empty
         public bool IsEmpty()
         {
             return disc == null;
         }
+       
         // Returns the disc in this cell
         public Disc GetDisc()
         {
             return disc;
         }
-        //public int getCellCordX()
-        //{
-        //    return cordX;
-        //}
-        //public int getCellCordY()
-        //{
-        //    return cordY;
-        //}
+
         public void setCellColor(string c)
         {
             color = c;
         }
+        
         public string getCellColor()
         {
             return color;
