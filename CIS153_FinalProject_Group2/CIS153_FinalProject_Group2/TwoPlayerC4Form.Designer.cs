@@ -615,6 +615,7 @@
             // txt_playerTurn
             // 
             this.txt_playerTurn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.txt_playerTurn.Cursor = System.Windows.Forms.Cursors.No;
             this.txt_playerTurn.Font = new System.Drawing.Font("Arial Narrow", 19F, System.Drawing.FontStyle.Bold);
             this.txt_playerTurn.ForeColor = System.Drawing.Color.White;
             this.txt_playerTurn.Location = new System.Drawing.Point(180, 485);

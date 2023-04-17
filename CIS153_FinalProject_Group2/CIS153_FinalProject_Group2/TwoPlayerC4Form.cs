@@ -837,27 +837,93 @@ namespace CIS153_FinalProject_Group2
         {
             if(col0Clicks == 0)
             {
-                btn_50.BackColor = Color.Pink;
+                if(totalClicks == 0)
+                {
+                    btn_50.BackColor = Color.Pink;
+                }
+                else if (playerOnesTurn == false)
+                {
+                    btn_50.BackColor = Color.Pink;
+                }
+                else
+                {
+                    btn_50.BackColor = Color.LightYellow;
+                }
             }
             else if (col0Clicks == 1)
             {
-                btn_40.BackColor = Color.Pink;
+                if (totalClicks == 0)
+                {
+                    btn_40.BackColor = Color.Pink;
+                }
+                else if (playerOnesTurn == false)
+                {
+                    btn_40.BackColor = Color.Pink;
+                }
+                else
+                {
+                    btn_40.BackColor = Color.LightYellow;
+                }
             }
             else if (col0Clicks == 2)
             {
-                btn_30.BackColor = Color.Pink;
+                if (totalClicks == 0)
+                {
+                    btn_30.BackColor = Color.Pink;
+                }
+                else if (playerOnesTurn == false)
+                {
+                    btn_30.BackColor = Color.Pink;
+                }
+                else
+                {
+                    btn_30.BackColor = Color.LightYellow;
+                }
             }
             else if (col0Clicks == 3)
             {
-                btn_20.BackColor = Color.Pink;
+                if (totalClicks == 0)
+                {
+                    btn_20.BackColor = Color.Pink;
+                }
+                else if (playerOnesTurn == false)
+                {
+                    btn_20.BackColor = Color.Pink;
+                }
+                else
+                {
+                    btn_20.BackColor = Color.LightYellow;
+                }
             }
             else if (col0Clicks == 4)
             {
-                btn_10.BackColor = Color.Pink;
+                if (totalClicks == 0)
+                {
+                    btn_10.BackColor = Color.Pink;
+                }
+                else if (playerOnesTurn == false)
+                {
+                    btn_10.BackColor = Color.Pink;
+                }
+                else
+                {
+                    btn_10.BackColor = Color.LightYellow;
+                }
             }
             else if (col0Clicks == 5)
             {
-                btn_00.BackColor = Color.Pink;
+                if (totalClicks == 0)
+                {
+                    btn_00.BackColor = Color.Pink;
+                }
+                else if (playerOnesTurn == false)
+                {
+                    btn_00.BackColor = Color.Pink;
+                }
+                else
+                {
+                    btn_00.BackColor = Color.LightYellow;
+                }
             }
         }
 
@@ -866,27 +932,93 @@ namespace CIS153_FinalProject_Group2
         {
             if (col1Clicks == 0)
             {
-                btn_51.BackColor = Color.Pink;
+                if (totalClicks == 0)
+                {
+                    btn_51.BackColor = Color.Pink;
+                }
+                else if (playerOnesTurn == false)
+                {
+                    btn_51.BackColor = Color.Pink;
+                }
+                else 
+                {
+                    btn_51.BackColor = Color.LightYellow;
+                }
             }
             else if (col1Clicks == 1)
             {
-                btn_41.BackColor = Color.Pink;
+                if (totalClicks == 0)
+                {
+                    btn_41.BackColor = Color.Pink;
+                }
+                else if (playerOnesTurn == false)
+                {
+                    btn_41.BackColor = Color.Pink;
+                }
+                else 
+                {
+                    btn_41.BackColor = Color.LightYellow;
+                }
             }
             else if (col1Clicks == 2)
             {
-                btn_31.BackColor = Color.Pink;
+                if (totalClicks == 0)
+                {
+                    btn_31.BackColor = Color.Pink;
+                }
+                else if (playerOnesTurn == false)
+                {
+                    btn_31.BackColor = Color.Pink;
+                }
+                else
+                {
+                    btn_31.BackColor = Color.LightYellow;
+                }
             }
             else if (col1Clicks == 3)
             {
-                btn_21.BackColor = Color.Pink;
+                if (totalClicks == 0)
+                {
+                    btn_21.BackColor = Color.Pink;
+                }
+                else if (playerOnesTurn == false)
+                {
+                    btn_21.BackColor = Color.Pink;
+                }
+                else
+                {
+                    btn_21.BackColor = Color.LightYellow;
+                }
             }
             else if (col1Clicks == 4)
             {
-                btn_11.BackColor = Color.Pink;
+                if (totalClicks == 0)
+                {
+                    btn_11.BackColor = Color.Pink;
+                }
+                else if (playerOnesTurn == false)
+                {
+                    btn_11.BackColor = Color.Pink;
+                }
+                else
+                {
+                    btn_11.BackColor = Color.LightYellow;
+                }
             }
             else if (col1Clicks == 5)
             {
-                btn_01.BackColor = Color.Pink;
+                if (totalClicks == 0)
+                {
+                    btn_01.BackColor = Color.Pink;
+                }
+                else if (playerOnesTurn == false)
+                {
+                    btn_01.BackColor = Color.Pink;
+                }
+                else
+                {
+                    btn_01.BackColor = Color.LightYellow;
+                }
             }
         }
 
@@ -894,27 +1026,93 @@ namespace CIS153_FinalProject_Group2
         {
             if (col2Clicks == 0)
             {
-                btn_52.BackColor = Color.Pink;
+                if (totalClicks == 0)
+                {
+                    btn_52.BackColor = Color.Pink;
+                }
+                else if (playerOnesTurn == false)
+                {
+                    btn_52.BackColor = Color.Pink;
+                }
+                else
+                {
+                    btn_52.BackColor = Color.LightYellow;
+                }
             }
             else if (col2Clicks == 1)
             {
-                btn_42.BackColor = Color.Pink;
+                if (totalClicks == 0)
+                {
+                    btn_42.BackColor = Color.Pink;
+                }
+                else if(playerOnesTurn == false)
+                {
+                    btn_42.BackColor = Color.Pink;
+                }
+                else
+                {
+                    btn_42.BackColor = Color.LightYellow;
+                }
             }
             else if (col2Clicks == 2)
             {
-                btn_32.BackColor = Color.Pink;
+                if (totalClicks == 0)
+                {
+                    btn_32.BackColor = Color.Pink;
+                }
+                else if(playerOnesTurn == false)
+                {
+                    btn_32.BackColor = Color.Pink;
+                }
+                else
+                {
+                    btn_32.BackColor = Color.LightYellow;
+                }
             }
             else if (col2Clicks == 3)
             {
-                btn_22.BackColor = Color.Pink;
+                if (totalClicks == 0)
+                {
+                    btn_22.BackColor = Color.Pink;
+                }
+                else if (playerOnesTurn == false)
+                {
+                    btn_22.BackColor = Color.Pink;
+                }
+                else
+                {
+                    btn_22.BackColor = Color.LightYellow;
+                }
             }
             else if (col2Clicks == 4)
             {
-                btn_12.BackColor = Color.Pink;
+                if (totalClicks == 0)
+                {
+                    btn_12.BackColor = Color.Pink;
+                }
+                else if (playerOnesTurn == false)
+                {
+                    btn_12.BackColor = Color.Pink;
+                }
+                else
+                {
+                    btn_12.BackColor = Color.LightYellow;
+                }
             }
             else if (col2Clicks == 5)
             {
-                btn_02.BackColor = Color.Pink;
+                if (totalClicks == 0)
+                {
+                    btn_02.BackColor = Color.Pink;
+                }
+                else if (playerOnesTurn == false)
+                {
+                    btn_02.BackColor = Color.Pink;
+                }
+                else
+                {
+                    btn_02.BackColor = Color.LightYellow;
+                }
             }
         }
 
@@ -922,27 +1120,93 @@ namespace CIS153_FinalProject_Group2
         {
             if (col3Clicks == 0)
             {
-                btn_53.BackColor = Color.Pink;
+                if (totalClicks == 0)
+                {
+                    btn_53.BackColor = Color.Pink;
+                }
+                else if (playerOnesTurn == false)
+                {
+                    btn_53.BackColor = Color.Pink;
+                }
+                else
+                {
+                    btn_53.BackColor = Color.LightYellow;
+                }
             }
             else if (col3Clicks == 1)
             {
-                btn_43.BackColor = Color.Pink;
+                if (totalClicks == 0)
+                {
+                    btn_43.BackColor = Color.Pink;
+                }
+                else if (playerOnesTurn == false)
+                {
+                    btn_43.BackColor = Color.Pink;
+                }
+                else
+                {
+                    btn_43.BackColor = Color.LightYellow;
+                }
             }
             else if (col3Clicks == 2)
             {
-                btn_33.BackColor = Color.Pink;
+                if (totalClicks == 0)
+                {
+                    btn_33.BackColor = Color.Pink;
+                }
+                else if (playerOnesTurn == false)
+                {
+                    btn_33.BackColor = Color.Pink;
+                }
+                else
+                {
+                    btn_33.BackColor = Color.LightYellow;
+                }
             }
             else if (col3Clicks == 3)
             {
-                btn_23.BackColor = Color.Pink;
+                if (totalClicks == 0)
+                {
+                    btn_23.BackColor = Color.Pink;
+                }
+                else if (playerOnesTurn == false)
+                {
+                    btn_23.BackColor = Color.Pink;
+                }
+                else
+                {
+                    btn_23.BackColor = Color.LightYellow;
+                }
             }
             else if (col3Clicks == 4)
             {
-                btn_13.BackColor = Color.Pink;
+                if (totalClicks == 0)
+                {
+                    btn_13.BackColor = Color.Pink;
+                }
+                else if (playerOnesTurn == false)
+                {
+                    btn_13.BackColor = Color.Pink;
+                }
+                else
+                {
+                    btn_13.BackColor = Color.LightYellow;
+                }
             }
             else if (col3Clicks == 5)
             {
-                btn_03.BackColor = Color.Pink;
+                if (totalClicks == 0)
+                {
+                    btn_03.BackColor = Color.Pink;
+                }
+                else if (playerOnesTurn == false)
+                {
+                    btn_03.BackColor = Color.Pink;
+                }
+                else
+                {
+                    btn_03.BackColor = Color.LightYellow;
+                }
             }
         }
 
@@ -950,27 +1214,93 @@ namespace CIS153_FinalProject_Group2
         {
             if (col4Clicks == 0)
             {
-                btn_54.BackColor = Color.Pink;
+                if (totalClicks == 0)
+                {
+                    btn_54.BackColor = Color.Pink;
+                }
+                else if (playerOnesTurn == false)
+                {
+                    btn_54.BackColor = Color.Pink;
+                }
+                else
+                {
+                    btn_54.BackColor = Color.LightYellow;
+                }
             }
             else if (col4Clicks == 1)
             {
-                btn_44.BackColor = Color.Pink;
+                if (totalClicks == 0)
+                {
+                    btn_44.BackColor = Color.Pink;
+                }
+                else if (playerOnesTurn == false)
+                {
+                    btn_44.BackColor = Color.Pink;
+                }
+                else
+                {
+                    btn_44.BackColor = Color.LightYellow;
+                }
             }
             else if (col4Clicks == 2)
             {
-                btn_34.BackColor = Color.Pink;
+                if (totalClicks == 0)
+                {
+                    btn_34.BackColor = Color.Pink;
+                }
+                else if (playerOnesTurn == false)
+                {
+                    btn_34.BackColor = Color.Pink;
+                }
+                else
+                {
+                    btn_34.BackColor = Color.LightYellow;
+                }
             }
             else if (col4Clicks == 3)
             {
-                btn_24.BackColor = Color.Pink;
+                if (totalClicks == 0)
+                {
+                    btn_24.BackColor = Color.Pink;
+                }
+                else if (playerOnesTurn == false)
+                {
+                    btn_24.BackColor = Color.Pink;
+                }
+                else
+                {
+                    btn_24.BackColor = Color.LightYellow;
+                }
             }
             else if (col4Clicks == 4)
             {
-                btn_14.BackColor = Color.Pink;
+                if (totalClicks == 0)
+                {
+                    btn_14.BackColor = Color.Pink;
+                }
+                else if (playerOnesTurn == false)
+                {
+                    btn_14.BackColor = Color.Pink;
+                }
+                else
+                {
+                    btn_14.BackColor = Color.LightYellow;
+                }
             }
             else if (col4Clicks == 5)
             {
-                btn_04.BackColor = Color.Pink;
+                if (totalClicks == 0)
+                {
+                    btn_04.BackColor = Color.Pink;
+                }
+                else if (playerOnesTurn == false)
+                {
+                    btn_04.BackColor = Color.Pink;
+                }
+                else
+                {
+                    btn_04.BackColor = Color.LightYellow;
+                }
             }
         }
 
@@ -978,27 +1308,93 @@ namespace CIS153_FinalProject_Group2
         {
             if (col5Clicks == 0)
             {
-                btn_55.BackColor = Color.Pink;
+                if (totalClicks == 0)
+                {
+                    btn_55.BackColor = Color.Pink;
+                }
+                else if (playerOnesTurn == false)
+                {
+                    btn_55.BackColor = Color.Pink;
+                }
+                else
+                {
+                    btn_55.BackColor = Color.LightYellow;
+                }
             }
             else if (col5Clicks == 1)
             {
-                btn_45.BackColor = Color.Pink;
+                if (totalClicks == 0)
+                {
+                    btn_45.BackColor = Color.Pink;
+                }
+                else if (playerOnesTurn == false)
+                {
+                    btn_45.BackColor = Color.Pink;
+                }
+                else
+                {
+                    btn_45.BackColor = Color.LightYellow;
+                }
             }
             else if (col5Clicks == 2)
             {
-                btn_35.BackColor = Color.Pink;
+                if (totalClicks == 0)
+                {
+                    btn_35.BackColor = Color.Pink;
+                }
+                else if (playerOnesTurn == false)
+                {
+                    btn_35.BackColor = Color.Pink;
+                }
+                else
+                {
+                    btn_35.BackColor = Color.LightYellow;
+                }
             }
             else if (col5Clicks == 3)
             {
-                btn_25.BackColor = Color.Pink;
+                if (totalClicks == 0)
+                {
+                    btn_25.BackColor = Color.Pink;
+                }
+                else if (playerOnesTurn == false)
+                {
+                    btn_25.BackColor = Color.Pink;
+                }
+                else
+                {
+                    btn_25.BackColor = Color.LightYellow;
+                }
             }
             else if (col5Clicks == 4)
             {
-                btn_15.BackColor = Color.Pink;
+                if (totalClicks == 0)
+                {
+                    btn_15.BackColor = Color.Pink;
+                }
+                else if (playerOnesTurn == false)
+                {
+                    btn_15.BackColor = Color.Pink;
+                }
+                else
+                {
+                    btn_15.BackColor = Color.LightYellow;
+                }
             }
             else if (col5Clicks == 5)
             {
-                btn_05.BackColor = Color.Pink;
+                if (totalClicks == 0)
+                {
+                    btn_05.BackColor = Color.Pink;
+                }
+                else if (playerOnesTurn == false)
+                {
+                    btn_05.BackColor = Color.Pink;
+                }
+                else
+                {
+                    btn_05.BackColor = Color.LightYellow;
+                }
             }
         }
 
@@ -1006,27 +1402,93 @@ namespace CIS153_FinalProject_Group2
         {
             if (col6Clicks == 0)
             {
-                btn_56.BackColor = Color.Pink;
+                if (totalClicks == 0)
+                {
+                    btn_56.BackColor = Color.Pink;
+                }
+                else if (playerOnesTurn == false)
+                {
+                    btn_56.BackColor = Color.Pink;
+                }
+                else
+                {
+                    btn_56.BackColor = Color.LightYellow;
+                };
             }
             else if (col6Clicks == 1)
             {
-                btn_46.BackColor = Color.Pink;
+                if (totalClicks == 0)
+                {
+                    btn_46.BackColor = Color.Pink;
+                }
+                else if (playerOnesTurn == false)
+                {
+                    btn_46.BackColor = Color.Pink;
+                }
+                else
+                {
+                    btn_46.BackColor = Color.LightYellow;
+                }
             }
             else if (col6Clicks == 2)
             {
-                btn_36.BackColor = Color.Pink;
+                if (totalClicks == 0)
+                {
+                    btn_36.BackColor = Color.Pink;
+                }
+                else if (playerOnesTurn == false)
+                {
+                    btn_36.BackColor = Color.Pink;
+                }
+                else
+                {
+                    btn_36.BackColor = Color.LightYellow;
+                }
             }
             else if (col6Clicks == 3)
             {
-                btn_26.BackColor = Color.Pink;
+                if (totalClicks == 0)
+                {
+                    btn_26.BackColor = Color.Pink;
+                }
+                else if (playerOnesTurn == false)
+                {
+                    btn_26.BackColor = Color.Pink;
+                }
+                else
+                {
+                    btn_26.BackColor = Color.LightYellow;
+                }
             }
             else if (col6Clicks == 4)
             {
-                btn_16.BackColor = Color.Pink;
+                if (totalClicks == 0)
+                {
+                    btn_16.BackColor = Color.Pink;
+                }
+                else if (playerOnesTurn == false)
+                {
+                    btn_16.BackColor = Color.Pink;
+                }
+                else
+                {
+                    btn_16.BackColor = Color.LightYellow;
+                }
             }
             else if (col6Clicks == 5)
             {
-                btn_06.BackColor = Color.Pink;
+                if (totalClicks == 0)
+                {
+                    btn_06.BackColor = Color.Pink;
+                }
+                else if (playerOnesTurn == false)
+                {
+                    btn_06.BackColor = Color.Pink;
+                }
+                else
+                {
+                    btn_06.BackColor = Color.LightYellow;
+                }
             }
         }
 
