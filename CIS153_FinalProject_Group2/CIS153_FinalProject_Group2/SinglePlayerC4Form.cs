@@ -102,8 +102,8 @@ namespace CIS153_FinalProject_Group2
             }
             //  Place the piece on the board
             SPBoard.getBoard()[r, c].placeDisc("Red");
+            AiDecision();
 
-            
 
         }
 
@@ -365,9 +365,10 @@ namespace CIS153_FinalProject_Group2
             //Board board = new Board();
             Cell[,] board = new Cell[6, 7];
             int[,] PriorityArray = new int[6, 7];
-            //  -2 because there are cases that placing a piece, would literaly give the player the win,
-            //  thus 0 will be a nuetral spot, while -1 will be a "banned" spot of sorts
-            int decision = -2;
+            //  1 -> 4, is ammount of pieces if placed in a column,
+            //  -3 -> -4 is places that would give opponents 3 or 4 in a row / prevent own 3 or 4
+            //  1 is a lone space with no direct benefit because -> 1 lone piece
+            int decision = -4;
             int columnPlacement = 0;
 
 
@@ -383,13 +384,18 @@ namespace CIS153_FinalProject_Group2
 
                 }
             }
+
             PriorityArray = CheckForPlayerWin(board, PriorityArray);
+
             for (int r = 0; r < 6; r++)
             {
                 for (int c = 0; c < 7; c++)
                 {
-                    if (PriorityArray[r,c] >= 3)
-                    {
+                    
+                        Console.WriteLine(PriorityArray[r, c] + " At [" + r + "," + c);
+                   
+
+
                         if (PriorityArray[r, c] > decision)
                         {
                             decision = PriorityArray[r, c];
@@ -397,11 +403,12 @@ namespace CIS153_FinalProject_Group2
                             
                         }
                         
-                        
-                    }
+                    //}
                     
                 }
             }
+
+            
 
             //  needs to check for column being filled before this function calls
             //  and if column == filled -> change placement number to next highest priority
@@ -424,230 +431,703 @@ namespace CIS153_FinalProject_Group2
 
 
 
-            //  winner isnt needed
-            bool winner = false;
-            //  x is columns
-            //  y is Rows
+            
+            //  j is a counter
+            //  y is columns [c]
+            //  x is Rows [r]
             //  This is all copied and modified code from "checkWinner" in Board.cs
             //  so that I can use the same algorith to instead find 2 & 3 in a row, Not 4
-            for (int x = 0; x < 6; x++)
+            for (int y = 0; y < 7; y++)
             {
-                for (int y = 0; y < 7; y++)
+                for (int x = 0; x < 6; x++)
                 {
                     //Hardest part is to not go out of bounds of the array
                     
-                    int i = 0;
+                    //  i is 1, becase we are calculating based on each space IF we go there, not before
+                    int i = 1;
                     int j = 0;
 
-
+                    
+                    //  ======================================================================
+                    i = 1;
+                    j = 0;
+                    string colorLocked = "";
                     //Check right from most recently placed disc
+                    
                     for (int c = y; j < 4; c++, j++)
                     {
                         if (c < 7)
                         {
-                            if (board[x, y].getCellColor() != "Grey")
+                            //if (board[x, c].getCellColor() == board[x, y].getCellColor())
+                            //{
+                            //    i++;
+                            //}
+                            if (board[x, y].getCellColor() == "Grey")
                             {
-                                if (board[x, c].getCellColor() == board[x, y].getCellColor())
+
+                                if (board[x, c].getCellColor() == colorLocked)
                                 {
                                     i++;
                                 }
+                                
+                                if (colorLocked == "" && board[x, c].getCellColor() != "Grey")
+                                {
+                                    colorLocked = board[x, c].getCellColor();
+                                    i++;
+                                }
+
                             }
+
                         }
-                    }
-                    //  Allows for checking of highest priority only
-                    if (i > danger[x,y])
-                    {
-                        danger[x, y] = i;
-                    }
-                    if (i == 3)
-                    {
-                        winner = true;
                     }
 
                     //Check left from most recently placed disc
-                    i = 0;
                     j = 0;
+
                     for (int c = y; j < 4; c--, j++)
                     {
                         if (c >= 0)
                         {
-                            if (board[x, y].getCellColor() != "Grey")
+                            //if (board[x, y].getCellColor() != "Grey")
+                            //{
+                            //    if (board[x, c].getCellColor() == board[x, y].getCellColor())
+                            //    {
+                            //        i++;
+                            //    }
+                            //}
+
+                            if (board[x, y].getCellColor() == "Grey")
                             {
-                                if (board[x, c].getCellColor() == board[x, y].getCellColor())
+
+                                if (board[x, c].getCellColor() == colorLocked)
                                 {
                                     i++;
                                 }
+
+                                //  shouldnt need this becuase it is going in a pair
+                                //if (colorLocked == "" && board[x, c].getCellColor() != "Grey")
+                                //{
+                                //    colorLocked = board[x, c].getCellColor();
+                                //}
+
                             }
+
                         }
                     }
-                    if (i > danger[x, y])
+                   
+                    if (danger[x, y] >= 0)
                     {
-                        danger[x, y] = i;
-                    }
-                    if (i == 3)
-                    {
-                        winner = true;
-                        //return winner;
+                        if (i > danger[x, y])
+                        {
+                            danger[x, y] = i;
+                        }
                     }
 
-                    //Check up from most recently placed disc
-                    i = 0;
+                    if (i >= 4)
+                    {
+                        //  below the [4] must be [-4]
+                        danger[x, y] = i;
+
+                        //  CONVERT ALL TO THIS
+                        //  but with safety features
+                        danger[x + 1, y] = -i;
+                    }
+
+                    //  ======================================================================
+                    i = 1;
                     j = 0;
+                    colorLocked = "";
+                    
+                    //Check up from most recently placed disc
+                    
                     for (int r = x; j < 4; r--, j++)
                     {
                         if (r >= 0)
                         {
-                            if (board[x, y].getCellColor() != "Grey")
+                            //if (board[x, y].getCellColor() != "Grey")
+                            //{
+                            //    if (board[r, y].getCellColor() == board[x, y].getCellColor())
+                            //    {
+                            //        i++;
+                            //    }
+                            //}
+
+                            if (board[x, y].getCellColor() == "Grey")
                             {
-                                if (board[r, y].getCellColor() == board[x, y].getCellColor())
+
+                                if (board[r, y].getCellColor() == colorLocked)
                                 {
                                     i++;
                                 }
+
+                                if (colorLocked == "" && board[r,y].getCellColor() != "Grey")
+                                {
+                                    colorLocked = board[r, y].getCellColor();
+                                }
+
                             }
+
                         }
                     }
-                    if (i > danger[x, y])
+                    
+                    if (danger[x, y] >= 0)
                     {
-                        danger[x, y] = i;
-                    }
-                    if (i == 3)
-                    {
-                        winner = true;
-                        //return winner;
+                        if (i > danger[x, y])
+                        {
+                            danger[x, y] = i;
+                        }
                     }
 
                     //Check down from most recently placed disc
-                    i = 0;
                     j = 0;
+
                     for (int r = x; j < 4; r++, j++)
                     {
                         if (r < 6)
                         {
-                            if (board[x, y].getCellColor() != "Grey")
+                            //if (board[x, y].getCellColor() != "Grey")
+                            //{
+                            //    if (board[r, y].getCellColor() == board[x, y].getCellColor())
+                            //    {
+                            //        i++;
+                            //    }
+                            //}
+
+                            if (board[x, y].getCellColor() == "Grey")
                             {
-                                if (board[r, y].getCellColor() == board[x, y].getCellColor())
+
+                                if (board[r, y].getCellColor() == colorLocked)
                                 {
                                     i++;
                                 }
+
+                                //if (colorLocked == "" && board[r, y].getCellColor() != "Grey")
+                                //{
+                                //    colorLocked = board[r, y].getCellColor();
+                                //}
+
                             }
+
                         }
                     }
-                    if (i > danger[x, y])
+                    
+                    if (danger[x, y] >= 0)
                     {
+                        if (i > danger[x, y])
+                        {
+                            danger[x, y] = i;
+                        }
+                    }
+
+                    if (i >= 4)
+                    {
+                        //  below the [4] must be [-4]
                         danger[x, y] = i;
+                        danger[x - 1, y] = -i;
                     }
-                    if (i == 3)
-                    {
-                        winner = true;
-                        //return winner;
-                    }
+
+                    //  ======================================================================
 
                     //DIAGONALS
                     //Check up-right from most recently placed disc
-                    i = 0;
+                    i = 1;
                     j = 0;
+                    colorLocked = "";
+
                     for (int r = x, c = y; j < 4; r--, c++, j++)
                     {
                         if (r >= 0 && c < 7)
                         {
-                            if (board[x, y].getCellColor() != "Grey")
+                            //if (board[x, y].getCellColor() != "Grey")
+                            //{
+                            //    if (board[x, c].getCellColor() == board[x, y].getCellColor())
+                            //    {
+                            //        i++;
+                            //    }
+                            //}
+
+                            if (board[x, y].getCellColor() == "Grey")
                             {
-                                if (board[x, c].getCellColor() == board[x, y].getCellColor())
+
+                                if (board[r, c].getCellColor() == colorLocked)
                                 {
                                     i++;
                                 }
+
+                                if (colorLocked == "" && board[r, c].getCellColor() != "Grey")
+                                {
+                                    colorLocked = board[r, c].getCellColor();
+                                }
+
                             }
+
                         }
                     }
-                    if (i > danger[x, y])
+                    
+                    if (danger[x, y] >= 0)
                     {
-                        danger[x, y] = i;
-                    }
-                    if (i == 3)
-                    {
-                        winner = true;
-                        //return winner;
+                        if (i > danger[x, y])
+                        {
+                            danger[x, y] = i;
+                        }
                     }
 
-                    //Check up-left from most recently placed disc
-                    i = 0;
-                    j = 0;
-                    for (int r = x, c = y; j < 4; r--, c--, j++)
-                    {
-                        if (r >= 0 && c >= 0)
-                        {
-                            if (board[x, y].getCellColor() != "Grey")
-                            {
-                                if (board[x, c].getCellColor() == board[x, y].getCellColor())
-                                {
-                                    i++;
-                                }
-                            }
-                        }
-                    }
-                    if (i > danger[x, y])
-                    {
-                        danger[x, y] = i;
-                    }
-                    if (i == 3)
-                    {
-                        winner = true;
-                        //return winner;
-                    }
-
-                    //Check down-right from most recently placed disc
-                    i = 0;
-                    j = 0;
-                    for (int r = x, c = y; j < 4; r++, c++, j++)
-                    {
-                        if (r < 6 && c < 7)
-                        {
-                            if (board[x, y].getCellColor() != "Grey")
-                            {
-                                if (board[x, c].getCellColor() == board[x, y].getCellColor())
-                                {
-                                    i++;
-                                }
-                            }
-                        }
-                    }
-                    if (i > danger[x, y])
-                    {
-                        danger[x, y] = i;
-                    }
-                    if (i == 3)
-                    {
-                        winner = true;
-                        //return winner;
-                    }
                     //Check down-left from most recently placed disc
-                    i = 0;
                     j = 0;
+                    
                     for (int r = x, c = y; j < 4; r++, c--, j++)
                     {
                         if (r < 6 && c >= 0)
                         {
-                            if (board[x, y].getCellColor() != "Grey")
+                            //if (board[x, y].getCellColor() != "Grey")
+                            //{
+                            //    if (board[x, c].getCellColor() == board[x, y].getCellColor())
+                            //    {
+                            //        i++;
+                            //    }
+                            //}
+
+                            if (board[x, y].getCellColor() == "Grey")
                             {
-                                if (board[x, c].getCellColor() == board[x, y].getCellColor())
+
+                                if (board[r, c].getCellColor() == colorLocked)
                                 {
                                     i++;
                                 }
+
+                                //if (colorLocked == "" && board[r, c].getCellColor() != "Grey")
+                                //{
+                                //    colorLocked = board[r, c].getCellColor();
+                                //}
+
                             }
+
                         }
                     }
-                    if (i > danger[x, y])
+                    
+                    if (danger[x, y] >= 0)
                     {
+                        if (i > danger[x, y])
+                        {
+                            danger[x, y] = i;
+                        }
+                    }
+
+                    if (i >= 4)
+                    {
+                        //  below the [4] must be [-4]
                         danger[x, y] = i;
+                        danger[x - 1, y] = -i;
                     }
-                    if (i == 3)
+
+                    //  ======================================================================
+
+                    //Check up-left from most recently placed disc
+                    i = 1;
+                    j = 0;
+                    colorLocked = "";
+
+                    for (int r = x, c = y; j < 4; r--, c--, j++)
                     {
-                        winner = true;
-                        //return winner;
+                        if (r >= 0 && c >= 0)
+                        {
+                            //if (board[x, y].getCellColor() != "Grey")
+                            //{
+                            //    if (board[x, c].getCellColor() == board[x, y].getCellColor())
+                            //    {
+                            //        i++;
+                            //    }
+                            //}
+
+                            if (board[x, y].getCellColor() == "Grey")
+                            {
+
+                                if (board[r, c].getCellColor() == colorLocked)
+                                {
+                                    i++;
+                                }
+
+                                if (colorLocked == "" && board[r, c].getCellColor() != "Grey")
+                                {
+                                    colorLocked = board[r, c].getCellColor();
+                                }
+
+                            }
+
+                        }
+                    }
+                    
+                    if (danger[x, y] >= 0)
+                    {
+                        if (i > danger[x, y])
+                        {
+                            danger[x, y] = i;
+                        }
                     }
 
+                    //Check down-right from most recently placed disc
+                    j = 0;
+                    
+                    for (int r = x, c = y; j < 4; r++, c++, j++)
+                    {
+                        if (r < 6 && c < 7)
+                        {
+                            //if (board[x, y].getCellColor() != "Grey")
+                            //{
+                            //    if (board[x, c].getCellColor() == board[x, y].getCellColor())
+                            //    {
+                            //        i++;
+                            //    }
+                            //}
 
-                    //return winner;
+                            if (board[x, y].getCellColor() == "Grey")
+                            {
+
+                                if (board[r, c].getCellColor() == colorLocked)
+                                {
+                                    i++;
+                                }
+
+                                //if (colorLocked == "" && board[r, c].getCellColor() != "Grey")
+                                //{
+                                //    colorLocked = board[r, c].getCellColor();
+                                //}
+
+                            }
+
+                        }
+                    }
+                    
+                    if (danger[x, y] >= 0)
+                    {
+                        if (i > danger[x, y])
+                        {
+                            danger[x, y] = i;
+                        }
+                    }
+
+                    if (i >= 4)
+                    {
+                        //  below the [4] must be [-4]
+                        danger[x, y] = i;
+                        danger[x - 1, y] = -i;
+                    }
+
+                    //  ======================================================================
+                    //  Repeat but in reverse
+                    //  
+                    //  ======================================================================
+                    i = 1;
+                    j = 0;
+                    colorLocked = "";
+                    
+                    //Check Left from most recently placed disc
+
+                    for (int c = y; j < 4; c--, j++)
+                    {
+                        if (c >= 0)
+                        {
+
+                            if (board[x, y].getCellColor() == "Grey")
+                            {
+
+                                if (board[x, c].getCellColor() == colorLocked)
+                                {
+                                    i++;
+                                }
+
+                                if (colorLocked == "" && board[x, c].getCellColor() != "Grey")
+                                {
+                                    colorLocked = board[x, c].getCellColor();
+                                }
+
+                            }
+
+                        }
+                    }
+
+                    //Check Right from most recently placed disc
+                    j = 0;
+
+                    for (int c = y; j < 4; c++, j++)
+                    {
+                        if (c < 7)
+                        {
+                            
+                            if (board[x, y].getCellColor() == "Grey")
+                            {
+
+                                if (board[x, c].getCellColor() == colorLocked)
+                                {
+                                    i++;
+                                }
+
+                                //if (colorLocked == "" && board[x, c].getCellColor() != "Grey")
+                                //{
+                                //    colorLocked = board[x, c].getCellColor();
+                                //    i++;
+                                //}
+
+                            }
+
+                        }
+                    }
+
+                    if (danger[x, y] >= 0)
+                    {
+                        if (i > danger[x, y])
+                        {
+                            danger[x, y] = i;
+                        }
+                    }
+
+                    if (i >= 4)
+                    {
+                        //  below the [4] must be [-4]
+                        danger[x, y] = i;
+                        danger[x - 1, y] = -i;
+                    }
+
+                    //  ======================================================================
+                    i = 1;
+                    j = 0;
+                    colorLocked = "";
+
+                    //Check Down from most recently placed disc
+                    for (int r = x; j < 4; r++, j++)
+                    {
+                        if (r < 6)
+                        {
+
+                            if (board[x, y].getCellColor() == "Grey")
+                            {
+
+                                if (board[r, y].getCellColor() == colorLocked)
+                                {
+                                    i++;
+                                }
+
+                                if (colorLocked == "" && board[r, y].getCellColor() != "Grey")
+                                {
+                                    colorLocked = board[r, y].getCellColor();
+                                }
+
+                            }
+
+                        }
+                    }
+
+                    if (danger[x, y] >= 0)
+                    {
+                        if (i > danger[x, y])
+                        {
+                            danger[x, y] = i;
+                        }
+                    }
+
+                    //Check up from most recently placed disc
+                    j = 0;
+
+                    for (int r = x; j < 4; r--, j++)
+                    {
+                        if (r >= 0)
+                        {
+
+                            if (board[x, y].getCellColor() == "Grey")
+                            {
+
+                                if (board[r, y].getCellColor() == colorLocked)
+                                {
+                                    i++;
+                                }
+
+                                //if (colorLocked == "" && board[r, y].getCellColor() != "Grey")
+                                //{
+                                //    colorLocked = board[r, y].getCellColor();
+                                //}
+
+                            }
+
+                        }
+                    }                    
+
+                    if (danger[x, y] >= 0)
+                    {
+                        if (i > danger[x, y])
+                        {
+                            danger[x, y] = i;
+                        }
+                    }
+
+                    if (i >= 4)
+                    {
+                        //  below the [4] must be [-4]
+                        danger[x, y] = i;
+                        danger[x - 1, y] = -i;
+                    }
+
+                    //  ======================================================================
+
+                    //DIAGONALS
+                    //Check up-Left from most recently placed disc
+                    i = 1;
+                    j = 0;
+                    colorLocked = "";
+
+                    for (int r = x, c = y; j < 4; r++, c--, j++)
+                    {
+                        if (r < 6 && c >= 0)
+                        {
+
+                            if (board[x, y].getCellColor() == "Grey")
+                            {
+
+                                if (board[r, c].getCellColor() == colorLocked)
+                                {
+                                    i++;
+                                }
+
+                                if (colorLocked == "" && board[r, c].getCellColor() != "Grey")
+                                {
+                                    colorLocked = board[r, c].getCellColor();
+                                }
+
+                            }
+
+                        }
+                    }
+
+                    if (danger[x, y] >= 0)
+                    {
+                        if (i > danger[x, y])
+                        {
+                            danger[x, y] = i;
+                        }
+                    }
+
+                    //Check down-Right from most recently placed disc
+                    j = 0;
+
+                    for (int r = x, c = y; j < 4; r--, c++, j++)
+                    {
+                        if (r >= 0 && c < 7)
+                        {
+                            
+
+                            if (board[x, y].getCellColor() == "Grey")
+                            {
+
+                                if (board[r, c].getCellColor() == colorLocked)
+                                {
+                                    i++;
+                                }
+
+                                //if (colorLocked == "" && board[r, c].getCellColor() != "Grey")
+                                //{
+                                //    colorLocked = board[r, c].getCellColor();
+                                //}
+
+                            }
+
+                        }
+                    }
+
+                    if (danger[x, y] >= 0)
+                    {
+                        if (i > danger[x, y])
+                        {
+                            danger[x, y] = i;
+                        }
+                    }
+
+                    if (i >= 4)
+                    {
+                        //  below the [4] must be [-4]
+                        danger[x, y] = i;
+                        danger[x - 1, y] = -i;
+                    }
+
+                    //  ======================================================================
+
+                    //Check up-left from most recently placed disc
+                    i = 1;
+                    j = 0;
+                    colorLocked = "";
+
+                    for (int r = x, c = y; j < 4; r++, c++, j++)
+                    {
+                        if (r < 6 && c < 7)
+                        {
+
+                            if (board[x, y].getCellColor() == "Grey")
+                            {
+
+                                if (board[r, c].getCellColor() == colorLocked)
+                                {
+                                    i++;
+                                }
+
+                                if (colorLocked == "" && board[r, c].getCellColor() != "Grey")
+                                {
+                                    colorLocked = board[r, c].getCellColor();
+                                }
+
+                            }
+
+                        }
+                    }
+                   
+                    if (danger[x, y] >= 0)
+                    {
+                        if (i > danger[x, y])
+                        {
+                            danger[x, y] = i;
+                        }
+                    }
+
+                    //Check down-right from most recently placed disc
+                    j = 0;
+
+                    for (int r = x, c = y; j < 4; r--, c--, j++)
+                    {
+                        if (r >= 0 && c >= 0)
+                        {
+
+                            if (board[x, y].getCellColor() == "Grey")
+                            {
+
+                                if (board[r, c].getCellColor() == colorLocked)
+                                {
+                                    i++;
+                                }
+
+                                //if (colorLocked == "" && board[r, c].getCellColor() != "Grey")
+                                //{
+                                //    colorLocked = board[r, c].getCellColor();
+                                //}
+
+                            }
+
+                        }
+                    }
+
+                    if (danger[x, y] >= 0)
+                    {
+                        if (i > danger[x, y])
+                        {
+                            danger[x, y] = i;
+                        }
+                    }
+
+                    if (i >= 4)
+                    {
+                        //  below the [4] must be [-4]
+                        danger[x, y] = i;
+                        danger[x - 1, y] = -i;
+                    }
+
+                    //  ======================================================================
+
                 }
             }
 

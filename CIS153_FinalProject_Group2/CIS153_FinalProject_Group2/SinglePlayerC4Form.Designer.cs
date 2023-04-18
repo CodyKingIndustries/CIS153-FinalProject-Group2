@@ -79,6 +79,7 @@
             this.btn_Row5Slot = new System.Windows.Forms.Button();
             this.btn_Row6Slot = new System.Windows.Forms.Button();
             this.btn_Row7Slot = new System.Windows.Forms.Button();
+            this.lbl_Here = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btn_Exit
@@ -569,12 +570,22 @@
             this.btn_Row7Slot.MouseLeave += new System.EventHandler(this.btn_Row7Slot_MouseLeave);
             this.btn_Row7Slot.MouseHover += new System.EventHandler(this.btn_Row7Slot_MouseHover);
             // 
+            // lbl_Here
+            // 
+            this.lbl_Here.AutoSize = true;
+            this.lbl_Here.Location = new System.Drawing.Point(77, 14);
+            this.lbl_Here.Name = "lbl_Here";
+            this.lbl_Here.Size = new System.Drawing.Size(10, 13);
+            this.lbl_Here.TabIndex = 51;
+            this.lbl_Here.Text = "[";
+            // 
             // SinglePlayerC4Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Blue;
             this.ClientSize = new System.Drawing.Size(543, 535);
+            this.Controls.Add(this.lbl_Here);
             this.Controls.Add(this.btn_Row7Slot);
             this.Controls.Add(this.btn_Row6Slot);
             this.Controls.Add(this.btn_Row5Slot);
@@ -630,6 +641,7 @@
             this.Text = "SinglePlayerC4Form";
             this.Load += new System.EventHandler(this.SinglePlayerC4Form_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -686,5 +698,6 @@
         private System.Windows.Forms.Button btn_Row5Slot;
         private System.Windows.Forms.Button btn_Row6Slot;
         private System.Windows.Forms.Button btn_Row7Slot;
+        private System.Windows.Forms.Label lbl_Here;
     }
 }
