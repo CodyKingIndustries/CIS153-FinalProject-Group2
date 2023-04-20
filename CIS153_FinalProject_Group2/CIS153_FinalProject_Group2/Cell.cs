@@ -8,14 +8,7 @@ namespace CIS153_FinalProject_Group2
 {
     internal class Cell
     {
-        // ========================================================================
-        //  Both a Cell and a Disc Class is redundant
-        //  Cell holds Disc, Disc Holds Color, Neither needs x/y cords [boards job]
-
-
-        //  Thus I am transitioning to remove "cell" to ONLY have disc
-        //  But am temporarily leaving the code here in comments just for temp backup
-        // ========================================================================
+        
 
 
         //  This color will be moved into Disc when ready

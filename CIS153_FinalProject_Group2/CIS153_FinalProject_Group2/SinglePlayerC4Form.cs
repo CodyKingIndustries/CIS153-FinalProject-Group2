@@ -102,6 +102,7 @@ namespace CIS153_FinalProject_Group2
             }
             //  Place the piece on the board
             SPBoard.getBoard()[r, c].placeDisc("Red");
+
             AiDecision();
 
 
@@ -365,50 +366,83 @@ namespace CIS153_FinalProject_Group2
             //Board board = new Board();
             Cell[,] board = new Cell[6, 7];
             int[,] PriorityArray = new int[6, 7];
-            //  1 -> 4, is ammount of pieces if placed in a column,
-            //  -3 -> -4 is places that would give opponents 3 or 4 in a row / prevent own 3 or 4
-            //  1 is a lone space with no direct benefit because -> 1 lone piece
-            int decision = -4;
+            int[] AiOptions = new int[7];
             int columnPlacement = 0;
-
 
 
             for (int r = 0; r < 6; r++)
             {
                 for (int c = 0; c < 7; c++)
                 {
-                    //  copy inportant numbers over into the algorithms
+                    //  update board
                     board[r, c] = SPBoard.getCell(r, c);
-                    //  Set Up
+                    //  preset up priorityArray
                     PriorityArray[r, c] = 0;
 
                 }
             }
 
+            //  fill out prioirty array
             PriorityArray = CheckForPlayerWin(board, PriorityArray);
 
-            for (int r = 0; r < 6; r++)
+            //  provide the ai with litmited options for best results
+            for (int r = 5; r >= 0; r--)
             {
                 for (int c = 0; c < 7; c++)
                 {
-                    
-                        Console.WriteLine(PriorityArray[r, c] + " At [" + r + "," + c);
-                   
 
-
-                        if (PriorityArray[r, c] > decision)
+                    if (PriorityArray[r, c] != 0)
+                    {
+                        if (AiOptions[c] == 0)
                         {
-                            decision = PriorityArray[r, c];
-                            columnPlacement = c;
-                            
+                            AiOptions[c] = PriorityArray[r, c];
                         }
-                        
-                    //}
-                    
+                    }
+
                 }
             }
 
             
+            for (int c = 0; c < 7; c++)
+            {
+                //if (PriorityArray[r,c] >= 2)
+                //{
+                //    Console.WriteLine(PriorityArray[r, c] + " At [" + r + "," + c);
+                //}
+
+                //                                      just dont select -3?
+                if (AiOptions[c] > columnPlacement) //|| AiOptions[c] <= -3)
+                {
+                        columnPlacement = c;
+                }
+
+                //if (AiOptions[c] <= -3)
+                //{
+                //    if (SPBoard.getCell(r, c).isFull())
+                //    {
+
+                //    }
+                //    else if (SPBoard.getCell(r, c).isFull() == false)
+                //    {
+                //        columnPlacement = c;
+                //    }
+
+                //}
+                //else
+                //{
+                //    columnPlacement = c;
+                //}
+
+
+            }
+            
+             for (int c = 0; c < 7; c++)
+             {
+                Console.WriteLine(AiOptions[c]);
+             }
+            Console.WriteLine("It chose C = " + columnPlacement);
+            
+           
 
             //  needs to check for column being filled before this function calls
             //  and if column == filled -> change placement number to next highest priority
@@ -416,44 +450,33 @@ namespace CIS153_FinalProject_Group2
 
         }
 
-        //  This searches the current board state, and returns "danger" which is an int[]
-        //  with values from -2 -> ~4
+        //  This searches the current board state, and returns "danger" which is an int[,]
         //  higher number = more pieces in a row
         private int[,] CheckForPlayerWin(Cell[,] board, int[,] danger)
         {
             //  Progress:
             //  
-            //  It can now fully fill out the array with high priority spots
-            //  Though these spots are currently occupied spots,
-            //  work will need to be done to take the priority spots and give a fresh spot each its own score
-            //  also no differntiation between the two colors, will be modified soon
+            //  Knows all locations based on their number of pieces in a row
+            //  I am working on only letting it place pieces off of available spots
 
 
-
-
-            
             //  j is a counter
             //  y is columns [c]
             //  x is Rows [r]
             //  This is all copied and modified code from "checkWinner" in Board.cs
-            //  so that I can use the same algorith to instead find 2 & 3 in a row, Not 4
-            for (int y = 0; y < 7; y++)
+            //  so that I can use the same algorith to instead find 2 & 3 in a row, Not 4 [already game over]
+            for (int x = 0; x < 6; x++)
             {
-                for (int x = 0; x < 6; x++)
+                for (int y = 0; y < 7; y++)
                 {
                     //Hardest part is to not go out of bounds of the array
-                    
-                    //  i is 1, becase we are calculating based on each space IF we go there, not before
-                    int i = 1;
-                    int j = 0;
 
-                    
                     //  ======================================================================
-                    i = 1;
-                    j = 0;
+                    int i = 0;
+                    int j = 0;
                     string colorLocked = "";
                     //Check right from most recently placed disc
-                    
+
                     for (int c = y; j < 4; c++, j++)
                     {
                         if (c < 7)
@@ -469,7 +492,7 @@ namespace CIS153_FinalProject_Group2
                                 {
                                     i++;
                                 }
-                                
+
                                 if (colorLocked == "" && board[x, c].getCellColor() != "Grey")
                                 {
                                     colorLocked = board[x, c].getCellColor();
@@ -514,7 +537,9 @@ namespace CIS153_FinalProject_Group2
 
                         }
                     }
-                   
+
+
+                    //  Pobalby only need one check not 2
                     if (danger[x, y] >= 0)
                     {
                         if (i > danger[x, y])
@@ -523,34 +548,36 @@ namespace CIS153_FinalProject_Group2
                         }
                     }
 
-                    if (i >= 4)
+                    if (i >= 3)
                     {
                         //  below the [4] must be [-4]
                         danger[x, y] = i;
 
                         //  CONVERT ALL TO THIS
                         //  but with safety features
-                        danger[x + 1, y] = -i;
+                        if (x < 5)
+                        {
+                            danger[x + 1, y] = -i;
+                        }
+                    }
+
+                    if (danger[x, y] >= 3)
+                    {
+                        Console.WriteLine("Left and Right: " + x + "," + y + i + " -> " + danger[x, y]);
                     }
 
                     //  ======================================================================
-                    i = 1;
+                    i = 0;
                     j = 0;
                     colorLocked = "";
-                    
+
                     //Check up from most recently placed disc
-                    
+
                     for (int r = x; j < 4; r--, j++)
                     {
                         if (r >= 0)
                         {
-                            //if (board[x, y].getCellColor() != "Grey")
-                            //{
-                            //    if (board[r, y].getCellColor() == board[x, y].getCellColor())
-                            //    {
-                            //        i++;
-                            //    }
-                            //}
+
 
                             if (board[x, y].getCellColor() == "Grey")
                             {
@@ -560,16 +587,17 @@ namespace CIS153_FinalProject_Group2
                                     i++;
                                 }
 
-                                if (colorLocked == "" && board[r,y].getCellColor() != "Grey")
+                                if (colorLocked == "" && board[r, y].getCellColor() != "Grey")
                                 {
                                     colorLocked = board[r, y].getCellColor();
+                                    i++;
                                 }
 
                             }
 
                         }
                     }
-                    
+
                     if (danger[x, y] >= 0)
                     {
                         if (i > danger[x, y])
@@ -610,7 +638,7 @@ namespace CIS153_FinalProject_Group2
 
                         }
                     }
-                    
+
                     if (danger[x, y] >= 0)
                     {
                         if (i > danger[x, y])
@@ -619,18 +647,28 @@ namespace CIS153_FinalProject_Group2
                         }
                     }
 
-                    if (i >= 4)
-                    {
-                        //  below the [4] must be [-4]
-                        danger[x, y] = i;
-                        danger[x - 1, y] = -i;
-                    }
+                    //if (i >= 3)
+                    //{
+                    //    //  below the [4] must be [-4]
+                    //    danger[x, y] = i;
 
+                    //    //  CONVERT ALL TO THIS
+                    //    //  but with safety features
+                    //    if (x < 5)
+                    //    {
+                    //        danger[x + 1, y] = -i;
+                    //    }
+                    //}
+
+                    if (danger[x, y] >= 3)
+                    {
+                        Console.WriteLine("Up + Down: " + x + "," + y + i + " -> " + danger[x, y]);
+                    }
                     //  ======================================================================
 
                     //DIAGONALS
                     //Check up-right from most recently placed disc
-                    i = 1;
+                    i = 0;
                     j = 0;
                     colorLocked = "";
 
@@ -657,13 +695,14 @@ namespace CIS153_FinalProject_Group2
                                 if (colorLocked == "" && board[r, c].getCellColor() != "Grey")
                                 {
                                     colorLocked = board[r, c].getCellColor();
+                                    i++;
                                 }
 
                             }
 
                         }
                     }
-                    
+
                     if (danger[x, y] >= 0)
                     {
                         if (i > danger[x, y])
@@ -674,7 +713,7 @@ namespace CIS153_FinalProject_Group2
 
                     //Check down-left from most recently placed disc
                     j = 0;
-                    
+
                     for (int r = x, c = y; j < 4; r++, c--, j++)
                     {
                         if (r < 6 && c >= 0)
@@ -704,7 +743,7 @@ namespace CIS153_FinalProject_Group2
 
                         }
                     }
-                    
+
                     if (danger[x, y] >= 0)
                     {
                         if (i > danger[x, y])
@@ -713,17 +752,28 @@ namespace CIS153_FinalProject_Group2
                         }
                     }
 
-                    if (i >= 4)
+                    if (i >= 3)
                     {
                         //  below the [4] must be [-4]
                         danger[x, y] = i;
-                        danger[x - 1, y] = -i;
+
+                        //  CONVERT ALL TO THIS
+                        //  but with safety features
+                        if (x < 5)
+                        {
+                            danger[x + 1, y] = -i;
+                        }
+                    }
+
+                    if (danger[x, y] >= 3)
+                    {
+                        Console.WriteLine("DLeft and URight: " + x + "," + y + i + " -> " + danger[x, y]);
                     }
 
                     //  ======================================================================
 
                     //Check up-left from most recently placed disc
-                    i = 1;
+                    i = 0;
                     j = 0;
                     colorLocked = "";
 
@@ -750,13 +800,14 @@ namespace CIS153_FinalProject_Group2
                                 if (colorLocked == "" && board[r, c].getCellColor() != "Grey")
                                 {
                                     colorLocked = board[r, c].getCellColor();
+                                    i++;
                                 }
 
                             }
 
                         }
                     }
-                    
+
                     if (danger[x, y] >= 0)
                     {
                         if (i > danger[x, y])
@@ -767,7 +818,7 @@ namespace CIS153_FinalProject_Group2
 
                     //Check down-right from most recently placed disc
                     j = 0;
-                    
+
                     for (int r = x, c = y; j < 4; r++, c++, j++)
                     {
                         if (r < 6 && c < 7)
@@ -797,7 +848,7 @@ namespace CIS153_FinalProject_Group2
 
                         }
                     }
-                    
+
                     if (danger[x, y] >= 0)
                     {
                         if (i > danger[x, y])
@@ -806,21 +857,32 @@ namespace CIS153_FinalProject_Group2
                         }
                     }
 
-                    if (i >= 4)
+                    if (i >= 3)
                     {
                         //  below the [4] must be [-4]
                         danger[x, y] = i;
-                        danger[x - 1, y] = -i;
+
+                        //  CONVERT ALL TO THIS
+                        //  but with safety features
+                        if (x < 5)
+                        {
+                            danger[x + 1, y] = -i;
+                        }
+                    }
+
+                    if (danger[x, y] >= 3)
+                    {
+                        Console.WriteLine("ULeft and DRight: " + x + "," + y + i + " -> " + danger[x, y]);
                     }
 
                     //  ======================================================================
                     //  Repeat but in reverse
                     //  
                     //  ======================================================================
-                    i = 1;
+                    i = 0;
                     j = 0;
                     colorLocked = "";
-                    
+
                     //Check Left from most recently placed disc
 
                     for (int c = y; j < 4; c--, j++)
@@ -839,6 +901,7 @@ namespace CIS153_FinalProject_Group2
                                 if (colorLocked == "" && board[x, c].getCellColor() != "Grey")
                                 {
                                     colorLocked = board[x, c].getCellColor();
+                                    i++;
                                 }
 
                             }
@@ -846,6 +909,13 @@ namespace CIS153_FinalProject_Group2
                         }
                     }
 
+                    if (danger[x, y] >= 0)
+                    {
+                        if (i > danger[x, y])
+                        {
+                            danger[x, y] = i;
+                        }
+                    }
                     //Check Right from most recently placed disc
                     j = 0;
 
@@ -853,7 +923,7 @@ namespace CIS153_FinalProject_Group2
                     {
                         if (c < 7)
                         {
-                            
+
                             if (board[x, y].getCellColor() == "Grey")
                             {
 
@@ -881,15 +951,26 @@ namespace CIS153_FinalProject_Group2
                         }
                     }
 
-                    if (i >= 4)
+                    if (i >= 3)
                     {
                         //  below the [4] must be [-4]
                         danger[x, y] = i;
-                        danger[x - 1, y] = -i;
+
+                        //  CONVERT ALL TO THIS
+                        //  but with safety features
+                        if (x < 5)
+                        {
+                            danger[x + 1, y] = -i;
+                        }
+                    }
+
+                    if (danger[x, y] >= 3)
+                    {
+                        Console.WriteLine("I Left and Right: " + x + "," + y + i + " -> " + danger[x, y]);
                     }
 
                     //  ======================================================================
-                    i = 1;
+                    i = 0;
                     j = 0;
                     colorLocked = "";
 
@@ -910,6 +991,7 @@ namespace CIS153_FinalProject_Group2
                                 if (colorLocked == "" && board[r, y].getCellColor() != "Grey")
                                 {
                                     colorLocked = board[r, y].getCellColor();
+                                    i++;
                                 }
 
                             }
@@ -959,18 +1041,29 @@ namespace CIS153_FinalProject_Group2
                         }
                     }
 
-                    if (i >= 4)
+                    //if (i >= 3)
+                    //{
+                    //    //  below the [4] must be [-4]
+                    //    danger[x, y] = i;
+
+                    //    //  CONVERT ALL TO THIS
+                    //    //  but with safety features
+                    //    if (x < 5)
+                    //    {
+                    //        danger[x + 1, y] = -i;
+                    //    }
+                    //}
+
+                    if (danger[x, y] >= 3)
                     {
-                        //  below the [4] must be [-4]
-                        danger[x, y] = i;
-                        danger[x - 1, y] = -i;
+                        Console.WriteLine("I Up + Down: " + x + "," + y + i + " -> " + danger[x, y]);
                     }
 
                     //  ======================================================================
 
                     //DIAGONALS
                     //Check up-Left from most recently placed disc
-                    i = 1;
+                    i = 0;
                     j = 0;
                     colorLocked = "";
 
@@ -990,6 +1083,7 @@ namespace CIS153_FinalProject_Group2
                                 if (colorLocked == "" && board[r, c].getCellColor() != "Grey")
                                 {
                                     colorLocked = board[r, c].getCellColor();
+                                    i++;
                                 }
 
                             }
@@ -1040,17 +1134,28 @@ namespace CIS153_FinalProject_Group2
                         }
                     }
 
-                    if (i >= 4)
+                    if (i >= 3)
                     {
                         //  below the [4] must be [-4]
                         danger[x, y] = i;
-                        danger[x - 1, y] = -i;
+
+                        //  CONVERT ALL TO THIS
+                        //  but with safety features
+                        if (x < 5)
+                        {
+                            danger[x + 1, y] = -i;
+                        }
                     }
 
+                    if (danger[x, y] >= 3)
+                    {
+                        Console.WriteLine("I ULeft and DRight: " + x + "," + y + i + " -> " + danger[x, y]);
+
+                    }
                     //  ======================================================================
 
-                    //Check up-left from most recently placed disc
-                    i = 1;
+                    //Check Down-left from most recently placed disc
+                    i = 0;
                     j = 0;
                     colorLocked = "";
 
@@ -1070,6 +1175,7 @@ namespace CIS153_FinalProject_Group2
                                 if (colorLocked == "" && board[r, c].getCellColor() != "Grey")
                                 {
                                     colorLocked = board[r, c].getCellColor();
+                                    i++;
                                 }
 
                             }
@@ -1085,7 +1191,7 @@ namespace CIS153_FinalProject_Group2
                         }
                     }
 
-                    //Check down-right from most recently placed disc
+                    //Check Up-right from most recently placed disc
                     j = 0;
 
                     for (int r = x, c = y; j < 4; r--, c--, j++)
@@ -1119,11 +1225,28 @@ namespace CIS153_FinalProject_Group2
                         }
                     }
 
-                    if (i >= 4)
+                    if (i >= 3)
                     {
                         //  below the [4] must be [-4]
-                        danger[x, y] = i;
-                        danger[x - 1, y] = -i;
+                        if (danger[x,y] < i)
+                        {
+                            danger[x, y] = i;
+                        }
+                        
+
+
+
+                        //  CONVERT ALL TO THIS
+                        //  but with safety features
+                        if (x < 5)
+                        {
+                            danger[x + 1, y] = -i;
+                        }
+                    }
+
+                    if (danger[x, y] >= 3)
+                    {
+                        Console.WriteLine("I DLeft and URight: " + x + "," + y + i + " -> " + danger[x, y]);
                     }
 
                     //  ======================================================================
