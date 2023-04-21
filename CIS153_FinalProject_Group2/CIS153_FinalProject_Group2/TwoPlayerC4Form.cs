@@ -60,8 +60,6 @@ namespace CIS153_FinalProject_Group2
         //upon clicking the purple square at the top, it will "drop a disc" down that respective column
         //starting with column 0 (to 6). It will drop a disc as far down as possible (as long as the cell below it isn't occupied)
         //COLUMN 0 SLOT CLICK =================================================================
-
-
         private void btn_Col0Slot_Click(object sender, EventArgs e)
         {
 
@@ -87,12 +85,6 @@ namespace CIS153_FinalProject_Group2
                 r--;
             }
 
-            //There's going to be a LOT of lines of code but it's all really simple
-            //There's really no way to shorten it down with a loop since you can't
-            //access a button using it's name and some variables such as accessing
-            //btn_02 using a variable with 0 and another with 2. It just doesn't work
-            //I also wanted to make this as dynamic as possible which can also be helpful
-            //when passing the position of the last placed disc to the function to check for a winner
             TPBoard.getBoard()[r, c].placeDisc();
             if (r == 0)
             {
@@ -1695,14 +1687,6 @@ namespace CIS153_FinalProject_Group2
         {
             if (hasWinner)
             {
-                if (playerOnesTurn)
-                {
-                    txt_playerTurn.Text = "Player 1 Wins!";
-                }
-                else
-                {
-                    txt_playerTurn.Text = "Player 2 Wins!";
-                }
                 btn_Col0Slot.Enabled = false;
                 btn_Col1Slot.Enabled = false;
                 btn_Col2Slot.Enabled = false;
@@ -1710,6 +1694,28 @@ namespace CIS153_FinalProject_Group2
                 btn_Col4Slot.Enabled = false;
                 btn_Col5Slot.Enabled = false;
                 btn_Col6Slot.Enabled = false;
+                if (playerOnesTurn)
+                {
+                    txt_playerTurn.Text = "Player 1 Wins!";
+                    //Make winner form given this form (for a play again option), main menu form
+                    //(for option to go back to menu), and a boolean stating whether the player won or ai won
+                    Winner WinnerForm = new Winner(this, MainScreenForm, 0);
+                    //Close this form
+                    this.Hide();
+                    //Load Winner form
+                    WinnerForm.Show();
+                }
+                else
+                {
+                    //Make winner form given this form (for a play again option), main menu form
+                    //(for option to go back to menu), and a boolean stating whether the player won or ai won
+                    Winner WinnerForm = new Winner(this, MainScreenForm, 1);
+                    //Close this form
+                    this.Hide();
+                    //Load Winner form
+                    WinnerForm.Show();
+                }
+
             }
         }
 

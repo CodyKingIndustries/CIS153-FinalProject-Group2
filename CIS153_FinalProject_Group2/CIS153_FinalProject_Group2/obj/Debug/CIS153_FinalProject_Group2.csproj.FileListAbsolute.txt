@@ -54,3 +54,4 @@ C:\Users\Gabe\Desktop\CIS153-FinalProject-Group2\CIS153_FinalProject_Group2\CIS1
 C:\Users\Gabe\Desktop\CIS153-FinalProject-Group2\CIS153_FinalProject_Group2\CIS153_FinalProject_Group2\bin\Debug\CIS153_FinalProject_Group2.exe.config
 C:\Users\Gabe\Desktop\CIS153-FinalProject-Group2\CIS153_FinalProject_Group2\CIS153_FinalProject_Group2\bin\Debug\CIS153_FinalProject_Group2.exe
 C:\Users\Gabe\Desktop\CIS153-FinalProject-Group2\CIS153_FinalProject_Group2\CIS153_FinalProject_Group2\bin\Debug\CIS153_FinalProject_Group2.pdb
+C:\Users\Gabe\Desktop\CIS153-FinalProject-Group2\CIS153_FinalProject_Group2\CIS153_FinalProject_Group2\obj\Debug\CIS153_FinalProject_Group2.Winner.resources

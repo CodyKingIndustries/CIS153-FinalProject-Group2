@@ -111,7 +111,6 @@ namespace CIS153_FinalProject_Group2
             {
                 AiDecision();
             }
-
         }
 
         private void btn_Row2Slot_Click(object sender, EventArgs e)
@@ -158,12 +157,9 @@ namespace CIS153_FinalProject_Group2
             {
                 EndGame(true);
             }
-
-            AiDecision();
-
-            if (SPBoard.checkWinner(r, c))
+            else
             {
-                EndGame(false);
+                AiDecision();
             }
         }
 
@@ -209,12 +205,9 @@ namespace CIS153_FinalProject_Group2
             {
                 EndGame(true);
             }
-
-            AiDecision();
-
-            if (SPBoard.checkWinner(r, c))
+            else
             {
-                EndGame(false);
+                AiDecision();
             }
 
         }
@@ -261,12 +254,9 @@ namespace CIS153_FinalProject_Group2
             {
                 EndGame(true);
             }
-
-            AiDecision();
-
-            if (SPBoard.checkWinner(r, c))
+            else
             {
-                EndGame(false);
+                AiDecision();
             }
         }
 
@@ -313,12 +303,9 @@ namespace CIS153_FinalProject_Group2
             {
                 EndGame(true);
             }
-
-            AiDecision();
-
-            if (SPBoard.checkWinner(r, c))
+            else
             {
-                EndGame(false);
+                AiDecision();
             }
         }
 
@@ -366,12 +353,9 @@ namespace CIS153_FinalProject_Group2
             {
                 EndGame(true);
             }
-
-            AiDecision();
-
-            if (SPBoard.checkWinner(r, c))
+            else
             {
-                EndGame(false);
+                AiDecision();
             }
         }
 
@@ -418,14 +402,10 @@ namespace CIS153_FinalProject_Group2
             {
                 EndGame(true);
             }
-
-            AiDecision();
-
-            if (SPBoard.checkWinner(r, c))
+            else
             {
-                EndGame(false);
+                AiDecision();
             }
-
         }
 
         //  ==================================================================
@@ -1568,18 +1548,8 @@ namespace CIS153_FinalProject_Group2
         //IF WINNER
         private void EndGame(bool playersTurn)
         {
-            //if (hasWinner)
-            //{
-            if (playersTurn)
-            {
-                Console.WriteLine("True Indeed");
-                //txt_playerTurn.Text = "Player Wins!";
-            }
-            else
-            {
-                Console.WriteLine("False Indeed");
-                //txt_playerTurn.Text = "Ai Wins!";
-            }
+            //Technically not needed anymore since it just loads a whole new form and closes this one
+            //But not too sure yet since reviewing the board reopens it and we wouldn't want the user to be able to click
             btn_Row1Slot.Enabled = false;
             btn_Row2Slot.Enabled = false;
             btn_Row3Slot.Enabled = false;
@@ -1587,7 +1557,31 @@ namespace CIS153_FinalProject_Group2
             btn_Row5Slot.Enabled = false;
             btn_Row6Slot.Enabled = false;
             btn_Row7Slot.Enabled = false;
-            //}
+            if (playersTurn)
+            {
+                Console.WriteLine("True Indeed");
+
+                //Make winner form given this form (for a play again option), main menu form
+                //(for option to go back to menu), and a boolean stating whether the player won or ai won
+                Winner WinnerForm = new Winner(this, MainScreenForm, 0);
+                //Close this form
+                this.Hide();
+                //Load Winner form
+                WinnerForm.Show();
+            }
+            else
+            {
+                Console.WriteLine("False Indeed");
+                //Make winner form given this form (for a play again option), main menu form
+                //(for option to go back to menu), and a number indicating who won (0 for player, 1 for ai, 2 for tie)
+                Winner WinnerForm = new Winner(this, MainScreenForm, 1);
+                //Close this form
+                this.Hide();
+                //Load Winner form
+                WinnerForm.Show();
+            }
+            //Will need another option for a tie (might need this function to accept
+            //something other than a bool so we can have 3 options instead of 2
         }
 
         //==================================================================

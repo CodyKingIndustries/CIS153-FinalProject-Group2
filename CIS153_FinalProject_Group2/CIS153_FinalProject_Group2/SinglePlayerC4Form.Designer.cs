@@ -110,6 +110,7 @@
             // btn_Row1Space6
             // 
             this.btn_Row1Space6.BackColor = System.Drawing.Color.White;
+            this.btn_Row1Space6.Enabled = false;
             this.btn_Row1Space6.Location = new System.Drawing.Point(50, 98);
             this.btn_Row1Space6.Name = "btn_Row1Space6";
             this.btn_Row1Space6.Size = new System.Drawing.Size(59, 59);
@@ -119,6 +120,7 @@
             // btn_Row2Space6
             // 
             this.btn_Row2Space6.BackColor = System.Drawing.Color.White;
+            this.btn_Row2Space6.Enabled = false;
             this.btn_Row2Space6.Location = new System.Drawing.Point(115, 98);
             this.btn_Row2Space6.Name = "btn_Row2Space6";
             this.btn_Row2Space6.Size = new System.Drawing.Size(59, 59);
@@ -128,6 +130,7 @@
             // btn_Row3Space6
             // 
             this.btn_Row3Space6.BackColor = System.Drawing.Color.White;
+            this.btn_Row3Space6.Enabled = false;
             this.btn_Row3Space6.Location = new System.Drawing.Point(180, 98);
             this.btn_Row3Space6.Name = "btn_Row3Space6";
             this.btn_Row3Space6.Size = new System.Drawing.Size(59, 59);
@@ -137,6 +140,7 @@
             // btn_Row4Space6
             // 
             this.btn_Row4Space6.BackColor = System.Drawing.Color.White;
+            this.btn_Row4Space6.Enabled = false;
             this.btn_Row4Space6.Location = new System.Drawing.Point(245, 98);
             this.btn_Row4Space6.Name = "btn_Row4Space6";
             this.btn_Row4Space6.Size = new System.Drawing.Size(59, 59);
@@ -146,6 +150,7 @@
             // btn_Row5Space6
             // 
             this.btn_Row5Space6.BackColor = System.Drawing.Color.White;
+            this.btn_Row5Space6.Enabled = false;
             this.btn_Row5Space6.Location = new System.Drawing.Point(310, 98);
             this.btn_Row5Space6.Name = "btn_Row5Space6";
             this.btn_Row5Space6.Size = new System.Drawing.Size(59, 59);
@@ -155,6 +160,7 @@
             // btn_Row6Space6
             // 
             this.btn_Row6Space6.BackColor = System.Drawing.Color.White;
+            this.btn_Row6Space6.Enabled = false;
             this.btn_Row6Space6.Location = new System.Drawing.Point(375, 98);
             this.btn_Row6Space6.Name = "btn_Row6Space6";
             this.btn_Row6Space6.Size = new System.Drawing.Size(59, 59);
@@ -164,6 +170,7 @@
             // btn_Row7Space6
             // 
             this.btn_Row7Space6.BackColor = System.Drawing.Color.White;
+            this.btn_Row7Space6.Enabled = false;
             this.btn_Row7Space6.Location = new System.Drawing.Point(440, 98);
             this.btn_Row7Space6.Name = "btn_Row7Space6";
             this.btn_Row7Space6.Size = new System.Drawing.Size(59, 59);
@@ -173,6 +180,7 @@
             // btn_Row7Space5
             // 
             this.btn_Row7Space5.BackColor = System.Drawing.Color.White;
+            this.btn_Row7Space5.Enabled = false;
             this.btn_Row7Space5.Location = new System.Drawing.Point(440, 161);
             this.btn_Row7Space5.Name = "btn_Row7Space5";
             this.btn_Row7Space5.Size = new System.Drawing.Size(59, 59);
@@ -182,6 +190,7 @@
             // btn_Row6Space5
             // 
             this.btn_Row6Space5.BackColor = System.Drawing.Color.White;
+            this.btn_Row6Space5.Enabled = false;
             this.btn_Row6Space5.Location = new System.Drawing.Point(375, 161);
             this.btn_Row6Space5.Name = "btn_Row6Space5";
             this.btn_Row6Space5.Size = new System.Drawing.Size(59, 59);
@@ -191,6 +200,7 @@
             // btn_Row5Space5
             // 
             this.btn_Row5Space5.BackColor = System.Drawing.Color.White;
+            this.btn_Row5Space5.Enabled = false;
             this.btn_Row5Space5.Location = new System.Drawing.Point(310, 161);
             this.btn_Row5Space5.Name = "btn_Row5Space5";
             this.btn_Row5Space5.Size = new System.Drawing.Size(59, 59);
@@ -200,6 +210,7 @@
             // btn_Row4Space5
             // 
             this.btn_Row4Space5.BackColor = System.Drawing.Color.White;
+            this.btn_Row4Space5.Enabled = false;
             this.btn_Row4Space5.Location = new System.Drawing.Point(245, 161);
             this.btn_Row4Space5.Name = "btn_Row4Space5";
             this.btn_Row4Space5.Size = new System.Drawing.Size(59, 59);
@@ -209,6 +220,7 @@
             // btn_Row3Space5
             // 
             this.btn_Row3Space5.BackColor = System.Drawing.Color.White;
+            this.btn_Row3Space5.Enabled = false;
             this.btn_Row3Space5.Location = new System.Drawing.Point(180, 161);
             this.btn_Row3Space5.Name = "btn_Row3Space5";
             this.btn_Row3Space5.Size = new System.Drawing.Size(59, 59);
@@ -218,6 +230,7 @@
             // btn_Row2Space5
             // 
             this.btn_Row2Space5.BackColor = System.Drawing.Color.White;
+            this.btn_Row2Space5.Enabled = false;
             this.btn_Row2Space5.Location = new System.Drawing.Point(115, 161);
             this.btn_Row2Space5.Name = "btn_Row2Space5";
             this.btn_Row2Space5.Size = new System.Drawing.Size(59, 59);
@@ -227,6 +240,7 @@
             // btn_Row1Space5
             // 
             this.btn_Row1Space5.BackColor = System.Drawing.Color.White;
+            this.btn_Row1Space5.Enabled = false;
             this.btn_Row1Space5.Location = new System.Drawing.Point(50, 161);
             this.btn_Row1Space5.Name = "btn_Row1Space5";
             this.btn_Row1Space5.Size = new System.Drawing.Size(59, 59);
@@ -236,6 +250,7 @@
             // btn_Row7Space4
             // 
             this.btn_Row7Space4.BackColor = System.Drawing.Color.White;
+            this.btn_Row7Space4.Enabled = false;
             this.btn_Row7Space4.Location = new System.Drawing.Point(440, 224);
             this.btn_Row7Space4.Name = "btn_Row7Space4";
             this.btn_Row7Space4.Size = new System.Drawing.Size(59, 59);
@@ -245,6 +260,7 @@
             // btn_Row6Space4
             // 
             this.btn_Row6Space4.BackColor = System.Drawing.Color.White;
+            this.btn_Row6Space4.Enabled = false;
             this.btn_Row6Space4.Location = new System.Drawing.Point(375, 224);
             this.btn_Row6Space4.Name = "btn_Row6Space4";
             this.btn_Row6Space4.Size = new System.Drawing.Size(59, 59);
@@ -254,6 +270,7 @@
             // btn_Row5Space4
             // 
             this.btn_Row5Space4.BackColor = System.Drawing.Color.White;
+            this.btn_Row5Space4.Enabled = false;
             this.btn_Row5Space4.Location = new System.Drawing.Point(310, 224);
             this.btn_Row5Space4.Name = "btn_Row5Space4";
             this.btn_Row5Space4.Size = new System.Drawing.Size(59, 59);
@@ -263,6 +280,7 @@
             // btn_Row4Space4
             // 
             this.btn_Row4Space4.BackColor = System.Drawing.Color.White;
+            this.btn_Row4Space4.Enabled = false;
             this.btn_Row4Space4.Location = new System.Drawing.Point(245, 224);
             this.btn_Row4Space4.Name = "btn_Row4Space4";
             this.btn_Row4Space4.Size = new System.Drawing.Size(59, 59);
@@ -272,6 +290,7 @@
             // btn_Row3Space4
             // 
             this.btn_Row3Space4.BackColor = System.Drawing.Color.White;
+            this.btn_Row3Space4.Enabled = false;
             this.btn_Row3Space4.Location = new System.Drawing.Point(180, 224);
             this.btn_Row3Space4.Name = "btn_Row3Space4";
             this.btn_Row3Space4.Size = new System.Drawing.Size(59, 59);
@@ -281,6 +300,7 @@
             // btn_Row2Space4
             // 
             this.btn_Row2Space4.BackColor = System.Drawing.Color.White;
+            this.btn_Row2Space4.Enabled = false;
             this.btn_Row2Space4.Location = new System.Drawing.Point(115, 224);
             this.btn_Row2Space4.Name = "btn_Row2Space4";
             this.btn_Row2Space4.Size = new System.Drawing.Size(59, 59);
@@ -290,6 +310,7 @@
             // btn_Row1Space4
             // 
             this.btn_Row1Space4.BackColor = System.Drawing.Color.White;
+            this.btn_Row1Space4.Enabled = false;
             this.btn_Row1Space4.Location = new System.Drawing.Point(50, 224);
             this.btn_Row1Space4.Name = "btn_Row1Space4";
             this.btn_Row1Space4.Size = new System.Drawing.Size(59, 59);
@@ -299,6 +320,7 @@
             // btn_Row7Space3
             // 
             this.btn_Row7Space3.BackColor = System.Drawing.Color.White;
+            this.btn_Row7Space3.Enabled = false;
             this.btn_Row7Space3.Location = new System.Drawing.Point(440, 287);
             this.btn_Row7Space3.Name = "btn_Row7Space3";
             this.btn_Row7Space3.Size = new System.Drawing.Size(59, 59);
@@ -308,6 +330,7 @@
             // btn_Row6Space3
             // 
             this.btn_Row6Space3.BackColor = System.Drawing.Color.White;
+            this.btn_Row6Space3.Enabled = false;
             this.btn_Row6Space3.Location = new System.Drawing.Point(375, 287);
             this.btn_Row6Space3.Name = "btn_Row6Space3";
             this.btn_Row6Space3.Size = new System.Drawing.Size(59, 59);
@@ -317,6 +340,7 @@
             // btn_Row5Space3
             // 
             this.btn_Row5Space3.BackColor = System.Drawing.Color.White;
+            this.btn_Row5Space3.Enabled = false;
             this.btn_Row5Space3.Location = new System.Drawing.Point(310, 287);
             this.btn_Row5Space3.Name = "btn_Row5Space3";
             this.btn_Row5Space3.Size = new System.Drawing.Size(59, 59);
@@ -326,6 +350,7 @@
             // btn_Row4Space3
             // 
             this.btn_Row4Space3.BackColor = System.Drawing.Color.White;
+            this.btn_Row4Space3.Enabled = false;
             this.btn_Row4Space3.Location = new System.Drawing.Point(245, 287);
             this.btn_Row4Space3.Name = "btn_Row4Space3";
             this.btn_Row4Space3.Size = new System.Drawing.Size(59, 59);
@@ -335,6 +360,7 @@
             // btn_Row3Space3
             // 
             this.btn_Row3Space3.BackColor = System.Drawing.Color.White;
+            this.btn_Row3Space3.Enabled = false;
             this.btn_Row3Space3.Location = new System.Drawing.Point(180, 287);
             this.btn_Row3Space3.Name = "btn_Row3Space3";
             this.btn_Row3Space3.Size = new System.Drawing.Size(59, 59);
@@ -344,6 +370,7 @@
             // btn_Row2Space3
             // 
             this.btn_Row2Space3.BackColor = System.Drawing.Color.White;
+            this.btn_Row2Space3.Enabled = false;
             this.btn_Row2Space3.Location = new System.Drawing.Point(115, 287);
             this.btn_Row2Space3.Name = "btn_Row2Space3";
             this.btn_Row2Space3.Size = new System.Drawing.Size(59, 59);
@@ -353,6 +380,7 @@
             // btn_Row1Space3
             // 
             this.btn_Row1Space3.BackColor = System.Drawing.Color.White;
+            this.btn_Row1Space3.Enabled = false;
             this.btn_Row1Space3.Location = new System.Drawing.Point(50, 287);
             this.btn_Row1Space3.Name = "btn_Row1Space3";
             this.btn_Row1Space3.Size = new System.Drawing.Size(59, 59);
@@ -362,6 +390,7 @@
             // btn_Row7Space2
             // 
             this.btn_Row7Space2.BackColor = System.Drawing.Color.White;
+            this.btn_Row7Space2.Enabled = false;
             this.btn_Row7Space2.Location = new System.Drawing.Point(440, 350);
             this.btn_Row7Space2.Name = "btn_Row7Space2";
             this.btn_Row7Space2.Size = new System.Drawing.Size(59, 59);
@@ -371,6 +400,7 @@
             // btn_Row6Space2
             // 
             this.btn_Row6Space2.BackColor = System.Drawing.Color.White;
+            this.btn_Row6Space2.Enabled = false;
             this.btn_Row6Space2.Location = new System.Drawing.Point(375, 350);
             this.btn_Row6Space2.Name = "btn_Row6Space2";
             this.btn_Row6Space2.Size = new System.Drawing.Size(59, 59);
@@ -380,6 +410,7 @@
             // btn_Row5Space2
             // 
             this.btn_Row5Space2.BackColor = System.Drawing.Color.White;
+            this.btn_Row5Space2.Enabled = false;
             this.btn_Row5Space2.Location = new System.Drawing.Point(310, 350);
             this.btn_Row5Space2.Name = "btn_Row5Space2";
             this.btn_Row5Space2.Size = new System.Drawing.Size(59, 59);
@@ -389,6 +420,7 @@
             // btn_Row4Space2
             // 
             this.btn_Row4Space2.BackColor = System.Drawing.Color.White;
+            this.btn_Row4Space2.Enabled = false;
             this.btn_Row4Space2.Location = new System.Drawing.Point(245, 350);
             this.btn_Row4Space2.Name = "btn_Row4Space2";
             this.btn_Row4Space2.Size = new System.Drawing.Size(59, 59);
@@ -398,6 +430,7 @@
             // btn_Row3Space2
             // 
             this.btn_Row3Space2.BackColor = System.Drawing.Color.White;
+            this.btn_Row3Space2.Enabled = false;
             this.btn_Row3Space2.Location = new System.Drawing.Point(180, 350);
             this.btn_Row3Space2.Name = "btn_Row3Space2";
             this.btn_Row3Space2.Size = new System.Drawing.Size(59, 59);
@@ -407,6 +440,7 @@
             // btn_Row2Space2
             // 
             this.btn_Row2Space2.BackColor = System.Drawing.Color.White;
+            this.btn_Row2Space2.Enabled = false;
             this.btn_Row2Space2.Location = new System.Drawing.Point(115, 350);
             this.btn_Row2Space2.Name = "btn_Row2Space2";
             this.btn_Row2Space2.Size = new System.Drawing.Size(59, 59);
@@ -416,6 +450,7 @@
             // btn_Row1Space2
             // 
             this.btn_Row1Space2.BackColor = System.Drawing.Color.White;
+            this.btn_Row1Space2.Enabled = false;
             this.btn_Row1Space2.Location = new System.Drawing.Point(50, 350);
             this.btn_Row1Space2.Name = "btn_Row1Space2";
             this.btn_Row1Space2.Size = new System.Drawing.Size(59, 59);
@@ -425,6 +460,7 @@
             // btn_Row7Space1
             // 
             this.btn_Row7Space1.BackColor = System.Drawing.Color.White;
+            this.btn_Row7Space1.Enabled = false;
             this.btn_Row7Space1.Location = new System.Drawing.Point(440, 413);
             this.btn_Row7Space1.Name = "btn_Row7Space1";
             this.btn_Row7Space1.Size = new System.Drawing.Size(59, 59);
@@ -434,6 +470,7 @@
             // btn_Row6Space1
             // 
             this.btn_Row6Space1.BackColor = System.Drawing.Color.White;
+            this.btn_Row6Space1.Enabled = false;
             this.btn_Row6Space1.Location = new System.Drawing.Point(375, 413);
             this.btn_Row6Space1.Name = "btn_Row6Space1";
             this.btn_Row6Space1.Size = new System.Drawing.Size(59, 59);
@@ -443,6 +480,7 @@
             // btn_Row5Space1
             // 
             this.btn_Row5Space1.BackColor = System.Drawing.Color.White;
+            this.btn_Row5Space1.Enabled = false;
             this.btn_Row5Space1.Location = new System.Drawing.Point(310, 413);
             this.btn_Row5Space1.Name = "btn_Row5Space1";
             this.btn_Row5Space1.Size = new System.Drawing.Size(59, 59);
@@ -452,6 +490,7 @@
             // btn_Row4Space1
             // 
             this.btn_Row4Space1.BackColor = System.Drawing.Color.White;
+            this.btn_Row4Space1.Enabled = false;
             this.btn_Row4Space1.Location = new System.Drawing.Point(245, 413);
             this.btn_Row4Space1.Name = "btn_Row4Space1";
             this.btn_Row4Space1.Size = new System.Drawing.Size(59, 59);
@@ -461,6 +500,7 @@
             // btn_Row3Space1
             // 
             this.btn_Row3Space1.BackColor = System.Drawing.Color.White;
+            this.btn_Row3Space1.Enabled = false;
             this.btn_Row3Space1.Location = new System.Drawing.Point(180, 413);
             this.btn_Row3Space1.Name = "btn_Row3Space1";
             this.btn_Row3Space1.Size = new System.Drawing.Size(59, 59);
@@ -470,6 +510,7 @@
             // btn_Row2Space1
             // 
             this.btn_Row2Space1.BackColor = System.Drawing.Color.White;
+            this.btn_Row2Space1.Enabled = false;
             this.btn_Row2Space1.Location = new System.Drawing.Point(115, 413);
             this.btn_Row2Space1.Name = "btn_Row2Space1";
             this.btn_Row2Space1.Size = new System.Drawing.Size(59, 59);
@@ -479,6 +520,7 @@
             // btn_Row1Space1
             // 
             this.btn_Row1Space1.BackColor = System.Drawing.Color.White;
+            this.btn_Row1Space1.Enabled = false;
             this.btn_Row1Space1.Location = new System.Drawing.Point(50, 413);
             this.btn_Row1Space1.Name = "btn_Row1Space1";
             this.btn_Row1Space1.Size = new System.Drawing.Size(59, 59);
