@@ -79,6 +79,7 @@ namespace CIS153_FinalProject_Group2
         {
             //Hardest part is to not go out of bounds of the array
             winner = false;
+            bool stopOnGrey = false;
             int i = 0;
             int j = 0;
 
@@ -87,32 +88,41 @@ namespace CIS153_FinalProject_Group2
             {
                 if (c < numCols)
                 {
-                    if (board[x, c].getCellColor() == board[x, y].getCellColor())
+                    if (board[x, c].getCellColor() == board[x, y].getCellColor() && stopOnGrey == false)
                     {
                         i++;
                     }
+                    if (board[x, c].getCellColor() == "Grey")
+                    {
+                        stopOnGrey = true;
+                    }
                 }
             }
-            if (i == 4)
+            if (i > 4)
             {
                 winner = true;
                 return winner;
             }
 
             //Check left from most recently placed disc
-            i = 0;
+            //i = 0;
             j = 0;
+            stopOnGrey = false;
             for (int c = y; j < 4; c--, j++)
             {
                 if (c >= 0)
                 {
-                    if (board[x, c].getCellColor() == board[x, y].getCellColor())
+                    if (board[x, c].getCellColor() == board[x, y].getCellColor() && stopOnGrey == false)
                     {
                         i++;
                     }
+                    if (board[x, c].getCellColor() == "Grey")
+                    {
+                        stopOnGrey = true;
+                    }
                 }
             }
-            if (i == 4)
+            if (i > 4)
             {
                 winner = true;
                 return winner;
@@ -121,36 +131,46 @@ namespace CIS153_FinalProject_Group2
             //Check up from most recently placed disc
             i = 0;
             j = 0;
+            stopOnGrey = false;
             for (int r = x; j < 4; r--, j++)
             {
                 if (r >= 0)
                 {
-                    if (board[r, y].getCellColor() == board[x, y].getCellColor())
+                    if (board[r, y].getCellColor() == board[x, y].getCellColor() && stopOnGrey == false)
                     {
                         i++;
                     }
+                    if (board[r, y].getCellColor() == "Grey")
+                    {
+                        stopOnGrey = true;
+                    }
                 }
             }
-            if (i == 4)
+            if (i > 4)
             {
                 winner = true;
                 return winner;
             }
 
             //Check down from most recently placed disc
-            i = 0;
+            //i = 0;
             j = 0;
+            stopOnGrey = false;
             for (int r = x; j < 4; r++, j++)
             {
                 if (r < numRows)
                 {
-                    if (board[r, y].getCellColor() == board[x, y].getCellColor())
+                    if (board[r, y].getCellColor() == board[x, y].getCellColor() && stopOnGrey == false)
                     {
                         i++;
                     }
+                    if (board[r, y].getCellColor() == "Grey")
+                    {
+                        stopOnGrey = true;
+                    }
                 }
             }
-            if (i == 4)
+            if (i > 4)
             {
                 winner = true;
                 return winner;
@@ -160,17 +180,46 @@ namespace CIS153_FinalProject_Group2
             //Check up-right from most recently placed disc
             i = 0;
             j = 0;
+            stopOnGrey = false;
             for (int r = x, c = y; j < 4; r--, c++, j++)
             {
                 if (r >= 0 && c < numCols)
                 {
-                    if (board[r, c].getCellColor() == board[x, y].getCellColor())
+                    if (board[r, c].getCellColor() == board[x, y].getCellColor() && stopOnGrey == false)
                     {
                         i++;
                     }
+                    if (board[r, c].getCellColor() == "Grey")
+                    {
+                        stopOnGrey = true;
+                    }
                 }
             }
-            if (i == 4)
+            if (i > 4)
+            {
+                winner = true;
+                return winner;
+            }
+
+            //Check down-left from most recently placed disc
+            //i = 0;
+            j = 0;
+            stopOnGrey = false;
+            for (int r = x, c = y; j < 4; r++, c--, j++)
+            {
+                if (r < numRows && c >= 0)
+                {
+                    if (board[r, c].getCellColor() == board[x, y].getCellColor() && stopOnGrey == false)
+                    {
+                        i++;
+                    }
+                    if (board[r, c].getCellColor() == "Grey")
+                    {
+                        stopOnGrey = true;
+                    }
+                }
+            }
+            if (i > 4)
             {
                 winner = true;
                 return winner;
@@ -179,58 +228,51 @@ namespace CIS153_FinalProject_Group2
             //Check up-left from most recently placed disc
             i = 0;
             j = 0;
+            stopOnGrey = false;
             for (int r = x, c = y; j < 4; r--, c--, j++)
             {
                 if (r >= 0 && c >= 0)
                 {
-                    if (board[r, c].getCellColor() == board[x, y].getCellColor())
+                    if (board[r, c].getCellColor() == board[x, y].getCellColor() && stopOnGrey == false)
                     {
                         i++;
                     }
+                    if (board[r, c].getCellColor() == "Grey")
+                    {
+                        stopOnGrey = true;
+                    }
                 }
             }
-            if (i == 4)
+            if (i > 4)
             {
                 winner = true;
                 return winner;
             }
 
             //Check down-right from most recently placed disc
-            i = 0;
+            //i = 0;
             j = 0;
+            stopOnGrey = false;
             for (int r = x, c = y; j < 4; r++, c++, j++)
             {
                 if (r < numRows && c < numCols)
                 {
-                    if (board[r, c].getCellColor() == board[x, y].getCellColor())
+                    if (board[r, c].getCellColor() == board[x, y].getCellColor() && stopOnGrey == false)
                     {
                         i++;
                     }
+                    if (board[r, c].getCellColor() == "Grey")
+                    {
+                        stopOnGrey = true;
+                    }
                 }
             }
-            if (i == 4)
+            if (i > 4)
             {
                 winner = true;
                 return winner;
             }
-            //Check down-left from most recently placed disc
-            i = 0;
-            j = 0;
-            for (int r = x, c = y; j < 4; r++, c--, j++)
-            {
-                if (r < numRows && c >= 0)
-                {
-                    if (board[r, c].getCellColor() == board[x, y].getCellColor())
-                    {
-                        i++;
-                    }
-                }
-            }
-            if (i == 4)
-            {
-                winner = true;
-                return winner;
-            }
+            
 
 
             return winner;

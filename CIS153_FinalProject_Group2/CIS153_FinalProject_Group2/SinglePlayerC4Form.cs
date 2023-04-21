@@ -100,11 +100,17 @@ namespace CIS153_FinalProject_Group2
             {
                 btn_Row1Space6.BackColor = Color.Red;
             }
-            //  Place the piece on the board
+            
             SPBoard.getBoard()[r, c].placeDisc("Red");
 
-            AiDecision();
-
+            if (SPBoard.checkWinner(r, c))
+            {
+                EndGame(true);
+            }
+            else
+            {
+                AiDecision();
+            }
 
         }
 
@@ -147,7 +153,18 @@ namespace CIS153_FinalProject_Group2
             }
 
             SPBoard.getBoard()[r, c].placeDisc("Red");
+
+            if (SPBoard.checkWinner(r, c))
+            {
+                EndGame(true);
+            }
+
             AiDecision();
+
+            if (SPBoard.checkWinner(r, c))
+            {
+                EndGame(false);
+            }
         }
 
         private void btn_Row3Slot_Click(object sender, EventArgs e)
@@ -187,7 +204,19 @@ namespace CIS153_FinalProject_Group2
                 btn_Row3Space6.BackColor = Color.Red;
             }
             SPBoard.getBoard()[r, c].placeDisc("Red");
+
+            if (SPBoard.checkWinner(r, c))
+            {
+                EndGame(true);
+            }
+
             AiDecision();
+
+            if (SPBoard.checkWinner(r, c))
+            {
+                EndGame(false);
+            }
+
         }
 
         private void btn_Row4Slot_Click(object sender, EventArgs e)
@@ -227,7 +256,18 @@ namespace CIS153_FinalProject_Group2
                 btn_Row4Space6.BackColor = Color.Red;
             }
             SPBoard.getBoard()[r, c].placeDisc("Red");
+
+            if (SPBoard.checkWinner(r, c))
+            {
+                EndGame(true);
+            }
+
             AiDecision();
+
+            if (SPBoard.checkWinner(r, c))
+            {
+                EndGame(false);
+            }
         }
 
         private void btn_Row5Slot_Click(object sender, EventArgs e)
@@ -268,7 +308,18 @@ namespace CIS153_FinalProject_Group2
                 btn_Row5Space6.BackColor = Color.Red;
             }
             SPBoard.getBoard()[r, c].placeDisc("Red");
+
+            if (SPBoard.checkWinner(r, c))
+            {
+                EndGame(true);
+            }
+
             AiDecision();
+
+            if (SPBoard.checkWinner(r, c))
+            {
+                EndGame(false);
+            }
         }
 
         private void btn_Row6Slot_Click(object sender, EventArgs e)
@@ -310,7 +361,18 @@ namespace CIS153_FinalProject_Group2
             }
 
             SPBoard.getBoard()[r, c].placeDisc("Red");
+
+            if (SPBoard.checkWinner(r, c))
+            {
+                EndGame(true);
+            }
+
             AiDecision();
+
+            if (SPBoard.checkWinner(r, c))
+            {
+                EndGame(false);
+            }
         }
 
         private void btn_Row7Slot_Click(object sender, EventArgs e)
@@ -352,8 +414,17 @@ namespace CIS153_FinalProject_Group2
             }
             SPBoard.getBoard()[r, c].placeDisc("Red");
 
-            //  Now call the Ai to take its turn
+            if (SPBoard.checkWinner(r, c))
+            {
+                EndGame(true);
+            }
+
             AiDecision();
+
+            if (SPBoard.checkWinner(r, c))
+            {
+                EndGame(false);
+            }
 
         }
 
@@ -368,6 +439,7 @@ namespace CIS153_FinalProject_Group2
             int[,] PriorityArray = new int[6, 7];
             int[] AiOptions = new int[7];
             int columnPlacement = 0;
+            int choice = 0;
 
 
             for (int r = 0; r < 6; r++)
@@ -405,34 +477,12 @@ namespace CIS153_FinalProject_Group2
             
             for (int c = 0; c < 7; c++)
             {
-                //if (PriorityArray[r,c] >= 2)
-                //{
-                //    Console.WriteLine(PriorityArray[r, c] + " At [" + r + "," + c);
-                //}
-
-                //                                      just dont select -3?
-                if (AiOptions[c] > columnPlacement) //|| AiOptions[c] <= -3)
+                                     
+                if (AiOptions[c] > choice) 
                 {
-                        columnPlacement = c;
+                    choice = AiOptions[c];
+                    columnPlacement = c;
                 }
-
-                //if (AiOptions[c] <= -3)
-                //{
-                //    if (SPBoard.getCell(r, c).isFull())
-                //    {
-
-                //    }
-                //    else if (SPBoard.getCell(r, c).isFull() == false)
-                //    {
-                //        columnPlacement = c;
-                //    }
-
-                //}
-                //else
-                //{
-                //    columnPlacement = c;
-                //}
-
 
             }
             
@@ -447,6 +497,8 @@ namespace CIS153_FinalProject_Group2
             //  needs to check for column being filled before this function calls
             //  and if column == filled -> change placement number to next highest priority
             AiPlacesPiece(columnPlacement);
+
+            
 
         }
 
@@ -465,7 +517,8 @@ namespace CIS153_FinalProject_Group2
             //  x is Rows [r]
             //  This is all copied and modified code from "checkWinner" in Board.cs
             //  so that I can use the same algorith to instead find 2 & 3 in a row, Not 4 [already game over]
-            for (int x = 0; x < 6; x++)
+            //for (int x = 0; x < 6; x++)
+            for (int x = 5; x >= 0; x--)
             {
                 for (int y = 0; y < 7; y++)
                 {
@@ -540,7 +593,7 @@ namespace CIS153_FinalProject_Group2
 
 
                     //  Pobalby only need one check not 2
-                    if (danger[x, y] >= 0)
+                    if (danger[x, y] >= 0 || i >= 3)
                     {
                         if (i > danger[x, y])
                         {
@@ -555,16 +608,16 @@ namespace CIS153_FinalProject_Group2
 
                         //  CONVERT ALL TO THIS
                         //  but with safety features
-                        if (x < 5)
+                        if (x < 5 && danger[x + 1, y] != 3 && danger[x + 1, y] != 0)
                         {
-                            danger[x + 1, y] = -i;
+                            danger[x + 1, y] = -3;
                         }
                     }
 
-                    if (danger[x, y] >= 3)
-                    {
-                        Console.WriteLine("Left and Right: " + x + "," + y + i + " -> " + danger[x, y]);
-                    }
+                    //if (danger[x, y] <= -3)
+                    //{
+                    //    Console.WriteLine("Left and Right: " + x + "," + y + i + " -> " + danger[x, y]);
+                    //}
 
                     //  ======================================================================
                     i = 0;
@@ -598,13 +651,7 @@ namespace CIS153_FinalProject_Group2
                         }
                     }
 
-                    if (danger[x, y] >= 0)
-                    {
-                        if (i > danger[x, y])
-                        {
-                            danger[x, y] = i;
-                        }
-                    }
+                    
 
                     //Check down from most recently placed disc
                     j = 0;
@@ -639,7 +686,7 @@ namespace CIS153_FinalProject_Group2
                         }
                     }
 
-                    if (danger[x, y] >= 0)
+                    if (danger[x, y] >= 0 || i >= 3)
                     {
                         if (i > danger[x, y])
                         {
@@ -660,10 +707,10 @@ namespace CIS153_FinalProject_Group2
                     //    }
                     //}
 
-                    if (danger[x, y] >= 3)
-                    {
-                        Console.WriteLine("Up + Down: " + x + "," + y + i + " -> " + danger[x, y]);
-                    }
+                    //if (danger[x, y] <= -3)
+                    //{
+                    //    Console.WriteLine("Up + Down: " + x + "," + y + i + " -> " + danger[x, y]);
+                    //}
                     //  ======================================================================
 
                     //DIAGONALS
@@ -703,13 +750,7 @@ namespace CIS153_FinalProject_Group2
                         }
                     }
 
-                    if (danger[x, y] >= 0)
-                    {
-                        if (i > danger[x, y])
-                        {
-                            danger[x, y] = i;
-                        }
-                    }
+                    
 
                     //Check down-left from most recently placed disc
                     j = 0;
@@ -744,7 +785,7 @@ namespace CIS153_FinalProject_Group2
                         }
                     }
 
-                    if (danger[x, y] >= 0)
+                    if (danger[x, y] >= 0 || i >= 3)
                     {
                         if (i > danger[x, y])
                         {
@@ -759,16 +800,16 @@ namespace CIS153_FinalProject_Group2
 
                         //  CONVERT ALL TO THIS
                         //  but with safety features
-                        if (x < 5)
+                        if (x < 5 && danger[x + 1, y] != 3 && danger[x + 1, y] != 0)
                         {
-                            danger[x + 1, y] = -i;
+                            danger[x + 1, y] = -3;
                         }
                     }
 
-                    if (danger[x, y] >= 3)
-                    {
-                        Console.WriteLine("DLeft and URight: " + x + "," + y + i + " -> " + danger[x, y]);
-                    }
+                    //if (danger[x, y] <= -3)
+                    //{
+                    //    Console.WriteLine("DLeft and URight: " + x + "," + y + i + " -> " + danger[x, y]);
+                    //}
 
                     //  ======================================================================
 
@@ -808,13 +849,7 @@ namespace CIS153_FinalProject_Group2
                         }
                     }
 
-                    if (danger[x, y] >= 0)
-                    {
-                        if (i > danger[x, y])
-                        {
-                            danger[x, y] = i;
-                        }
-                    }
+                   
 
                     //Check down-right from most recently placed disc
                     j = 0;
@@ -849,7 +884,7 @@ namespace CIS153_FinalProject_Group2
                         }
                     }
 
-                    if (danger[x, y] >= 0)
+                    if (danger[x, y] >= 0 || i >= 3)
                     {
                         if (i > danger[x, y])
                         {
@@ -864,16 +899,16 @@ namespace CIS153_FinalProject_Group2
 
                         //  CONVERT ALL TO THIS
                         //  but with safety features
-                        if (x < 5)
+                        if (x < 5 && danger[x + 1, y] != 3 && danger[x + 1, y] != 0)
                         {
-                            danger[x + 1, y] = -i;
+                            danger[x + 1, y] = -3;
                         }
                     }
 
-                    if (danger[x, y] >= 3)
-                    {
-                        Console.WriteLine("ULeft and DRight: " + x + "," + y + i + " -> " + danger[x, y]);
-                    }
+                    //if (danger[x, y] <= -3)
+                    //{
+                    //    Console.WriteLine("ULeft and DRight: " + x + "," + y + i + " -> " + danger[x, y]);
+                    //}
 
                     //  ======================================================================
                     //  Repeat but in reverse
@@ -909,13 +944,7 @@ namespace CIS153_FinalProject_Group2
                         }
                     }
 
-                    if (danger[x, y] >= 0)
-                    {
-                        if (i > danger[x, y])
-                        {
-                            danger[x, y] = i;
-                        }
-                    }
+                    
                     //Check Right from most recently placed disc
                     j = 0;
 
@@ -958,16 +987,16 @@ namespace CIS153_FinalProject_Group2
 
                         //  CONVERT ALL TO THIS
                         //  but with safety features
-                        if (x < 5)
+                        if (x < 5 && danger[x + 1, y] != 3 && danger[x + 1, y] != 0)
                         {
-                            danger[x + 1, y] = -i;
+                            danger[x + 1, y] = -3;
                         }
                     }
 
-                    if (danger[x, y] >= 3)
-                    {
-                        Console.WriteLine("I Left and Right: " + x + "," + y + i + " -> " + danger[x, y]);
-                    }
+                    //if (danger[x, y] <= -3)
+                    //{
+                    //    Console.WriteLine("I Left and Right: " + x + "," + y + i + " -> " + danger[x, y]);
+                    //}
 
                     //  ======================================================================
                     i = 0;
@@ -999,13 +1028,7 @@ namespace CIS153_FinalProject_Group2
                         }
                     }
 
-                    if (danger[x, y] >= 0)
-                    {
-                        if (i > danger[x, y])
-                        {
-                            danger[x, y] = i;
-                        }
-                    }
+                    
 
                     //Check up from most recently placed disc
                     j = 0;
@@ -1033,7 +1056,7 @@ namespace CIS153_FinalProject_Group2
                         }
                     }                    
 
-                    if (danger[x, y] >= 0)
+                    if (danger[x, y] >= 0 || i >= 3)
                     {
                         if (i > danger[x, y])
                         {
@@ -1054,10 +1077,10 @@ namespace CIS153_FinalProject_Group2
                     //    }
                     //}
 
-                    if (danger[x, y] >= 3)
-                    {
-                        Console.WriteLine("I Up + Down: " + x + "," + y + i + " -> " + danger[x, y]);
-                    }
+                    //if (danger[x, y] <= -3)
+                    //{
+                    //    Console.WriteLine("I Up + Down: " + x + "," + y + i + " -> " + danger[x, y]);
+                    //}
 
                     //  ======================================================================
 
@@ -1091,13 +1114,7 @@ namespace CIS153_FinalProject_Group2
                         }
                     }
 
-                    if (danger[x, y] >= 0)
-                    {
-                        if (i > danger[x, y])
-                        {
-                            danger[x, y] = i;
-                        }
-                    }
+                   
 
                     //Check down-Right from most recently placed disc
                     j = 0;
@@ -1126,7 +1143,7 @@ namespace CIS153_FinalProject_Group2
                         }
                     }
 
-                    if (danger[x, y] >= 0)
+                    if (danger[x, y] >= 0 || i >= 3)
                     {
                         if (i > danger[x, y])
                         {
@@ -1141,17 +1158,17 @@ namespace CIS153_FinalProject_Group2
 
                         //  CONVERT ALL TO THIS
                         //  but with safety features
-                        if (x < 5)
+                        if (x < 5 && danger[x + 1, y] != 3 && danger[x + 1, y] != 0)
                         {
-                            danger[x + 1, y] = -i;
+                            danger[x + 1, y] = -3;
                         }
                     }
 
-                    if (danger[x, y] >= 3)
-                    {
-                        Console.WriteLine("I ULeft and DRight: " + x + "," + y + i + " -> " + danger[x, y]);
+                    //if (danger[x, y] <= -3)
+                    //{
+                    //    Console.WriteLine("I ULeft and DRight: " + x + "," + y + i + " -> " + danger[x, y]);
 
-                    }
+                    //}
                     //  ======================================================================
 
                     //Check Down-left from most recently placed disc
@@ -1183,13 +1200,7 @@ namespace CIS153_FinalProject_Group2
                         }
                     }
                    
-                    if (danger[x, y] >= 0)
-                    {
-                        if (i > danger[x, y])
-                        {
-                            danger[x, y] = i;
-                        }
-                    }
+                    
 
                     //Check Up-right from most recently placed disc
                     j = 0;
@@ -1217,7 +1228,7 @@ namespace CIS153_FinalProject_Group2
                         }
                     }
 
-                    if (danger[x, y] >= 0)
+                    if (danger[x, y] >= 0 || i >= 3)
                     {
                         if (i > danger[x, y])
                         {
@@ -1228,26 +1239,22 @@ namespace CIS153_FinalProject_Group2
                     if (i >= 3)
                     {
                         //  below the [4] must be [-4]
-                        if (danger[x,y] < i)
-                        {
-                            danger[x, y] = i;
-                        }
+                        danger[x, y] = i;
                         
-
 
 
                         //  CONVERT ALL TO THIS
                         //  but with safety features
-                        if (x < 5)
+                        if (x < 5 && danger[x + 1, y] != 3 && danger[x + 1, y] != 0)
                         {
-                            danger[x + 1, y] = -i;
+                            danger[x + 1, y] = -3;
                         }
                     }
 
-                    if (danger[x, y] >= 3)
-                    {
-                        Console.WriteLine("I DLeft and URight: " + x + "," + y + i + " -> " + danger[x, y]);
-                    }
+                    //if (danger[x, y] <= -3)
+                    //{
+                    //    Console.WriteLine("I DLeft and URight: " + x + "," + y + i + " -> " + danger[x, y]);
+                    //}
 
                     //  ======================================================================
 
@@ -1302,6 +1309,10 @@ namespace CIS153_FinalProject_Group2
                     btn_Row1Space6.BackColor = Color.Yellow;
                 }
                 SPBoard.getBoard()[r, c].placeDisc("Yellow");
+                if (SPBoard.checkWinner(r, c))
+                {
+                    EndGame(false);
+                }
             }
             else if (c == 1)
             {
@@ -1340,6 +1351,10 @@ namespace CIS153_FinalProject_Group2
                     btn_Row2Space6.BackColor = Color.Yellow;
                 }
                 SPBoard.getBoard()[r, c].placeDisc("Yellow");
+                if (SPBoard.checkWinner(r, c))
+                {
+                    EndGame(false);
+                }
             }
             else if (c == 2)
             {
@@ -1377,6 +1392,10 @@ namespace CIS153_FinalProject_Group2
                     btn_Row3Space6.BackColor = Color.Yellow;
                 }
                 SPBoard.getBoard()[r, c].placeDisc("Yellow");
+                if (SPBoard.checkWinner(r, c))
+                {
+                    EndGame(false);
+                }
             }
             else if (c == 3)
             {
@@ -1414,6 +1433,10 @@ namespace CIS153_FinalProject_Group2
                     btn_Row4Space6.BackColor = Color.Yellow;
                 }
                 SPBoard.getBoard()[r, c].placeDisc("Yellow");
+                if (SPBoard.checkWinner(r, c))
+                {
+                    EndGame(false);
+                }
             }
             else if (c == 4)
             {
@@ -1451,6 +1474,10 @@ namespace CIS153_FinalProject_Group2
                     btn_Row5Space6.BackColor = Color.Yellow;
                 }
                 SPBoard.getBoard()[r, c].placeDisc("Yellow");
+                if (SPBoard.checkWinner(r, c))
+                {
+                    EndGame(false);
+                }
             }
             else if (c == 5)
             {
@@ -1488,6 +1515,10 @@ namespace CIS153_FinalProject_Group2
                     btn_Row6Space6.BackColor = Color.Yellow;
                 }
                 SPBoard.getBoard()[r, c].placeDisc("Yellow");
+                if (SPBoard.checkWinner(r, c))
+                {
+                    EndGame(false);
+                }
             }
             else if (c == 6)
             {
@@ -1525,9 +1556,38 @@ namespace CIS153_FinalProject_Group2
                     btn_Row7Space6.BackColor = Color.Yellow;
                 }
                 SPBoard.getBoard()[r, c].placeDisc("Yellow");
+                if (SPBoard.checkWinner(r, c))
+                {
+                    EndGame(false);
+                }
             }
 
 
+        }
+
+        //IF WINNER
+        private void EndGame(bool playersTurn)
+        {
+            //if (hasWinner)
+            //{
+            if (playersTurn)
+            {
+                Console.WriteLine("True Indeed");
+                //txt_playerTurn.Text = "Player Wins!";
+            }
+            else
+            {
+                Console.WriteLine("False Indeed");
+                //txt_playerTurn.Text = "Ai Wins!";
+            }
+            btn_Row1Slot.Enabled = false;
+            btn_Row2Slot.Enabled = false;
+            btn_Row3Slot.Enabled = false;
+            btn_Row4Slot.Enabled = false;
+            btn_Row5Slot.Enabled = false;
+            btn_Row6Slot.Enabled = false;
+            btn_Row7Slot.Enabled = false;
+            //}
         }
 
         //==================================================================
@@ -1926,4 +1986,7 @@ namespace CIS153_FinalProject_Group2
             }
         }
     }
+
+   
+
 }
