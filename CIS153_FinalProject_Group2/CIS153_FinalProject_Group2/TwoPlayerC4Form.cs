@@ -62,8 +62,6 @@ namespace CIS153_FinalProject_Group2
         //COLUMN 0 SLOT CLICK =================================================================
         private void btn_Col0Slot_Click(object sender, EventArgs e)
         {
-
-
             col0Clicks++;
             int r = 5;
             int c = 0;
@@ -280,9 +278,6 @@ namespace CIS153_FinalProject_Group2
             hasWinner = TPBoard.checkWinner(r, c);
             ifWinner();
             totalClicks++;
-
-
-
         }
 
         //COLUMN 2 SLOT CLICK =================================================================
@@ -391,8 +386,6 @@ namespace CIS153_FinalProject_Group2
             hasWinner = TPBoard.checkWinner(r, c);
             ifWinner();
             totalClicks++;
-
-
         }
 
         //COLUMN 3 SLOT CLICK =================================================================

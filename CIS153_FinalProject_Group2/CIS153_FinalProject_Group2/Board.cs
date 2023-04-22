@@ -98,6 +98,7 @@ namespace CIS153_FinalProject_Group2
                     }
                 }
             }
+            Console.WriteLine("Checked Right");
             if (i > 4)
             {
                 winner = true;
@@ -105,7 +106,7 @@ namespace CIS153_FinalProject_Group2
             }
 
             //Check left from most recently placed disc
-            //i = 0;
+            i = 0;
             j = 0;
             stopOnGrey = false;
             for (int c = y; j < 4; c--, j++)
@@ -122,6 +123,7 @@ namespace CIS153_FinalProject_Group2
                     }
                 }
             }
+            Console.WriteLine("Checked Left");
             if (i > 4)
             {
                 winner = true;
@@ -146,6 +148,7 @@ namespace CIS153_FinalProject_Group2
                     }
                 }
             }
+            Console.WriteLine("Checked Up");
             if (i > 4)
             {
                 winner = true;
@@ -153,7 +156,7 @@ namespace CIS153_FinalProject_Group2
             }
 
             //Check down from most recently placed disc
-            //i = 0;
+            i = 0;
             j = 0;
             stopOnGrey = false;
             for (int r = x; j < 4; r++, j++)
@@ -170,6 +173,7 @@ namespace CIS153_FinalProject_Group2
                     }
                 }
             }
+            Console.WriteLine("Checked Down");
             if (i > 4)
             {
                 winner = true;
@@ -195,6 +199,7 @@ namespace CIS153_FinalProject_Group2
                     }
                 }
             }
+            Console.WriteLine("Checked UpRight");
             if (i > 4)
             {
                 winner = true;
@@ -202,7 +207,7 @@ namespace CIS153_FinalProject_Group2
             }
 
             //Check down-left from most recently placed disc
-            //i = 0;
+            i = 0;
             j = 0;
             stopOnGrey = false;
             for (int r = x, c = y; j < 4; r++, c--, j++)
@@ -219,6 +224,7 @@ namespace CIS153_FinalProject_Group2
                     }
                 }
             }
+            Console.WriteLine("Checked DownLeft");
             if (i > 4)
             {
                 winner = true;
@@ -243,6 +249,7 @@ namespace CIS153_FinalProject_Group2
                     }
                 }
             }
+            Console.WriteLine("Checked UpLeft");
             if (i > 4)
             {
                 winner = true;
@@ -250,7 +257,7 @@ namespace CIS153_FinalProject_Group2
             }
 
             //Check down-right from most recently placed disc
-            //i = 0;
+            i = 0;
             j = 0;
             stopOnGrey = false;
             for (int r = x, c = y; j < 4; r++, c++, j++)
@@ -267,6 +274,7 @@ namespace CIS153_FinalProject_Group2
                     }
                 }
             }
+            Console.WriteLine("Checked DownRight");
             if (i > 4)
             {
                 winner = true;
@@ -274,7 +282,7 @@ namespace CIS153_FinalProject_Group2
             }
             
 
-
+            Console.WriteLine(Environment.NewLine + Environment.NewLine + Environment.NewLine);
             return winner;
         }
 
