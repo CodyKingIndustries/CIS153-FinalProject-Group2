@@ -123,6 +123,7 @@
             this.Controls.Add(this.btn_loadStatistics);
             this.Name = "Winner";
             this.Text = "Winner";
+            this.Load += new System.EventHandler(this.Winner_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -166,6 +166,7 @@ namespace CIS153_FinalProject_Group2
                 }
             }
             hasWinner = TPBoard.checkWinner(r, c);
+            checkTie();
             ifWinner();
 
             totalClicks++;
@@ -598,6 +599,7 @@ namespace CIS153_FinalProject_Group2
                 }
             }
             hasWinner = TPBoard.checkWinner(r, c);
+          
             ifWinner();
             totalClicks++;
         }
@@ -1680,37 +1682,24 @@ namespace CIS153_FinalProject_Group2
         {
             if (hasWinner)
             {
-                btn_Col0Slot.Enabled = false;
-                btn_Col1Slot.Enabled = false;
-                btn_Col2Slot.Enabled = false;
-                btn_Col3Slot.Enabled = false;
-                btn_Col4Slot.Enabled = false;
-                btn_Col5Slot.Enabled = false;
-                btn_Col6Slot.Enabled = false;
-                if (playerOnesTurn)
+                // Disable all slots to prevent further moves
+                foreach (Control control in this.Controls)
                 {
-                    txt_playerTurn.Text = "Player 1 Wins!";
-                    //Make winner form given this form (for a play again option), main menu form
-                    //(for option to go back to menu), and a boolean stating whether the player won or ai won
-                    Winner WinnerForm = new Winner(this, MainScreenForm, 0);
-                    //Close this form
-                    this.Hide();
-                    //Load Winner form
-                    WinnerForm.Show();
+                    if (control is Button button && button != btn_loadMainScreen && button != btn_Exit)
+                    {
+                         button.Enabled = false;
+                        
+                    }
                 }
-                else
-                {
-                    //Make winner form given this form (for a play again option), main menu form
-                    //(for option to go back to menu), and a boolean stating whether the player won or ai won
-                    Winner WinnerForm = new Winner(this, MainScreenForm, 1);
-                    //Close this form
-                    this.Hide();
-                    //Load Winner form
-                    WinnerForm.Show();
-                }
-
+                // Create and show the winner form
+                int winner = playerOnesTurn ? 0 : 1;
+                Winner winnerForm = new Winner(this, MainScreenForm, winner);
+                winnerForm.Show();
+                this.Hide();
             }
         }
+
+
 
         //BOTTOM BUTTONS
         private void btn_loadMainScreen_Click(object sender, EventArgs e)

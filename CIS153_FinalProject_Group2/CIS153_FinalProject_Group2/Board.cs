@@ -73,218 +73,82 @@ namespace CIS153_FinalProject_Group2
         {
             return numCols;
         }
-        
-        //OFFICIAL CHECK FOR WINNER (at least for two player form) PLEASE DO NOT REMOVE (can probably use the same code for single player form)
+
         public bool checkWinner(int x, int y)
         {
-            //Hardest part is to not go out of bounds of the array
-            winner = false;
-            bool stopOnGrey = false;
-            int i = 0;
-            int j = 0;
+            string color = board[x, y].getCellColor();
 
-            //Check right from most recently placed disc
-            for (int c = y; j < 4; c++, j++)
+            // Check horizontal
+            for (int c = Math.Max(0, y - 3); c <= Math.Min(numCols - 4, y); c++)
             {
-                if (c < numCols)
+                if (board[x, c].getCellColor() == color &&
+                    board[x, c + 1].getCellColor() == color &&
+                    board[x, c + 2].getCellColor() == color &&
+                    board[x, c + 3].getCellColor() == color)
                 {
-                    if (board[x, c].getCellColor() == board[x, y].getCellColor() && stopOnGrey == false)
+                    return true;
+                }
+            }
+
+            // Check vertical
+            for (int r = Math.Max(0, x - 3); r <= Math.Min(numRows - 4, x); r++)
+            {
+                if (board[r, y].getCellColor() == color &&
+                    board[r + 1, y].getCellColor() == color &&
+                    board[r + 2, y].getCellColor() == color &&
+                    board[r + 3, y].getCellColor() == color)
+                {
+                    return true;
+                }
+            }
+
+            // Check diagonal \
+            for (int r = Math.Max(0, x - 3); r <= Math.Min(numRows - 4, x); r++)
+            {
+                for (int c = Math.Max(0, y - 3); c <= Math.Min(numCols - 4, y); c++)
+                {
+                    if (board[r, c].getCellColor() == color &&
+                        board[r + 1, c + 1].getCellColor() == color &&
+                        board[r + 2, c + 2].getCellColor() == color &&
+                        board[r + 3, c + 3].getCellColor() == color)
                     {
-                        i++;
-                    }
-                    if (board[x, c].getCellColor() == "Grey")
-                    {
-                        stopOnGrey = true;
+                        return true;
                     }
                 }
             }
-            Console.WriteLine("Checked Right");
-            if (i > 4)
-            {
-                winner = true;
-                return winner;
-            }
 
-            //Check left from most recently placed disc
-            i = 0;
-            j = 0;
-            stopOnGrey = false;
-            for (int c = y; j < 4; c--, j++)
+            // Check diagonal /
+            for (int r = Math.Min(numRows - 1, x + 3); r >= Math.Max(3, x); r--)
             {
-                if (c >= 0)
+                for (int c = Math.Max(0, y - 3); c <= Math.Min(numCols - 4, y); c++)
                 {
-                    if (board[x, c].getCellColor() == board[x, y].getCellColor() && stopOnGrey == false)
+                    if (board[r, c].getCellColor() == color &&
+                        board[r - 1, c + 1].getCellColor() == color &&
+                        board[r - 2, c + 2].getCellColor() == color &&
+                        board[r - 3, c + 3].getCellColor() == color)
                     {
-                        i++;
-                    }
-                    if (board[x, c].getCellColor() == "Grey")
-                    {
-                        stopOnGrey = true;
+                        return true;
                     }
                 }
             }
-            Console.WriteLine("Checked Left");
-            if (i > 4)
-            {
-                winner = true;
-                return winner;
-            }
 
-            //Check up from most recently placed disc
-            i = 0;
-            j = 0;
-            stopOnGrey = false;
-            for (int r = x; j < 4; r--, j++)
-            {
-                if (r >= 0)
-                {
-                    if (board[r, y].getCellColor() == board[x, y].getCellColor() && stopOnGrey == false)
-                    {
-                        i++;
-                    }
-                    if (board[r, y].getCellColor() == "Grey")
-                    {
-                        stopOnGrey = true;
-                    }
-                }
-            }
-            Console.WriteLine("Checked Up");
-            if (i > 4)
-            {
-                winner = true;
-                return winner;
-            }
-
-            //Check down from most recently placed disc
-            i = 0;
-            j = 0;
-            stopOnGrey = false;
-            for (int r = x; j < 4; r++, j++)
-            {
-                if (r < numRows)
-                {
-                    if (board[r, y].getCellColor() == board[x, y].getCellColor() && stopOnGrey == false)
-                    {
-                        i++;
-                    }
-                    if (board[r, y].getCellColor() == "Grey")
-                    {
-                        stopOnGrey = true;
-                    }
-                }
-            }
-            Console.WriteLine("Checked Down");
-            if (i > 4)
-            {
-                winner = true;
-                return winner;
-            }
-
-            //DIAGONALS
-            //Check up-right from most recently placed disc
-            i = 0;
-            j = 0;
-            stopOnGrey = false;
-            for (int r = x, c = y; j < 4; r--, c++, j++)
-            {
-                if (r >= 0 && c < numCols)
-                {
-                    if (board[r, c].getCellColor() == board[x, y].getCellColor() && stopOnGrey == false)
-                    {
-                        i++;
-                    }
-                    if (board[r, c].getCellColor() == "Grey")
-                    {
-                        stopOnGrey = true;
-                    }
-                }
-            }
-            Console.WriteLine("Checked UpRight");
-            if (i > 4)
-            {
-                winner = true;
-                return winner;
-            }
-
-            //Check down-left from most recently placed disc
-            i = 0;
-            j = 0;
-            stopOnGrey = false;
-            for (int r = x, c = y; j < 4; r++, c--, j++)
-            {
-                if (r < numRows && c >= 0)
-                {
-                    if (board[r, c].getCellColor() == board[x, y].getCellColor() && stopOnGrey == false)
-                    {
-                        i++;
-                    }
-                    if (board[r, c].getCellColor() == "Grey")
-                    {
-                        stopOnGrey = true;
-                    }
-                }
-            }
-            Console.WriteLine("Checked DownLeft");
-            if (i > 4)
-            {
-                winner = true;
-                return winner;
-            }
-
-            //Check up-left from most recently placed disc
-            i = 0;
-            j = 0;
-            stopOnGrey = false;
-            for (int r = x, c = y; j < 4; r--, c--, j++)
-            {
-                if (r >= 0 && c >= 0)
-                {
-                    if (board[r, c].getCellColor() == board[x, y].getCellColor() && stopOnGrey == false)
-                    {
-                        i++;
-                    }
-                    if (board[r, c].getCellColor() == "Grey")
-                    {
-                        stopOnGrey = true;
-                    }
-                }
-            }
-            Console.WriteLine("Checked UpLeft");
-            if (i > 4)
-            {
-                winner = true;
-                return winner;
-            }
-
-            //Check down-right from most recently placed disc
-            i = 0;
-            j = 0;
-            stopOnGrey = false;
-            for (int r = x, c = y; j < 4; r++, c++, j++)
-            {
-                if (r < numRows && c < numCols)
-                {
-                    if (board[r, c].getCellColor() == board[x, y].getCellColor() && stopOnGrey == false)
-                    {
-                        i++;
-                    }
-                    if (board[r, c].getCellColor() == "Grey")
-                    {
-                        stopOnGrey = true;
-                    }
-                }
-            }
-            Console.WriteLine("Checked DownRight");
-            if (i > 4)
-            {
-                winner = true;
-                return winner;
-            }
-            
-
-            Console.WriteLine(Environment.NewLine + Environment.NewLine + Environment.NewLine);
-            return winner;
+            return false;
         }
+        public bool checkTie()
+        {
+            foreach (int slot in board)
+            {
+                if (slot == -1)
+                {
+                    // There is an empty slot, so the game is not tied yet
+                    return false;
+                }
+            }
+
+            // If there are no empty slots, the game is tied
+            return true;
+        }
+
 
 
         //  Will place a disk at given colum, with color representing players turn
@@ -328,72 +192,6 @@ namespace CIS153_FinalProject_Group2
                 }
             }
             return true;
-        }
-
-        // Function to check if there is a winning configuration of discs on the board
-        public bool HasWinner()
-        {
-            // Check horizontal
-            for (int row = 0; row < numRows; row++)
-            {
-                for (int col = 0; col < numCols - 3; col++)
-                {
-                    if (board[row, col].GetDisc() != null &&
-                        board[row, col].GetDisc() == board[row, col + 1].GetDisc() &&
-                        board[row, col].GetDisc() == board[row, col + 2].GetDisc() &&
-                        board[row, col].GetDisc() == board[row, col + 3].GetDisc())
-                    {
-                        return true;
-                    }
-                }
-            }
-
-            // Check vertical
-            for (int row = 0; row < numRows - 3; row++)
-            {
-                for (int col = 0; col < numCols; col++)
-                {
-                    if (board[row, col].GetDisc() != null &&
-                        board[row, col].GetDisc() == board[row + 1, col].GetDisc() &&
-                        board[row, col].GetDisc() == board[row + 2, col].GetDisc() &&
-                        board[row, col].GetDisc() == board[row + 3, col].GetDisc())
-                    {
-                        return true;
-                    }
-                }
-            }
-
-            // Check diagonal (positive slope)
-            for (int row = 0; row < numRows - 3; row++)
-            {
-                for (int col = 0; col < numCols - 3; col++)
-                {
-                    if (board[row, col].GetDisc() != null &&
-                        board[row, col].GetDisc() == board[row + 1, col + 1].GetDisc() &&
-                        board[row, col].GetDisc() == board[row + 2, col + 2].GetDisc() &&
-                        board[row, col].GetDisc() == board[row + 3, col + 3].GetDisc())
-                    {
-                        return true;
-                    }
-                }
-            }
-
-            // Check diagonal (negative slope)
-            for (int row = 3; row < numRows; row++)
-            {
-                for (int col = 0; col < numCols - 3; col++)
-                {
-                    if (board[row, col].GetDisc() != null &&
-                        board[row, col].GetDisc() == board[row - 1, col + 1].GetDisc() &&
-                        board[row, col].GetDisc() == board[row - 2, col + 2].GetDisc() &&
-                        board[row, col].GetDisc() == board[row - 3, col + 3].GetDisc())
-                    {
-                        return true;
-                    }
-                }
-            }
-
-            return false;
         }
 
         //  This is required for the board display

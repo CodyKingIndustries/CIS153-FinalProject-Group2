@@ -128,5 +128,10 @@ namespace CIS153_FinalProject_Group2
         {
             Application.Exit();
         }
+
+        private void Winner_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
