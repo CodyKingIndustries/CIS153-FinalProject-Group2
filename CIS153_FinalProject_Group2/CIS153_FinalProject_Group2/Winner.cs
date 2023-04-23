@@ -112,7 +112,7 @@ namespace CIS153_FinalProject_Group2
             else if (cameFrom == "Single")
             {
                 SinglePlayerC4Form TPForm = new SinglePlayerC4Form(MainScreenForm);
-                SPForm.Show();
+                TPForm.Show();
                 this.Close();
             }
         }

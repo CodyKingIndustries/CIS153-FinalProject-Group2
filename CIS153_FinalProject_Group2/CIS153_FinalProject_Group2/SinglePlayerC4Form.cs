@@ -1557,13 +1557,21 @@ namespace CIS153_FinalProject_Group2
             btn_Row5Slot.Enabled = false;
             btn_Row6Slot.Enabled = false;
             btn_Row7Slot.Enabled = false;
-            if (playersTurn)
+            if (playersTurn && SPBoard.checkTie() == false)
             {
                 Console.WriteLine("True Indeed");
 
                 //Make winner form given this form (for a play again option), main menu form
                 //(for option to go back to menu), and a boolean stating whether the player won or ai won
                 Winner WinnerForm = new Winner(this, MainScreenForm, 0);
+                //Close this form
+                this.Hide();
+                //Load Winner form
+                WinnerForm.Show();
+            }
+            else if (SPBoard.checkTie() == true)
+            {
+                Winner WinnerForm = new Winner(this, MainScreenForm, 2);
                 //Close this form
                 this.Hide();
                 //Load Winner form

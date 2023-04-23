@@ -166,7 +166,6 @@ namespace CIS153_FinalProject_Group2
                 }
             }
             hasWinner = TPBoard.checkWinner(r, c);
-            checkTie();
             ifWinner();
 
             totalClicks++;
@@ -1696,6 +1695,24 @@ namespace CIS153_FinalProject_Group2
                 Winner winnerForm = new Winner(this, MainScreenForm, winner);
                 winnerForm.Show();
                 this.Hide();
+            }
+            else if (TPBoard.checkTie() == true) 
+            {
+                // Disable all slots to prevent further moves
+                foreach (Control control in this.Controls)
+                {
+                    if (control is Button button && button != btn_loadMainScreen && button != btn_Exit)
+                    {
+                        button.Enabled = false;
+
+                    }
+                }
+                // Create and show the winner form
+                int winner = 2;
+                Winner winnerForm = new Winner(this, MainScreenForm, winner);
+                winnerForm.Show();
+                this.Hide();
+
             }
         }
 

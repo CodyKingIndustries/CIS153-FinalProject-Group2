@@ -134,23 +134,25 @@ namespace CIS153_FinalProject_Group2
 
             return false;
         }
+
         public bool checkTie()
         {
-            foreach (int slot in board)
+            // Check if there are any empty cells left on the board
+            for (int row = 0; row < numRows; row++)
             {
-                if (slot == -1)
+                for (int col = 0; col < numCols; col++)
                 {
-                    // There is an empty slot, so the game is not tied yet
-                    return false;
+                    if (board[row, col].getCellColor() == "Grey")
+                    {
+                        // There is an empty cell, so the game is not tied
+                        return false;
+                    }
                 }
             }
 
-            // If there are no empty slots, the game is tied
+            // There are no empty cells, so the game is tied
             return true;
         }
-
-
-
         //  Will place a disk at given colum, with color representing players turn
         public void PlaceDisc(int col, string c)
         {
