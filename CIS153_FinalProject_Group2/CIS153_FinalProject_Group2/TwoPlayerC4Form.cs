@@ -38,8 +38,6 @@ namespace CIS153_FinalProject_Group2
         //  Sound requirements
         Stream soundFile;
         SoundPlayer playSound;
-
-        
         
 
         private void TwoPlayerC4Form_Load(object sender, EventArgs e)
@@ -65,7 +63,6 @@ namespace CIS153_FinalProject_Group2
             //  upon entering, load the connect 4 board
             TPBoard = new Board();
         }
-
 
 
         //COLUMN 0 SLOT CLICK =================================================================
@@ -1742,7 +1739,6 @@ namespace CIS153_FinalProject_Group2
 
             }
         }
-
 
 
         //BOTTOM BUTTONS

@@ -1510,9 +1510,6 @@ namespace CIS153_FinalProject_Group2
 
 
 
-
-
-
         //==================================================================
         //VISUAL HOVER FUNCTIONS
         private void btn_Row1Slot_MouseHover(object sender, EventArgs e)
@@ -1909,7 +1906,4 @@ namespace CIS153_FinalProject_Group2
             }
         }
     }
-
-
-
 }

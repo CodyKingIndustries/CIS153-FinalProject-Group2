@@ -8,9 +8,6 @@ namespace CIS153_FinalProject_Group2
 {
     internal class Cell
     {
-        
-
-
         //  This color will be moved into Disc when ready
         private string color;
         int row;

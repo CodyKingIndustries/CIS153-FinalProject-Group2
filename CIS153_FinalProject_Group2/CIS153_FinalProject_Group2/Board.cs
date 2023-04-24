@@ -9,30 +9,11 @@ namespace CIS153_FinalProject_Group2
 {
     internal class Board
     {
-        
         private const int numRows = 6; // number of rows in the game board
         private const int numCols = 7; // number of columns in the game board
         private Cell[,] board = new Cell[numRows, numCols]; // 2D array of Cells representing the game board
         private bool occupied;
         private bool winner;
-
-        //  Currently UNUSED
-        // Constructor to initialize the board with empty cells
-        //  ====================================================
-        //  The rows and colums never change....  Thus no need to construct the- 
-        //  -board using a new set of given rows/colums every time. 
-        //public Board(int numRows, int numCols)
-        //{
-        //    board = new Cell[numRows, numCols];
-
-        //    for (int row = 0; row < numRows; row++)
-        //    {
-        //        for (int col = 0; col < numCols; col++)
-        //        {
-        //            board[row, col] = new Cell();
-        //        }
-        //    }
-        //}
         
         //  This overloaded constructor established the whole board with value "Grey" instead of null
         public Board()
@@ -139,40 +120,6 @@ namespace CIS153_FinalProject_Group2
             return true;
         }
 
-        
-        //  ====================================================================================
-
-        public int GetNextEmptyRow(int col)
-        {
-            for (int row = numRows - 1; row >= 0; row--)
-            {                                                 //  Changed due to erorr with calling a null disk, [null == grey] now.
-                if (board[row, col].getCellColor() == "Grey") //(board[row, col].GetDisc() == null ) || 
-                {
-                    return row;
-                }
-            }
-            return -1;
-        }
-
-        // Function to check if a column is full
-        //public bool IsColumnFull(int col)
-        //{
-        //    return board[0, col].GetDisc() != null;
-        //}
-
-        // Function to check if the board is full
-        //public bool IsBoardFull()
-        //{
-        //    for (int col = 0; col < numCols; col++)
-        //    {
-        //        if (!IsColumnFull(col))
-        //        {
-        //            return false;
-        //        }
-        //    }
-        //    return true;
-        //}
-
         //  This is required for the board display
         public Cell[,] getBoard()
         {
@@ -181,5 +128,3 @@ namespace CIS153_FinalProject_Group2
 
     }
 }
-
-
