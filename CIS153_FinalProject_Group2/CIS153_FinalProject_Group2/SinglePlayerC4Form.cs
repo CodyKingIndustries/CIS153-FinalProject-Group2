@@ -36,14 +36,13 @@ namespace CIS153_FinalProject_Group2
         public SinglePlayerC4Form()
         {
             InitializeComponent();
-            
+
         }
 
         //  Initialize This Form
         public SinglePlayerC4Form(MainMenuForm m)
         {
             InitializeComponent();
-            //  this will allow us to return to the main screen form if we need to
             MainScreenForm = m;
             this.StartPosition = FormStartPosition.Manual;
             this.Location = new Point(100, 100);
@@ -61,8 +60,6 @@ namespace CIS153_FinalProject_Group2
         private void btn_SPC4_tempLoadForm_Click(object sender, EventArgs e)
         {
             MainScreenForm.Show();
-            //  in order for this to close -> either the game needs to end / or the user must exit
-            //  this is just temporary framework
             this.Close();
         }
 
@@ -112,7 +109,7 @@ namespace CIS153_FinalProject_Group2
                 btn_Row1Space6.BackColor = Color.Red;
                 btn_Row1Slot.Enabled = false;
             }
-            
+
             SPBoard.getBoard()[r, c].placeDisc("Red");
 
             if (SPBoard.checkWinner(r, c))
@@ -474,56 +471,35 @@ namespace CIS153_FinalProject_Group2
                 }
             }
 
-            
+
             for (int c = 0; c < 7; c++)
             {
-                                     
-                if (AiOptions[c] > choice) 
+
+                if (AiOptions[c] > choice)
                 {
                     choice = AiOptions[c];
                     columnPlacement = c;
                 }
 
             }
-            
-             for (int c = 0; c < 7; c++)
-             {
+
+            for (int c = 0; c < 7; c++)
+            {
                 Console.WriteLine(AiOptions[c]);
-             }
+            }
             Console.WriteLine("It chose C = " + columnPlacement);
-            
-           
-
-            //  needs to check for column being filled before this function calls
-            //  and if column == filled -> change placement number to next highest priority
             AiPlacesPiece(columnPlacement);
-
-            
-
         }
 
-        //  This searches the current board state, and returns "danger" which is an int[,]
-        //  higher number = more pieces in a row
+  
         private int[,] CheckForPlayerWin(Cell[,] board, int[,] danger)
         {
-            //  Progress:
-            //  
-            //  Knows all locations based on their number of pieces in a row
-            //  I am working on only letting it place pieces off of available spots
 
-
-            //  j is a counter
-            //  y is columns [c]
-            //  x is Rows [r]
-            //  This is all copied and modified code from "checkWinner" in Board.cs
-            //  so that I can use the same algorith to instead find 2 & 3 in a row, Not 4 [already game over]
-            //for (int x = 0; x < 6; x++)
             for (int x = 5; x >= 0; x--)
             {
                 for (int y = 0; y < 7; y++)
                 {
-                    //Hardest part is to not go out of bounds of the array
-
+                   
                     //  ======================================================================
                     int i = 0;
                     int j = 0;
@@ -534,10 +510,7 @@ namespace CIS153_FinalProject_Group2
                     {
                         if (c < 7)
                         {
-                            //if (board[x, c].getCellColor() == board[x, y].getCellColor())
-                            //{
-                            //    i++;
-                            //}
+
                             if (board[x, y].getCellColor() == "Grey")
                             {
 
@@ -564,14 +537,6 @@ namespace CIS153_FinalProject_Group2
                     {
                         if (c >= 0)
                         {
-                            //if (board[x, y].getCellColor() != "Grey")
-                            //{
-                            //    if (board[x, c].getCellColor() == board[x, y].getCellColor())
-                            //    {
-                            //        i++;
-                            //    }
-                            //}
-
                             if (board[x, y].getCellColor() == "Grey")
                             {
 
@@ -580,19 +545,13 @@ namespace CIS153_FinalProject_Group2
                                     i++;
                                 }
 
-                                //  shouldnt need this becuase it is going in a pair
-                                //if (colorLocked == "" && board[x, c].getCellColor() != "Grey")
-                                //{
-                                //    colorLocked = board[x, c].getCellColor();
-                                //}
-
                             }
 
                         }
                     }
 
 
-                    //  Pobalby only need one check not 2
+                    
                     if (danger[x, y] >= 0 || i >= 3)
                     {
                         if (i > danger[x, y])
@@ -613,12 +572,6 @@ namespace CIS153_FinalProject_Group2
                             danger[x + 1, y] = -3;
                         }
                     }
-
-                    //if (danger[x, y] <= -3)
-                    //{
-                    //    Console.WriteLine("Left and Right: " + x + "," + y + i + " -> " + danger[x, y]);
-                    //}
-
                     //  ======================================================================
                     i = 0;
                     j = 0;
@@ -651,7 +604,7 @@ namespace CIS153_FinalProject_Group2
                         }
                     }
 
-                    
+
 
                     //Check down from most recently placed disc
                     j = 0;
@@ -660,13 +613,6 @@ namespace CIS153_FinalProject_Group2
                     {
                         if (r < 6)
                         {
-                            //if (board[x, y].getCellColor() != "Grey")
-                            //{
-                            //    if (board[r, y].getCellColor() == board[x, y].getCellColor())
-                            //    {
-                            //        i++;
-                            //    }
-                            //}
 
                             if (board[x, y].getCellColor() == "Grey")
                             {
@@ -675,11 +621,6 @@ namespace CIS153_FinalProject_Group2
                                 {
                                     i++;
                                 }
-
-                                //if (colorLocked == "" && board[r, y].getCellColor() != "Grey")
-                                //{
-                                //    colorLocked = board[r, y].getCellColor();
-                                //}
 
                             }
 
@@ -694,23 +635,6 @@ namespace CIS153_FinalProject_Group2
                         }
                     }
 
-                    //if (i >= 3)
-                    //{
-                    //    //  below the [4] must be [-4]
-                    //    danger[x, y] = i;
-
-                    //    //  CONVERT ALL TO THIS
-                    //    //  but with safety features
-                    //    if (x < 5)
-                    //    {
-                    //        danger[x + 1, y] = -i;
-                    //    }
-                    //}
-
-                    //if (danger[x, y] <= -3)
-                    //{
-                    //    Console.WriteLine("Up + Down: " + x + "," + y + i + " -> " + danger[x, y]);
-                    //}
                     //  ======================================================================
 
                     //DIAGONALS
@@ -723,13 +647,6 @@ namespace CIS153_FinalProject_Group2
                     {
                         if (r >= 0 && c < 7)
                         {
-                            //if (board[x, y].getCellColor() != "Grey")
-                            //{
-                            //    if (board[x, c].getCellColor() == board[x, y].getCellColor())
-                            //    {
-                            //        i++;
-                            //    }
-                            //}
 
                             if (board[x, y].getCellColor() == "Grey")
                             {
@@ -750,7 +667,7 @@ namespace CIS153_FinalProject_Group2
                         }
                     }
 
-                    
+
 
                     //Check down-left from most recently placed disc
                     j = 0;
@@ -759,13 +676,6 @@ namespace CIS153_FinalProject_Group2
                     {
                         if (r < 6 && c >= 0)
                         {
-                            //if (board[x, y].getCellColor() != "Grey")
-                            //{
-                            //    if (board[x, c].getCellColor() == board[x, y].getCellColor())
-                            //    {
-                            //        i++;
-                            //    }
-                            //}
 
                             if (board[x, y].getCellColor() == "Grey")
                             {
@@ -774,11 +684,6 @@ namespace CIS153_FinalProject_Group2
                                 {
                                     i++;
                                 }
-
-                                //if (colorLocked == "" && board[r, c].getCellColor() != "Grey")
-                                //{
-                                //    colorLocked = board[r, c].getCellColor();
-                                //}
 
                             }
 
@@ -805,12 +710,6 @@ namespace CIS153_FinalProject_Group2
                             danger[x + 1, y] = -3;
                         }
                     }
-
-                    //if (danger[x, y] <= -3)
-                    //{
-                    //    Console.WriteLine("DLeft and URight: " + x + "," + y + i + " -> " + danger[x, y]);
-                    //}
-
                     //  ======================================================================
 
                     //Check up-left from most recently placed disc
@@ -822,13 +721,7 @@ namespace CIS153_FinalProject_Group2
                     {
                         if (r >= 0 && c >= 0)
                         {
-                            //if (board[x, y].getCellColor() != "Grey")
-                            //{
-                            //    if (board[x, c].getCellColor() == board[x, y].getCellColor())
-                            //    {
-                            //        i++;
-                            //    }
-                            //}
+
 
                             if (board[x, y].getCellColor() == "Grey")
                             {
@@ -849,7 +742,7 @@ namespace CIS153_FinalProject_Group2
                         }
                     }
 
-                   
+
 
                     //Check down-right from most recently placed disc
                     j = 0;
@@ -858,13 +751,7 @@ namespace CIS153_FinalProject_Group2
                     {
                         if (r < 6 && c < 7)
                         {
-                            //if (board[x, y].getCellColor() != "Grey")
-                            //{
-                            //    if (board[x, c].getCellColor() == board[x, y].getCellColor())
-                            //    {
-                            //        i++;
-                            //    }
-                            //}
+
 
                             if (board[x, y].getCellColor() == "Grey")
                             {
@@ -873,11 +760,6 @@ namespace CIS153_FinalProject_Group2
                                 {
                                     i++;
                                 }
-
-                                //if (colorLocked == "" && board[r, c].getCellColor() != "Grey")
-                                //{
-                                //    colorLocked = board[r, c].getCellColor();
-                                //}
 
                             }
 
@@ -904,16 +786,6 @@ namespace CIS153_FinalProject_Group2
                             danger[x + 1, y] = -3;
                         }
                     }
-
-                    //if (danger[x, y] <= -3)
-                    //{
-                    //    Console.WriteLine("ULeft and DRight: " + x + "," + y + i + " -> " + danger[x, y]);
-                    //}
-
-                    //  ======================================================================
-                    //  Repeat but in reverse
-                    //  
-                    //  ======================================================================
                     i = 0;
                     j = 0;
                     colorLocked = "";
@@ -944,7 +816,7 @@ namespace CIS153_FinalProject_Group2
                         }
                     }
 
-                    
+
                     //Check Right from most recently placed disc
                     j = 0;
 
@@ -960,12 +832,6 @@ namespace CIS153_FinalProject_Group2
                                 {
                                     i++;
                                 }
-
-                                //if (colorLocked == "" && board[x, c].getCellColor() != "Grey")
-                                //{
-                                //    colorLocked = board[x, c].getCellColor();
-                                //    i++;
-                                //}
 
                             }
 
@@ -993,12 +859,6 @@ namespace CIS153_FinalProject_Group2
                         }
                     }
 
-                    //if (danger[x, y] <= -3)
-                    //{
-                    //    Console.WriteLine("I Left and Right: " + x + "," + y + i + " -> " + danger[x, y]);
-                    //}
-
-                    //  ======================================================================
                     i = 0;
                     j = 0;
                     colorLocked = "";
@@ -1028,7 +888,7 @@ namespace CIS153_FinalProject_Group2
                         }
                     }
 
-                    
+
 
                     //Check up from most recently placed disc
                     j = 0;
@@ -1054,7 +914,7 @@ namespace CIS153_FinalProject_Group2
                             }
 
                         }
-                    }                    
+                    }
 
                     if (danger[x, y] >= 0 || i >= 3)
                     {
@@ -1064,23 +924,6 @@ namespace CIS153_FinalProject_Group2
                         }
                     }
 
-                    //if (i >= 3)
-                    //{
-                    //    //  below the [4] must be [-4]
-                    //    danger[x, y] = i;
-
-                    //    //  CONVERT ALL TO THIS
-                    //    //  but with safety features
-                    //    if (x < 5)
-                    //    {
-                    //        danger[x + 1, y] = -i;
-                    //    }
-                    //}
-
-                    //if (danger[x, y] <= -3)
-                    //{
-                    //    Console.WriteLine("I Up + Down: " + x + "," + y + i + " -> " + danger[x, y]);
-                    //}
 
                     //  ======================================================================
 
@@ -1114,7 +957,7 @@ namespace CIS153_FinalProject_Group2
                         }
                     }
 
-                   
+
 
                     //Check down-Right from most recently placed disc
                     j = 0;
@@ -1123,7 +966,7 @@ namespace CIS153_FinalProject_Group2
                     {
                         if (r >= 0 && c < 7)
                         {
-                            
+
 
                             if (board[x, y].getCellColor() == "Grey")
                             {
@@ -1133,10 +976,6 @@ namespace CIS153_FinalProject_Group2
                                     i++;
                                 }
 
-                                //if (colorLocked == "" && board[r, c].getCellColor() != "Grey")
-                                //{
-                                //    colorLocked = board[r, c].getCellColor();
-                                //}
 
                             }
 
@@ -1164,11 +1003,6 @@ namespace CIS153_FinalProject_Group2
                         }
                     }
 
-                    //if (danger[x, y] <= -3)
-                    //{
-                    //    Console.WriteLine("I ULeft and DRight: " + x + "," + y + i + " -> " + danger[x, y]);
-
-                    //}
                     //  ======================================================================
 
                     //Check Down-left from most recently placed disc
@@ -1199,8 +1033,8 @@ namespace CIS153_FinalProject_Group2
 
                         }
                     }
-                   
-                    
+
+
 
                     //Check Up-right from most recently placed disc
                     j = 0;
@@ -1217,11 +1051,6 @@ namespace CIS153_FinalProject_Group2
                                 {
                                     i++;
                                 }
-
-                                //if (colorLocked == "" && board[r, c].getCellColor() != "Grey")
-                                //{
-                                //    colorLocked = board[r, c].getCellColor();
-                                //}
 
                             }
 
@@ -1240,7 +1069,7 @@ namespace CIS153_FinalProject_Group2
                     {
                         //  below the [4] must be [-4]
                         danger[x, y] = i;
-                        
+
 
 
                         //  CONVERT ALL TO THIS
@@ -1250,13 +1079,6 @@ namespace CIS153_FinalProject_Group2
                             danger[x + 1, y] = -3;
                         }
                     }
-
-                    //if (danger[x, y] <= -3)
-                    //{
-                    //    Console.WriteLine("I DLeft and URight: " + x + "," + y + i + " -> " + danger[x, y]);
-                    //}
-
-                    //  ======================================================================
 
                 }
             }
@@ -1268,7 +1090,7 @@ namespace CIS153_FinalProject_Group2
 
         private void AiPlacesPiece(int c)
         {
-           // playSoundS.Play();
+             
             //  these are just all the cases as in btn_row#Slot_Click
             //  but for the Ai to place
 
@@ -1319,7 +1141,7 @@ namespace CIS153_FinalProject_Group2
             {
                 RowTwoClick++;
                 int r = 5;
-                
+
 
                 //  find highest empty position
                 while (SPBoard.getBoard()[r, c].isFull() == true && r != 0)
@@ -1575,8 +1397,7 @@ namespace CIS153_FinalProject_Group2
         //IF WINNER
         private void EndGame(bool playersTurn)
         {
-            //Technically not needed anymore since it just loads a whole new form and closes this one
-            //But not too sure yet since reviewing the board reopens it and we wouldn't want the user to be able to click
+            // Disable all buttons
             btn_Row1Slot.Enabled = false;
             btn_Row2Slot.Enabled = false;
             btn_Row3Slot.Enabled = false;
@@ -1584,40 +1405,113 @@ namespace CIS153_FinalProject_Group2
             btn_Row5Slot.Enabled = false;
             btn_Row6Slot.Enabled = false;
             btn_Row7Slot.Enabled = false;
-            if (playersTurn && SPBoard.checkTie() == false)
-            {
-                Console.WriteLine("True Indeed");
 
-                //Make winner form given this form (for a play again option), main menu form
-                //(for option to go back to menu), and a boolean stating whether the player won or ai won
-                Winner WinnerForm = new Winner(this, MainScreenForm, 0);
-                //Close this form
-                this.Hide();
-                //Load Winner form
-                WinnerForm.Show();
-            }
-            else if (SPBoard.checkTie() == true)
+            if (playersTurn && SPBoard.checkTie() == false) // Player wins
             {
-                Winner WinnerForm = new Winner(this, MainScreenForm, 2);
-                //Close this form
+                UpdateStats(true, false);
+                // Hide this form
                 this.Hide();
-                //Load Winner form
-                WinnerForm.Show();
+
+                // Open the winner form and pass it the necessary arguments
+                Winner winnerForm = new Winner(this, MainScreenForm, 0);
+                winnerForm.Show();
+            }
+            else if (SPBoard.checkTie() == false) // AI wins
+            {
+                UpdateStats(false, true);
+                // Hide this form
+                this.Hide();
+
+                // Open the winner form and pass it the necessary arguments
+                Winner winnerForm = new Winner(this, MainScreenForm, 1);
+                winnerForm.Show();
+            }
+            else if (SPBoard.checkTie()) // Tie
+            {
+                UpdateStats(false, false);
+                // Hide this form
+                this.Hide();
+
+                // Open the winner form and pass it the necessary arguments
+                Winner winnerForm = new Winner(this, MainScreenForm, 2);
+                winnerForm.Show();
+            }
+
+
+
+        }
+        private void UpdateStats(bool playerWon, bool aiWon)
+        {
+            // Read the current statistics from the text file
+            int playerWins = 0;
+            int computerWins = 0;
+            int ties = 0;
+            int totalGames = 0;
+
+            StreamReader reader = new StreamReader("stats.txt");
+
+            playerWins = 0;
+            string playerWinsStr = reader.ReadLine();
+            if (playerWinsStr != null)
+            {
+                playerWins = int.Parse(playerWinsStr);
+            }
+
+            computerWins = 0;
+            string computerWinsStr = reader.ReadLine();
+            if (computerWinsStr != null)
+            {
+                computerWins = int.Parse(computerWinsStr);
+            }
+
+            ties = 0;
+            string tiesStr = reader.ReadLine();
+            if (tiesStr != null)
+            {
+                ties = int.Parse(tiesStr);
+            }
+
+            totalGames = 0;
+            string totalGamesStr = reader.ReadLine();
+            if (totalGamesStr != null)
+            {
+                totalGames = int.Parse(totalGamesStr);
+            }
+            reader.Close();
+            // Update the statistics based on the outcome of the game
+            if (playerWon)
+            {
+                playerWins++;
+            }
+            else if (aiWon)
+            {
+                computerWins++;
             }
             else
             {
-                Console.WriteLine("False Indeed");
-                //Make winner form given this form (for a play again option), main menu form
-                //(for option to go back to menu), and a number indicating who won (0 for player, 1 for ai, 2 for tie)
-                Winner WinnerForm = new Winner(this, MainScreenForm, 1);
-                //Close this form
-                this.Hide();
-                //Load Winner form
-                WinnerForm.Show();
+                ties++;
             }
-            //Will need another option for a tie (might need this function to accept
-            //something other than a bool so we can have 3 options instead of 2
+
+            totalGames++;
+            Console.WriteLine(playerWins);
+            Console.WriteLine(computerWins);
+            Console.WriteLine(ties);
+            Console.WriteLine(totalGames);
+            // Write the updated statistics back to the text file
+            StreamWriter writer = new StreamWriter("stats.txt");
+
+            writer.WriteLine(playerWins);
+            writer.WriteLine(computerWins);
+            writer.WriteLine(ties);
+            writer.WriteLine(totalGames);
+
+            writer.Close();
         }
+
+
+
+
+
 
         //==================================================================
         //VISUAL HOVER FUNCTIONS
@@ -2016,6 +1910,6 @@ namespace CIS153_FinalProject_Group2
         }
     }
 
-   
+
 
 }

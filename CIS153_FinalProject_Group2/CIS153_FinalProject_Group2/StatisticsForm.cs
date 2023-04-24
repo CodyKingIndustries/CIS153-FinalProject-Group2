@@ -14,52 +14,84 @@ namespace CIS153_FinalProject_Group2
     public partial class StatisticsForm : Form
     {
         private MainMenuForm MainScreenForm;
+
+
         public StatisticsForm()
         {
             InitializeComponent();
-            this.StartPosition = FormStartPosition.Manual;
-            this.Location = new Point(100, 100);
+
         }
+
         public StatisticsForm(MainMenuForm m)
         {
             InitializeComponent();
             MainScreenForm = m;
+            this.StartPosition = FormStartPosition.Manual;
+            this.Location = new Point(100, 100);
         }
+
         private void StatisticsForm_Load(object sender, EventArgs e)
         {
-            // Open the text file containing the statistics
-            StreamReader reader = new StreamReader("stats.txt");
+            if (File.Exists("stats.txt"))
+            {
+                // Open the text file containing the statistics
+                StreamReader reader = new StreamReader("stats.txt");
+
+                // Read the statistics from the text file and replace null values with 0
+                int playerWins = 0;
+                string playerWinsStr = reader.ReadLine();
+                if (playerWinsStr != null)
+                {
+                    playerWins = int.Parse(playerWinsStr);
+                }
+
+                int computerWins = 0;
+                string computerWinsStr = reader.ReadLine();
+                if (computerWinsStr != null)
+                {
+                    computerWins = int.Parse(computerWinsStr);
+                }
+
+                int ties = 0;
+                string tiesStr = reader.ReadLine();
+                if (tiesStr != null)
+                {
+                    ties = int.Parse(tiesStr);
+                }
+
+                int totalGames = 0;
+                string totalGamesStr = reader.ReadLine();
+                if (totalGamesStr != null)
+                {
+                    totalGames = int.Parse(totalGamesStr);
+                }
+
+                // Close the reader
+                reader.Close();
+                UpdateStatisticsLabels(playerWins, computerWins, ties, totalGames);
+            }
+            else
+            {
+                MessageBox.Show("The file stats.txt does not exist.");
+            }
 
 
-            //saving this for when it is needed
+        }
 
-            // Read the statistics from the text file
-            //int playerWins = int.Parse(reader.ReadLine());
-            //int computerWins = int.Parse(reader.ReadLine());
-            //int ties = int.Parse(reader.ReadLine());
-            //int totalGames = int.Parse(reader.ReadLine());
+        private void UpdateStatisticsLabels(int playerWins, int aiWins, int ties, int totalGames)
+        {
+            lbl_playerWins.Text = playerWins.ToString();
+            lbl_aiWins.Text = aiWins.ToString();
+            lbl_ties.Text = ties.ToString();
+            lbl_gamesPlayed.Text = totalGames.ToString();
 
-            // Close the reader
-            reader.Close();
+            // Calculate win percentages
+            double playerWinPercentage = (double)playerWins / totalGames * 100;
+            double aiWinPercentage = (double)aiWins / totalGames * 100;
 
-            //Notes:
-            //We need to add win counters for ai and player,
-            //tie counters, and games played counters to 
-            //single player, and I can finish the statistics page
-            //with everyone
-
-            //Also, I named the labels with and without "Txt"
-            //Since I have labels instead of text boxes you wont see anything
-            //in the design form, I just think it looks better that way
-
-            //Testing how a label looks when the value is added from this code
-            //So everyone can mess around with looks easier
-            lbl_playerWins.Text = "1";
-            lbl_aiWins.Text ="1";
-            lbl_ties.Text ="1";
-            lbl_playerWinPercent.Text = "1";
-            lbl_aiWinPercentage.Text = "1";
-            lbl_gamesPlayed.Text = "1";
+            // Update the win percentage labels
+            lbl_playerWinPercent.Text = string.Format("{0:0.00}%", playerWinPercentage);
+            lbl_aiWinPercentage.Text = string.Format("{0:0.00}%", aiWinPercentage);
         }
 
         private void btn_loadMenu_Click(object sender, EventArgs e)
@@ -72,8 +104,7 @@ namespace CIS153_FinalProject_Group2
         {
             Application.Exit();
         }
-
-        private void lbl_playerWinstxt_Click(object sender, EventArgs e)
+        private void lbl_playerWinstxt_Click (object sender, EventArgs e)
         {
 
         }

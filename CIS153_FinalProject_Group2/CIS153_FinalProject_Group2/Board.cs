@@ -58,21 +58,6 @@ namespace CIS153_FinalProject_Group2
         {
             return board[r, c];
         }
-        public void setCell(int r, int c, Cell C)
-        {
-            board[r, c] = C;
-        }
-        //===========
-
-        public int getNumRows()
-        {
-            return numRows;
-        }
-       
-        public int getNumCols()
-        {
-            return numCols;
-        }
 
         public bool checkWinner(int x, int y)
         {
@@ -153,15 +138,7 @@ namespace CIS153_FinalProject_Group2
             // There are no empty cells, so the game is tied
             return true;
         }
-        //  Will place a disk at given colum, with color representing players turn
-        public void PlaceDisc(int col, string c)
-        {
-            int row = GetNextEmptyRow(col);
-            if (row != -1)
-            {
-                board[row, col].setCellColor(c);
-            }
-        }
+
         
         //  ====================================================================================
 

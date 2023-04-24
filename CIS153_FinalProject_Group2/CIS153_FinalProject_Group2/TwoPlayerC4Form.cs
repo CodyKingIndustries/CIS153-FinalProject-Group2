@@ -31,7 +31,7 @@ namespace CIS153_FinalProject_Group2
         private int col4Clicks = 0;
         private int col5Clicks = 0;
         private int col6Clicks = 0;
-        //Will use modulus to track who's turn it is (even vs odd)
+        
         private int totalClicks = 0;
         private bool hasWinner = false;
 
@@ -67,8 +67,7 @@ namespace CIS153_FinalProject_Group2
         }
 
 
-        //upon clicking the purple square at the top, it will "drop a disc" down that respective column
-        //starting with column 0 (to 6). It will drop a disc as far down as possible (as long as the cell below it isn't occupied)
+
         //COLUMN 0 SLOT CLICK =================================================================
         private void btn_Col0Slot_Click(object sender, EventArgs e)
         {
@@ -102,9 +101,6 @@ namespace CIS153_FinalProject_Group2
                 if (playerOnesTurn)
                 {
                     btn_00.BackColor = Color.Red;
-                    //We can use the cell's color attribute as a way to check for the winner
-                    //We can look for 4 cells in a row of the same color 
-                    //ex: if (TPBoard.getBoard()[r,c].getCellColor() == the same as 3 more in a row), then we have a winner
                     TPBoard.getBoard()[r, c].setCellColor("Red");
                 }
                 else

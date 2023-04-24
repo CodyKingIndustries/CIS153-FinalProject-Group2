@@ -73,22 +73,16 @@ namespace CIS153_FinalProject_Group2
 
         private void btn_reviewBoard_Click(object sender, EventArgs e)
         {
-            //Review board isn't completely done since there are more things to do as
-            //layed out in rubric but here is a start:
 
             if (cameFrom == "Two")
             {
                 TPForm.Show();
                 this.Close();
-                //Can't decide if I should hide or close for reviewing board
-                //this.Hide();
             }
             else if (cameFrom == "Single")
             {
                 SPForm.Show();
                 this.Close();
-                //Can't decide if I should hide or close for reviewing board
-                //this.Hide();
             }
         }
 
@@ -97,8 +91,6 @@ namespace CIS153_FinalProject_Group2
             StatisticsForm statsForm = new StatisticsForm(MainScreenForm);
             statsForm.Show();
             this.Close();
-            //Again, can't yet decide whether or not to hide or close
-            //this.Hide();
         }
 
         private void btn_playAgain_Click(object sender, EventArgs e)
