@@ -21,18 +21,18 @@ namespace CIS153_FinalProject_Group2
         //  ====================================================
         //  The rows and colums never change....  Thus no need to construct the- 
         //  -board using a new set of given rows/colums every time. 
-        public Board(int numRows, int numCols)
-        {
-            board = new Cell[numRows, numCols];
+        //public Board(int numRows, int numCols)
+        //{
+        //    board = new Cell[numRows, numCols];
 
-            for (int row = 0; row < numRows; row++)
-            {
-                for (int col = 0; col < numCols; col++)
-                {
-                    board[row, col] = new Cell();
-                }
-            }
-        }
+        //    for (int row = 0; row < numRows; row++)
+        //    {
+        //        for (int col = 0; col < numCols; col++)
+        //        {
+        //            board[row, col] = new Cell();
+        //        }
+        //    }
+        //}
         
         //  This overloaded constructor established the whole board with value "Grey" instead of null
         public Board()
@@ -178,23 +178,23 @@ namespace CIS153_FinalProject_Group2
         }
 
         // Function to check if a column is full
-        public bool IsColumnFull(int col)
-        {
-            return board[0, col].GetDisc() != null;
-        }
+        //public bool IsColumnFull(int col)
+        //{
+        //    return board[0, col].GetDisc() != null;
+        //}
 
         // Function to check if the board is full
-        public bool IsBoardFull()
-        {
-            for (int col = 0; col < numCols; col++)
-            {
-                if (!IsColumnFull(col))
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
+        //public bool IsBoardFull()
+        //{
+        //    for (int col = 0; col < numCols; col++)
+        //    {
+        //        if (!IsColumnFull(col))
+        //        {
+        //            return false;
+        //        }
+        //    }
+        //    return true;
+        //}
 
         //  This is required for the board display
         public Cell[,] getBoard()

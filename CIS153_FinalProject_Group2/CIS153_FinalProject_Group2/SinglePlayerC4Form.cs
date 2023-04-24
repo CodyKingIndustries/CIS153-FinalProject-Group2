@@ -4,11 +4,16 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Globalization;
+using System.IO;
 using System.Linq;
+using System.Media;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+//  sound requirements
+using System.IO;
+using System.Media;
 
 namespace CIS153_FinalProject_Group2
 {
@@ -25,12 +30,13 @@ namespace CIS153_FinalProject_Group2
         private int RowFiveClick = 0;
         private int RowSixClick = 0;
         private int RowSevenClick = 0;
+        Stream soundFileS;
+        SoundPlayer playSoundS;
 
         public SinglePlayerC4Form()
         {
             InitializeComponent();
-            this.StartPosition = FormStartPosition.Manual;
-            this.Location = new Point(100, 100);
+            
         }
 
         //  Initialize This Form
@@ -39,6 +45,10 @@ namespace CIS153_FinalProject_Group2
             InitializeComponent();
             //  this will allow us to return to the main screen form if we need to
             MainScreenForm = m;
+            this.StartPosition = FormStartPosition.Manual;
+            this.Location = new Point(100, 100);
+            soundFileS = Properties.Resources.CoinShort;
+            playSoundS = new SoundPlayer(soundFileS);
         }
 
 
@@ -65,6 +75,7 @@ namespace CIS153_FinalProject_Group2
         //  BUTTON CLICK FUNCITONS
         private void btn_Row1Slot_Click(object sender, EventArgs e)
         {
+            playSoundS.Play();
             RowOneClick++;
             int r = 5;
             int c = 0;
@@ -99,6 +110,7 @@ namespace CIS153_FinalProject_Group2
             else if (RowOneClick == 6)
             {
                 btn_Row1Space6.BackColor = Color.Red;
+                btn_Row1Slot.Enabled = false;
             }
             
             SPBoard.getBoard()[r, c].placeDisc("Red");
@@ -115,7 +127,7 @@ namespace CIS153_FinalProject_Group2
 
         private void btn_Row2Slot_Click(object sender, EventArgs e)
         {
-
+            playSoundS.Play();
             RowTwoClick++;
             int r = 5;
             int c = 1;
@@ -149,6 +161,7 @@ namespace CIS153_FinalProject_Group2
             else if (RowTwoClick == 6)
             {
                 btn_Row2Space6.BackColor = Color.Red;
+                btn_Row2Slot.Enabled = false;
             }
 
             SPBoard.getBoard()[r, c].placeDisc("Red");
@@ -165,6 +178,7 @@ namespace CIS153_FinalProject_Group2
 
         private void btn_Row3Slot_Click(object sender, EventArgs e)
         {
+            playSoundS.Play();
             RowThreeClick++;
             int r = 5;
             int c = 2;
@@ -198,6 +212,7 @@ namespace CIS153_FinalProject_Group2
             else if (RowThreeClick == 6)
             {
                 btn_Row3Space6.BackColor = Color.Red;
+                btn_Row3Slot.Enabled = false;
             }
             SPBoard.getBoard()[r, c].placeDisc("Red");
 
@@ -214,6 +229,7 @@ namespace CIS153_FinalProject_Group2
 
         private void btn_Row4Slot_Click(object sender, EventArgs e)
         {
+            playSoundS.Play();
             RowFourClick++;
             int r = 5;
             int c = 3;
@@ -247,6 +263,7 @@ namespace CIS153_FinalProject_Group2
             else if (RowFourClick == 6)
             {
                 btn_Row4Space6.BackColor = Color.Red;
+                btn_Row4Slot.Enabled = false;
             }
             SPBoard.getBoard()[r, c].placeDisc("Red");
 
@@ -262,7 +279,7 @@ namespace CIS153_FinalProject_Group2
 
         private void btn_Row5Slot_Click(object sender, EventArgs e)
         {
-
+            playSoundS.Play();
             RowFiveClick++;
             int r = 5;
             int c = 4;
@@ -296,6 +313,7 @@ namespace CIS153_FinalProject_Group2
             else if (RowFiveClick == 6)
             {
                 btn_Row5Space6.BackColor = Color.Red;
+                btn_Row5Slot.Enabled = false;
             }
             SPBoard.getBoard()[r, c].placeDisc("Red");
 
@@ -311,7 +329,7 @@ namespace CIS153_FinalProject_Group2
 
         private void btn_Row6Slot_Click(object sender, EventArgs e)
         {
-
+            playSoundS.Play();
             RowSixClick++;
             int r = 5;
             int c = 5;
@@ -345,6 +363,7 @@ namespace CIS153_FinalProject_Group2
             else if (RowSixClick == 6)
             {
                 btn_Row6Space6.BackColor = Color.Red;
+                btn_Row6Slot.Enabled = false;
             }
 
             SPBoard.getBoard()[r, c].placeDisc("Red");
@@ -361,7 +380,7 @@ namespace CIS153_FinalProject_Group2
 
         private void btn_Row7Slot_Click(object sender, EventArgs e)
         {
-
+            playSoundS.Play();
             RowSevenClick++;
             int r = 5;
             int c = 6;
@@ -395,6 +414,7 @@ namespace CIS153_FinalProject_Group2
             else if (RowSevenClick == 6)
             {
                 btn_Row7Space6.BackColor = Color.Red;
+                btn_Row7Slot.Enabled = false;
             }
             SPBoard.getBoard()[r, c].placeDisc("Red");
 
@@ -1248,9 +1268,9 @@ namespace CIS153_FinalProject_Group2
 
         private void AiPlacesPiece(int c)
         {
-
-           //  these are just all the cases as in btn_row#Slot_Click
-           //  but for the Ai to place
+           // playSoundS.Play();
+            //  these are just all the cases as in btn_row#Slot_Click
+            //  but for the Ai to place
 
             if (c == 0)
             {
@@ -1287,6 +1307,7 @@ namespace CIS153_FinalProject_Group2
                 else if (RowOneClick == 6)
                 {
                     btn_Row1Space6.BackColor = Color.Yellow;
+                    btn_Row1Slot.Enabled = false;
                 }
                 SPBoard.getBoard()[r, c].placeDisc("Yellow");
                 if (SPBoard.checkWinner(r, c))
@@ -1329,6 +1350,7 @@ namespace CIS153_FinalProject_Group2
                 else if (RowTwoClick == 6)
                 {
                     btn_Row2Space6.BackColor = Color.Yellow;
+                    btn_Row2Slot.Enabled = false;
                 }
                 SPBoard.getBoard()[r, c].placeDisc("Yellow");
                 if (SPBoard.checkWinner(r, c))
@@ -1370,6 +1392,7 @@ namespace CIS153_FinalProject_Group2
                 else if (RowThreeClick == 6)
                 {
                     btn_Row3Space6.BackColor = Color.Yellow;
+                    btn_Row3Slot.Enabled = false;
                 }
                 SPBoard.getBoard()[r, c].placeDisc("Yellow");
                 if (SPBoard.checkWinner(r, c))
@@ -1411,6 +1434,7 @@ namespace CIS153_FinalProject_Group2
                 else if (RowFourClick == 6)
                 {
                     btn_Row4Space6.BackColor = Color.Yellow;
+                    btn_Row4Slot.Enabled = false;
                 }
                 SPBoard.getBoard()[r, c].placeDisc("Yellow");
                 if (SPBoard.checkWinner(r, c))
@@ -1452,6 +1476,7 @@ namespace CIS153_FinalProject_Group2
                 else if (RowFiveClick == 6)
                 {
                     btn_Row5Space6.BackColor = Color.Yellow;
+                    btn_Row5Slot.Enabled = false;
                 }
                 SPBoard.getBoard()[r, c].placeDisc("Yellow");
                 if (SPBoard.checkWinner(r, c))
@@ -1493,6 +1518,7 @@ namespace CIS153_FinalProject_Group2
                 else if (RowSixClick == 6)
                 {
                     btn_Row6Space6.BackColor = Color.Yellow;
+                    btn_Row6Slot.Enabled = false;
                 }
                 SPBoard.getBoard()[r, c].placeDisc("Yellow");
                 if (SPBoard.checkWinner(r, c))
@@ -1534,6 +1560,7 @@ namespace CIS153_FinalProject_Group2
                 else if (RowSevenClick == 6)
                 {
                     btn_Row7Space6.BackColor = Color.Yellow;
+                    btn_Row7Slot.Enabled = false;
                 }
                 SPBoard.getBoard()[r, c].placeDisc("Yellow");
                 if (SPBoard.checkWinner(r, c))

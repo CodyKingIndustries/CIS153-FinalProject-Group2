@@ -48,7 +48,6 @@
   <ItemGroup>
     <Compile Include="Board.cs" />
     <Compile Include="Cell.cs" />
-    <Compile Include="Disc.cs" />
     <Compile Include="MainMenuForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +94,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="SinglePlayerC4Form.resx">
       <DependentUpon>SinglePlayerC4Form.cs</DependentUpon>
@@ -119,6 +119,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Coin1R.wav" />
+    <None Include="Resources\CoinShort.wav" />
     <Content Include="stats.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

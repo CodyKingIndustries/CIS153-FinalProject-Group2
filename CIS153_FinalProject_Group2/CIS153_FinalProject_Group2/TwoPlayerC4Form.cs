@@ -8,8 +8,10 @@ using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+//  sound requirements
+using System.IO;
+using System.Media;
 
-//  placing a disc at the top, will overide the other players disc -> this needs to be fixed
 
 
 
@@ -33,6 +35,12 @@ namespace CIS153_FinalProject_Group2
         private int totalClicks = 0;
         private bool hasWinner = false;
 
+        //  Sound requirements
+        Stream soundFile;
+        SoundPlayer playSound;
+
+        
+        
 
         private void TwoPlayerC4Form_Load(object sender, EventArgs e)
         {
@@ -49,6 +57,8 @@ namespace CIS153_FinalProject_Group2
         public TwoPlayerC4Form(MainMenuForm m)
         {
             InitializeComponent();
+            soundFile = Properties.Resources.CoinShort;
+            playSound = new SoundPlayer(soundFile);
             MainScreenForm = m;
             this.StartPosition = FormStartPosition.Manual;
             this.Location = new Point(100, 100);
@@ -62,6 +72,9 @@ namespace CIS153_FinalProject_Group2
         //COLUMN 0 SLOT CLICK =================================================================
         private void btn_Col0Slot_Click(object sender, EventArgs e)
         {
+            
+            playSound.Play();
+
             col0Clicks++;
             int r = 5;
             int c = 0;
@@ -99,6 +112,7 @@ namespace CIS153_FinalProject_Group2
                     btn_00.BackColor = Color.Yellow;
                     TPBoard.getBoard()[r, c].setCellColor("Yellow");
                 }
+                btn_Col0Slot.Enabled = false;
             }
             else if (r == 1)
             {
@@ -164,6 +178,7 @@ namespace CIS153_FinalProject_Group2
                     btn_50.BackColor = Color.Yellow;
                     TPBoard.getBoard()[r, c].setCellColor("Yellow");
                 }
+                
             }
             hasWinner = TPBoard.checkWinner(r, c);
             ifWinner();
@@ -174,7 +189,7 @@ namespace CIS153_FinalProject_Group2
         //COLUMN 1 SLOT CLICK =================================================================
         private void btn_Col1Slot_Click(object sender, EventArgs e)
         {
-
+            playSound.Play();
 
             col1Clicks++;
             int r = 5;
@@ -209,6 +224,7 @@ namespace CIS153_FinalProject_Group2
                     btn_01.BackColor = Color.Yellow;
                     TPBoard.getBoard()[r, c].setCellColor("Yellow");
                 }
+                btn_Col1Slot.Enabled = false;
             }
             else if (r == 1)
             {
@@ -274,6 +290,7 @@ namespace CIS153_FinalProject_Group2
                     btn_51.BackColor = Color.Yellow;
                     TPBoard.getBoard()[r, c].setCellColor("Yellow");
                 }
+                
             }
             hasWinner = TPBoard.checkWinner(r, c);
             ifWinner();
@@ -283,7 +300,7 @@ namespace CIS153_FinalProject_Group2
         //COLUMN 2 SLOT CLICK =================================================================
         private void btn_Col2Slot_Click(object sender, EventArgs e)
         {
-
+            playSound.Play();
             col2Clicks++;
             int r = 5;
             int c = 2;
@@ -317,6 +334,7 @@ namespace CIS153_FinalProject_Group2
                     btn_02.BackColor = Color.Yellow;
                     TPBoard.getBoard()[r, c].setCellColor("Yellow");
                 }
+                btn_Col2Slot.Enabled = false;
             }
             else if (r == 1)
             {
@@ -382,6 +400,7 @@ namespace CIS153_FinalProject_Group2
                     btn_52.BackColor = Color.Yellow;
                     TPBoard.getBoard()[r, c].setCellColor("Yellow");
                 }
+               
             }
             hasWinner = TPBoard.checkWinner(r, c);
             ifWinner();
@@ -391,6 +410,7 @@ namespace CIS153_FinalProject_Group2
         //COLUMN 3 SLOT CLICK =================================================================
         private void btn_Col3Slot_Click(object sender, EventArgs e)
         {
+            playSound.Play();
             col3Clicks++;
             int r = 5;
             int c = 3;
@@ -424,6 +444,7 @@ namespace CIS153_FinalProject_Group2
                     btn_03.BackColor = Color.Yellow;
                     TPBoard.getBoard()[r, c].setCellColor("Yellow");
                 }
+                btn_Col3Slot.Enabled = false;
             }
             else if (r == 1)
             {
@@ -489,6 +510,7 @@ namespace CIS153_FinalProject_Group2
                     btn_53.BackColor = Color.Yellow;
                     TPBoard.getBoard()[r, c].setCellColor("Yellow");
                 }
+                
             }
             hasWinner = TPBoard.checkWinner(r, c);
             ifWinner();
@@ -498,6 +520,7 @@ namespace CIS153_FinalProject_Group2
         //COLUMN 4 SLOT CLICK =================================================================
         private void btn_Col4Slot_Click(object sender, EventArgs e)
         {
+            playSound.Play();
             col4Clicks++;
             int r = 5;
             int c = 4;
@@ -531,6 +554,7 @@ namespace CIS153_FinalProject_Group2
                     btn_04.BackColor = Color.Yellow;
                     TPBoard.getBoard()[r, c].setCellColor("Yellow");
                 }
+                btn_Col4Slot.Enabled = false;
             }
             else if (r == 1)
             {
@@ -596,6 +620,7 @@ namespace CIS153_FinalProject_Group2
                     btn_54.BackColor = Color.Yellow;
                     TPBoard.getBoard()[r, c].setCellColor("Yellow");
                 }
+               
             }
             hasWinner = TPBoard.checkWinner(r, c);
           
@@ -606,6 +631,7 @@ namespace CIS153_FinalProject_Group2
         //COLUMN 5 SLOT CLICK =================================================================
         private void btn_Col5Slot_Click(object sender, EventArgs e)
         {
+            playSound.Play();
             col5Clicks++;
             int r = 5;
             int c = 5;
@@ -639,6 +665,7 @@ namespace CIS153_FinalProject_Group2
                     btn_05.BackColor = Color.Yellow;
                     TPBoard.getBoard()[r, c].setCellColor("Yellow");
                 }
+                btn_Col5Slot.Enabled = false;
             }
             else if (r == 1)
             {
@@ -704,6 +731,7 @@ namespace CIS153_FinalProject_Group2
                     btn_55.BackColor = Color.Yellow;
                     TPBoard.getBoard()[r, c].setCellColor("Yellow");
                 }
+                
             }
             hasWinner = TPBoard.checkWinner(r, c);
             ifWinner();
@@ -713,6 +741,7 @@ namespace CIS153_FinalProject_Group2
         //COLUMN 6 SLOT CLICK =================================================================
         private void btn_Col6Slot_Click(object sender, EventArgs e)
         {
+            playSound.Play();
             col6Clicks++;
             int r = 5;
             int c = 6;
@@ -746,6 +775,7 @@ namespace CIS153_FinalProject_Group2
                     btn_06.BackColor = Color.Yellow;
                     TPBoard.getBoard()[r, c].setCellColor("Yellow");
                 }
+                btn_Col6Slot.Enabled = false;
             }
             else if (r == 1)
             {
@@ -811,6 +841,7 @@ namespace CIS153_FinalProject_Group2
                     btn_56.BackColor = Color.Yellow;
                     TPBoard.getBoard()[r, c].setCellColor("Yellow");
                 }
+                
             }
             hasWinner = TPBoard.checkWinner(r, c);
             ifWinner();
